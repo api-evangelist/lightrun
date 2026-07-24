@@ -1,0 +1,1283 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Actions API.
+  name: Actions
+paths:
+  /api/v1/actions:
+    get:
+      description: 'Get a list of actions.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: listActions
+      parameters:
+      - description: Filter actions by their type. Type can be any one of the enumerated values.
+        in: query
+        name: actionType
+        required: false
+        schema:
+          type: string
+          enum:
+          - LOG
+          - SNAPSHOT
+          - COUNTER_METRIC
+          - TICTOC_METRIC
+          - CUSTOM_METRIC
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Filter actions created after the specified date. Date format is <YYYY-MM-DD>.
+        in: query
+        name: createdAtAfter
+        required: false
+        schema:
+          type: string
+          format: date
+      - description: Filter actions created before the specified date. Date format is <YYYY-MM-DD>. (UTC)
+        in: query
+        name: createdAtBefore
+        required: false
+        schema:
+          type: string
+          format: date
+      - description: Filter actions created by the specified user or API key. Users are identified by their email address.
+        in: query
+        name: createdBy
+        required: false
+        schema:
+          type: string
+      - description: Filter actions by their state. State can be either ‘true’ (enabled) or ‘false’ (disabled).
+        in: query
+        name: enabled
+        required: false
+        schema:
+          type: boolean
+      - description: Filter actions by their expiration state. Expiration state can be either ‘true’ (expired) or ‘false’ (disabled).
+        in: query
+        name: expired
+        required: false
+        schema:
+          type: boolean
+      - description: Filter actions by the file on which they were set. Files are indicated by their full path, as provided in the action’s creation. This filter supports * as a wildcard to match multiple file names with a common pattern.
+        in: query
+        name: filename
+        required: false
+        schema:
+          type: string
+      - description: Filter actions which have any errors. The flag can be either ‘true’ (with errors) or ‘false’ (without errors).
+        in: query
+        name: hasErrors
+        required: false
+        schema:
+          type: boolean
+      - description: Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: Filter actions based on whether results have (true) or haven’t (false) been captured for them.
+        in: query
+        name: resultsExist
+        required: false
+        schema:
+          type: boolean
+      - description: The number of items to include on each page of results. The default is 20.
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: 'The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: location, line, createdAt.'
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Filter actions by status. Status can be any one of the enumerated values.
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+          enum:
+          - SUBMITTED
+          - REQUESTED
+          - ACCEPTED
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageActionSummaryPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Get a list of actions
+      tags:
+      - Actions
+  /api/v1/actions/logs:
+    post:
+      description: 'Create a log action.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: createLogAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogActionCreatePublicDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionSummaryPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Create a log action
+      tags:
+      - Actions
+  /api/v1/actions/logs/{actionId}/messages:
+    get:
+      description: 'Get list of agent log messages by action id.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getLogResults
+      parameters:
+      - description: Log action ID.
+        in: path
+        name: actionId
+        required: true
+        schema:
+          type: string
+      - description: Filter logs by agent ID.
+        in: query
+        name: agentId
+        required: false
+        schema:
+          type: string
+      - description: Filter logs by agent name.
+        in: query
+        name: agentName
+        required: false
+        schema:
+          type: string
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Filter logs by free text found in log data or agent ID.
+        in: query
+        name: freeText
+        required: false
+        schema:
+          type: string
+      - description: Filter logs created from the specified timestamp in milliseconds since epoch.
+        in: query
+        name: from
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - description: Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: The number of items to include on each page of results. The default is 20.
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc).
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Filter logs by agent tag.
+        in: query
+        name: tagName
+        required: false
+        schema:
+          type: string
+      - description: Filter logs created up to the specified timestamp in milliseconds since epoch.
+        in: query
+        name: to
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageLogDataPublicDTO'
+          description: Log messages retrieved.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageLogDataPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageLogDataPublicDTO'
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Get log messages
+      tags:
+      - Actions
+  /api/v1/actions/logs/{id}:
+    get:
+      description: 'Get a log action by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getLogAction
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Log action ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogActionPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Get a log action by ID
+      tags:
+      - Actions
+  /api/v1/actions/snapshots:
+    post:
+      description: 'Create a snapshot action.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: createSnapshotAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnapshotActionCreatePublicDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionSummaryPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Create a snapshot action
+      tags:
+      - Actions
+  /api/v1/actions/snapshots/hit/{hitId}:
+    get:
+      description: 'Get snapshot hit data by id
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getSnapshotHitData
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Hit ID.
+        in: path
+        name: hitId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotHitDataPublicDTO'
+          description: Snapshot hit retrieved.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotHitDataPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotHitDataPublicDTO'
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Get snapshot hit data
+      tags:
+      - Actions
+  /api/v1/actions/snapshots/hits/{actionId}:
+    get:
+      description: 'Get list of snapshot hits by action ID
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getSnapshotActionHits
+      parameters:
+      - description: Snapshot action ID.
+        in: path
+        name: actionId
+        required: true
+        schema:
+          type: string
+      - description: Filter snapshot hits by agent name.
+        in: query
+        name: agentName
+        required: false
+        schema:
+          type: string
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Filter snapshot hits created from the specified timestamp in milliseconds since epoch.
+        in: query
+        name: from
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - description: Filter snapshot hits by agent tag.
+        in: query
+        name: tagName
+        required: false
+        schema:
+          type: string
+      - description: Filter snapshot hits created up to the specified timestamp in milliseconds since epoch.
+        in: query
+        name: to
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SnapshotHitPublicDTO'
+          description: Snapshot hits retrieved.
+        '400':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SnapshotHitPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SnapshotHitPublicDTO'
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Get list of snapshot hits
+      tags:
+      - Actions
+  /api/v1/actions/snapshots/{id}:
+    get:
+      description: 'Get a snapshot action by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getSnapshotAction
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Snapshot action ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotActionPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Get a snapshot action by ID
+      tags:
+      - Actions
+  /api/v1/actions/{id}:
+    delete:
+      description: 'Delete an action.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: deleteAction
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Action-ID of the action to be deleted.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Action deleted.
+        '400':
+          description: Invalid input.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Action not found.
+      security:
+      - API Token: []
+      summary: Delete an action
+      tags:
+      - Actions
+components:
+  schemas:
+    SnapshotBreakpointStatusDescriptionPublicDTO:
+      type: object
+      description: Snapshot breakpoint status description.
+      properties:
+        errorId:
+          type: integer
+          format: int32
+          description: Error ID.
+        format:
+          type: string
+          description: Format.
+        parameters:
+          type: array
+          description: Parameters.
+          items:
+            type: string
+    SnapshotLocationPublicDTO:
+      type: object
+      description: Snapshot location.
+      properties:
+        column:
+          type: integer
+          format: int32
+          description: Column.
+        endOfLine:
+          type: boolean
+          description: Whether this is end of line.
+        lambdaIndex:
+          type: integer
+          format: int32
+          description: Lambda index.
+        line:
+          type: integer
+          format: int32
+          description: Line.
+        path:
+          type: string
+          description: Path.
+    LogDataPublicDTO:
+      type: object
+      description: Log Data.
+      properties:
+        actionId:
+          type: string
+          description: Action ID.
+        agentDisplayName:
+          type: string
+          description: Agent Display Name.
+        agentId:
+          type: string
+          description: Agent ID.
+        agentTags:
+          type: array
+          description: Agent Tags.
+          items:
+            type: string
+        data:
+          type: string
+          description: Log Data.
+        level:
+          type: string
+          description: Log Level.
+          enum:
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        timestamp:
+          type: integer
+          format: int64
+          description: Log time.
+    ErrorInfoPublicDTO:
+      type: object
+      properties:
+        agentDisplayName:
+          type: string
+        agentId:
+          type: string
+        errorId:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+    SnapshotHitDataPublicDTO:
+      type: object
+      description: Snapshot Hit Data.
+      properties:
+        actionId:
+          type: string
+          description: Action ID.
+        agentDisplayName:
+          type: string
+          description: Agent Display Name.
+        agentId:
+          type: string
+          description: Agent ID.
+        agentTags:
+          type: array
+          description: Agent Tags.
+          items:
+            type: string
+        captureTime:
+          type: string
+          format: date-time
+          description: Capture Time.
+        evaluatedContext:
+          $ref: '#/components/schemas/SnapshotEntryPublicDTO'
+          description: Evaluated context.
+        evaluatedContextExpressions:
+          type: array
+          description: Evaluated context expressions.
+          items:
+            type: object
+            description: Snapshot Entry.
+            properties:
+              isEvaluatedExpression:
+                type: boolean
+                description: Whether this is an evaluated expression.
+              members:
+                type: array
+                description: Members.
+                items:
+                  description: Snapshot Entry.
+              name:
+                type: string
+                description: Name.
+              status:
+                $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
+                description: Status.
+              type:
+                type: string
+                description: Type.
+              value:
+                type: string
+                description: Value.
+              varTableIndex:
+                type: integer
+                format: int32
+                description: Variable Table Index.
+        evaluatedExpressions:
+          type: array
+          description: Evaluated expressions.
+          items:
+            type: object
+            description: Snapshot Entry.
+            properties:
+              isEvaluatedExpression:
+                type: boolean
+                description: Whether this is an evaluated expression.
+              members:
+                type: array
+                description: Members.
+                items:
+                  description: Snapshot Entry.
+              name:
+                type: string
+                description: Name.
+              status:
+                $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
+                description: Status.
+              type:
+                type: string
+                description: Type.
+              value:
+                type: string
+                description: Value.
+              varTableIndex:
+                type: integer
+                format: int32
+                description: Variable Table Index.
+        id:
+          type: string
+          description: Snapshot Hit ID.
+        stackFrames:
+          type: array
+          description: Stack frames.
+          items:
+            $ref: '#/components/schemas/SnapshotStackFramePublicDTO'
+        variableTable:
+          type: array
+          description: Variable table.
+          items:
+            type: object
+            description: Snapshot Entry.
+            properties:
+              isEvaluatedExpression:
+                type: boolean
+                description: Whether this is an evaluated expression.
+              members:
+                type: array
+                description: Members.
+                items:
+                  description: Snapshot Entry.
+              name:
+                type: string
+                description: Name.
+              status:
+                $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
+                description: Status.
+              type:
+                type: string
+                description: Type.
+              value:
+                type: string
+                description: Value.
+              varTableIndex:
+                type: integer
+                format: int32
+                description: Variable Table Index.
+    SnapshotEntryPublicDTO:
+      type: object
+      description: Snapshot Entry.
+      properties:
+        isEvaluatedExpression:
+          type: boolean
+          description: Whether this is an evaluated expression.
+        members:
+          type: array
+          description: Members.
+          items:
+            description: Snapshot Entry.
+        name:
+          type: string
+          description: Name.
+        status:
+          $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
+          description: Status.
+        type:
+          type: string
+          description: Type.
+        value:
+          type: string
+          description: Value.
+        varTableIndex:
+          type: integer
+          format: int32
+          description: Variable Table Index.
+    WarningInfoPublicDTO:
+      type: object
+      properties:
+        agentDisplayName:
+          type: string
+        agentId:
+          type: string
+        warningId:
+          type: integer
+          format: int32
+        warningMessage:
+          type: string
+    LogActionPublicDTO:
+      type: object
+      description: Log action.
+      properties:
+        agentPoolId:
+          type: string
+          description: Action agent pool ID.
+        agentsWithHitsCount:
+          type: integer
+          format: int32
+          description: Action agents with hits count.
+        condition:
+          type: string
+          description: Action condition.
+        createdAt:
+          type: string
+          format: date-time
+          description: Action creation time.
+        createdBy:
+          type: string
+          description: User who created the action.
+        enabled:
+          type: boolean
+          description: Action enabled.
+        errorsInfoList:
+          type: array
+          description: Action errors per breakpoint.
+          items:
+            $ref: '#/components/schemas/ErrorInfoPublicDTO'
+        expirationSeconds:
+          type: integer
+          format: int32
+          description: Action expiration time in seconds.
+        expired:
+          type: boolean
+          description: Action expired.
+        format:
+          type: string
+          description: Log action messages format.
+        hitCount:
+          type: integer
+          format: int32
+          description: Action hits count.
+        id:
+          type: string
+          description: Action ID.
+        line:
+          type: integer
+          format: int32
+          description: Log action line.
+        location:
+          type: string
+          description: Action full file path.
+        logLevel:
+          type: string
+          description: Log action messages log level.
+          enum:
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        status:
+          type: string
+          description: Action status.
+          enum:
+          - SUBMITTED
+          - REQUESTED
+          - ACCEPTED
+        targets:
+          type: array
+          description: Log action targets.
+          items:
+            type: string
+            enum:
+            - PLUGIN
+            - STDOUT
+            - PROMETHEUS
+            - STATSD
+            - DYNATRACE
+          uniqueItems: true
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last updated timestamp (UTC).
+        versionControl:
+          $ref: '#/components/schemas/VersionControlPublicDTO'
+          description: Action version control info.
+        warningsInfoList:
+          type: array
+          description: Action warnings per breakpoint.
+          items:
+            $ref: '#/components/schemas/WarningInfoPublicDTO'
+        webPortalPageLink:
+          type: string
+          description: Link to Log action in the Lightrun Management Portal.
+    LogActionCreatePublicDTO:
+      type: object
+      description: Create log action.
+      properties:
+        agentPoolId:
+          type: string
+          description: Action agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        condition:
+          type: string
+          description: Action condition.
+        expirationSeconds:
+          type: integer
+          format: int32
+          default: 3600
+          description: Action expiration time. Defaults to 3600 seconds (1 hour).
+        filename:
+          type: string
+          description: Action full file path.
+          minLength: 1
+        format:
+          type: string
+          description: Log action messages format. Supports placeholders for expressions like "Hello log {myVar}".
+          minLength: 1
+        line:
+          type: integer
+          format: int32
+          description: Log action line.
+        logLevel:
+          type: string
+          description: Log action messages log level.
+          enum:
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        targets:
+          type: array
+          description: Log action targets.
+          items:
+            type: string
+            enum:
+            - PLUGIN
+            - STDOUT
+            - PROMETHEUS
+            - STATSD
+            - DYNATRACE
+          uniqueItems: true
+        versionControl:
+          $ref: '#/components/schemas/VersionControlPublicDTO'
+          description: Action version control info.
+      required:
+      - filename
+      - format
+      - line
+      - source
+    PublicApiPageActionSummaryPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionSummaryPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    PublicApiPageLogDataPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogDataPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    SnapshotActionPublicDTO:
+      type: object
+      description: Snapshot actions.
+      properties:
+        agentPoolId:
+          type: string
+          description: Action agent pool ID.
+        agentsWithHitsCount:
+          type: integer
+          format: int32
+          description: Action agents with hits count.
+        condition:
+          type: string
+          description: Action condition.
+        createdAt:
+          type: string
+          format: date-time
+          description: Action creation time.
+        createdBy:
+          type: string
+          description: User who created the action.
+        enabled:
+          type: boolean
+          description: Action enabled.
+        errorsInfoList:
+          type: array
+          description: Action errors per breakpoint.
+          items:
+            $ref: '#/components/schemas/ErrorInfoPublicDTO'
+        expirationSeconds:
+          type: integer
+          format: int32
+          description: Action expiration time in seconds.
+        expired:
+          type: boolean
+          description: Action expired.
+        hitCount:
+          type: integer
+          format: int32
+          description: Action hits count.
+        id:
+          type: string
+          description: Action ID.
+        isMaxHitCountDistributed:
+          type: boolean
+          description: Whether action hits should be distributed among agents evenly or not.
+        line:
+          type: integer
+          format: int32
+          description: Snapshot action line.
+        location:
+          type: string
+          description: Action full file path.
+        maxHitCount:
+          type: integer
+          format: int32
+          description: Snapshot action hits maximum.
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        status:
+          type: string
+          description: Action status.
+          enum:
+          - SUBMITTED
+          - REQUESTED
+          - ACCEPTED
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last updated timestamp (UTC).
+        versionControl:
+          $ref: '#/components/schemas/VersionControlPublicDTO'
+          description: Action version control info.
+        warningsInfoList:
+          type: array
+          description: Action warnings per breakpoint.
+          items:
+            $ref: '#/components/schemas/WarningInfoPublicDTO'
+        watchExpressions:
+          type: array
+          description: Snapshot action watch expressions.
+          items:
+            type: string
+        webPortalPageLink:
+          type: string
+          description: Link to Snapshot action in the Lightrun Management Portal.
+    SnapshotStackFramePublicDTO:
+      type: object
+      description: Snapshot stack frame.
+      properties:
+        arguments:
+          type: array
+          description: Arguments.
+          items:
+            type: object
+            description: Snapshot Entry.
+            properties:
+              isEvaluatedExpression:
+                type: boolean
+                description: Whether this is an evaluated expression.
+              members:
+                type: array
+                description: Members.
+                items:
+                  description: Snapshot Entry.
+              name:
+                type: string
+                description: Name.
+              status:
+                $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
+                description: Status.
+              type:
+                type: string
+                description: Type.
+              value:
+                type: string
+                description: Value.
+              varTableIndex:
+                type: integer
+                format: int32
+                description: Variable Table Index.
+        function:
+          type: string
+          description: Function.
+        locals:
+          type: array
+          description: Locals.
+          items:
+            type: object
+            description: Snapshot Entry.
+            properties:
+              isEvaluatedExpression:
+                type: boolean
+                description: Whether this is an evaluated expression.
+              members:
+                type: array
+                description: Members.
+                items:
+                  description: Snapshot Entry.
+              name:
+                type: string
+                description: Name.
+              status:
+                $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
+                description: Status.
+              type:
+                type: string
+                description: Type.
+              value:
+                type: string
+                description: Value.
+              varTableIndex:
+                type: integer
+                format: int32
+                description: Variable Table Index.
+        location:
+          $ref: '#/components/schemas/SnapshotLocationPublicDTO'
+          description: Location.
+    SourceSummaryPublicDTO:
+      type: object
+      description: Source.
+      properties:
+        id:
+          type: string
+          description: Source ID.
+          minLength: 1
+        type:
+          type: string
+          description: Source type.
+          enum:
+          - CUSTOM_SOURCE
+          - AGENT
+          - TAG
+      required:
+      - id
+      - type
+    SnapshotActionCreatePublicDTO:
+      type: object
+      description: Create snapshot action.
+      properties:
+        agentPoolId:
+          type: string
+          description: Action agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        condition:
+          type: string
+          description: Action condition.
+        expirationSeconds:
+          type: integer
+          format: int32
+          default: 3600
+          description: Action expiration time. Defaults to 3600 seconds (1 hour).
+        filename:
+          type: string
+          description: Action full file path.
+          minLength: 1
+        isMaxHitCountDistributed:
+          type: boolean
+          default: false
+          description: Whether action hits should be distributed among agents evenly. Disabled by default.
+        line:
+          type: integer
+          format: int32
+          description: Snapshot action line.
+        maxHitCount:
+          type: integer
+          format: int32
+          default: 10
+          description: Snapshot action hits maximum.
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        versionControl:
+          $ref: '#/components/schemas/VersionControlPublicDTO'
+          description: Action version control info.
+        watchExpressions:
+          type: array
+          description: Snapshot action watch expressions.
+          items:
+            type: string
+      required:
+      - filename
+      - line
+      - source
+    ActionSummaryPublicDTO:
+      type: object
+      description: Action.
+      properties:
+        actionType:
+          type: string
+          description: Action type.
+          enum:
+          - LOG
+          - SNAPSHOT
+          - COUNTER_METRIC
+          - TICTOC_METRIC
+          - CUSTOM_METRIC
+        createdAt:
+          type: string
+          format: date-time
+          description: Action creation time.
+        createdBy:
+          type: string
+          description: Created by.
+        enabled:
+          type: boolean
+          description: Action state. Either enabled (true) or disabled (false).
+        expired:
+          type: boolean
+          description: Action expired.
+        hasErrors:
+          type: boolean
+          description: Action has errors.
+        id:
+          type: string
+          description: Action ID.
+        line:
+          type: integer
+          format: int32
+          description: Line.
+        location:
+          type: string
+          description: Location.
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        status:
+          type: string
+          description: Action status.
+          enum:
+          - SUBMITTED
+          - REQUESTED
+          - ACCEPTED
+    SnapshotBreakpointStatusPublicDTO:
+      type: object
+      description: Snapshot breakpoint status.
+      properties:
+        description:
+          $ref: '#/components/schemas/SnapshotBreakpointStatusDescriptionPublicDTO'
+          description: Description.
+        isAccepted:
+          type: boolean
+          description: Whether this is accepted.
+        isError:
+          type: boolean
+          description: Whether this is an error.
+        refersTo:
+          type: string
+          description: Refers to.
+    SnapshotHitPublicDTO:
+      type: object
+      description: Snapshot Hit.
+      properties:
+        actionId:
+          type: string
+          description: Action ID.
+        agentDisplayName:
+          type: string
+          description: Agent Display Name.
+        agentId:
+          type: string
+          description: Agent ID.
+        agentTags:
+          type: array
+          description: Agent Tags.
+          items:
+            type: string
+        captureTime:
+          type: string
+          format: date-time
+          description: Capture Time.
+        id:
+          type: string
+          description: Snapshot Hit ID.
+    VersionControlPublicDTO:
+      type: object
+      description: Version control.
+      properties:
+        branch:
+          type: string
+        commit:
+          type: string
+        headTags:
+          type: array
+          items:
+            type: string
+        repo:
+          type: string
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

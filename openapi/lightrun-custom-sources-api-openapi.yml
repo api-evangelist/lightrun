@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Custom sources API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Custom sources API.
+  name: Custom sources
+paths:
+  /api/v1/custom-sources:
+    get:
+      description: 'Get a list of custom sources.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: listCustomSources
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Filter custom sources by their names. This filter supports the * wildcard to match multiple values with a common pattern.
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+      - description: Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: The number of items to include on each page of results. The default is 20.
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: 'The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name.'
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageCustomSourceSummaryPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Get a list of custom sources
+      tags:
+      - Custom sources
+components:
+  schemas:
+    PublicApiPageCustomSourceSummaryPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomSourceSummaryPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    CustomSourceSummaryPublicDTO:
+      type: object
+      description: Custom sources.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Custom source ID.
+        name:
+          type: string
+          description: Custom source name.
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

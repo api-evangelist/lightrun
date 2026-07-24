@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Lightrun feature flags status API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Lightrun feature flags status API.
+  name: Lightrun feature flags status
+paths:
+  /api/v1/configuration/feature/toggle:
+    get:
+      description: 'Get a JSON file with the current Lightrun feature flags toggle status.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: getFeatureConfig
+      parameters:
+      - description: Company ID for which to read the feature configuration. Required for non-single-tenant deployments
+        in: query
+        name: company
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureToggleDescriptorDTO'
+          description: Lightrun feature flags toggle status
+      security:
+      - API Token: []
+      summary: Get Lightrun system feature configuration
+      tags:
+      - Lightrun feature flags status
+    post:
+      description: 'Update the Lightrun feature flags toggle status.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: setFeatureConfig
+      parameters:
+      - description: Signature for the request content
+        in: query
+        name: signature
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureConfigurationWriteDTO'
+        required: true
+      responses:
+        '200':
+          description: Lightrun feature flag status updated
+        '400':
+          description: Bad request, Usually due to invalid input.
+      security:
+      - API Token: []
+      summary: Update Lightrun feature flag toggle status
+      tags:
+      - Lightrun feature flags status
+components:
+  schemas:
+    FeatureConfigurationWriteDTO:
+      type: object
+      description: Feature configuration update DTO
+      example:
+        expirationDays: 30
+        organizationId: org123
+        account: account123
+        businessUnit: BU123
+        deployment: deployment123
+        featureStatus:
+          FEATURE_1: DISABLED
+          FEATURE_2: ENABLED
+      properties:
+        account:
+          type: string
+          description: The name of the account entity to update.
+          example: account123
+        businessUnit:
+          type: string
+          description: The name of the business unit entity to update.
+          example: BU123
+        deployment:
+          type: string
+          description: The name of the deployment entity to update.
+          example: deployment123
+        expirationDays:
+          type: integer
+          format: int64
+          description: The expiration time of this configuration in days
+          example: 90
+        features:
+          type: object
+          additionalProperties:
+            type: string
+            description: Feature toggle state enumeration
+            enum:
+            - DISABLED
+            - ENABLED
+            example:
+              FEATURE_1: ENABLED
+              FEATURE_2: DISABLED
+          description: The feature toggle state description. Features that are not included will not change their state.
+          example:
+            FEATURE_1: ENABLED
+            FEATURE_2: DISABLED
+          minProperties: 1
+          properties:
+            empty:
+              type: boolean
+        organizationId:
+          type: string
+          description: The organizationId of the entity to update. empty is auto-initialized for single tenant deployments
+          example: org123
+      required:
+      - expirationDays
+      - features
+      - organizationId
+    FeatureToggleDescriptorDTO:
+      type: object
+      additionalProperties:
+        type: string
+        description: Feature toggle state enumeration
+        enum:
+        - DISABLED
+        - ENABLED
+        example:
+          FEATURE_1: ENABLED
+          FEATURE_2: DISABLED
+      description: Feature state read-only view
+      example:
+        FEATURE_1: ENABLED
+        FEATURE_2: DISABLED
+      properties:
+        empty:
+          type: boolean
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Loaded packages API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Loaded packages API.
+  name: Loaded packages
+paths:
+  /api/v1/loaded-packages:
+    get:
+      description: 'Get an array of loaded packages.
+
+
+        **Required API permission level:** `SECURITY`'
+      operationId: listLoadedPackages
+      parameters:
+      - in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)
+        in: query
+        name: loadDateEnd
+        required: false
+        schema:
+          type: string
+          format: date
+      - description: Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)
+        in: query
+        name: loadDateStart
+        required: false
+        schema:
+          type: string
+          format: date
+      - description: Filter packages by package names.
+        in: query
+        name: packageNames
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Filter packages by package versions.
+        in: query
+        name: packageVersions
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Zero-based page index (0..N)
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: The size of the page to be returned
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: 'Specify the status of packages for filtering: active, inactive, pending.'
+        in: query
+        name: status
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - NOT_LOADED
+            - LOADED
+            - LOADED_WITH_CLASSES
+      - description: Filter packages based on the distinct combination of tags assigned to the hosts that loaded them.
+        in: query
+        name: tags
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageLoadedPackagePublicApiDTO'
+          description: Loaded packages retrieved.
+        '400':
+          description: Invalid input or object.
+        '401':
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Get an array of loaded packages
+      tags:
+      - Loaded packages
+components:
+  schemas:
+    LoadedPackagePublicApiDTO:
+      type: object
+      properties:
+        classes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadedClassPublicApiDTO'
+          uniqueItems: true
+        packageName:
+          type: string
+        status:
+          type: string
+          enum:
+          - NOT_LOADED
+          - LOADED
+          - LOADED_WITH_CLASSES
+        type:
+          type: string
+          enum:
+          - JAVA
+        version:
+          type: string
+    LoadedClassPublicApiDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - NOT_LOADED
+          - LOADED
+    PublicApiPageLoadedPackagePublicApiDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadedPackagePublicApiDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

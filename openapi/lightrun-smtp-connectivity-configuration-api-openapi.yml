@@ -1,0 +1,166 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions SMTP connectivity configuration API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: SMTP connectivity configuration API
+  name: SMTP connectivity configuration
+paths:
+  /api/v1/configuration/connectivity/smtp:
+    get:
+      description: 'Get a JSON file with the current Lightrun SMTP connectivity configuration settings.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmtpConnectivityConfigurationReadDTO'
+          description: Returns the complete SMTP connectivity configuration
+      security:
+      - API Token: []
+      summary: Get SMTP connectivity configuration
+      tags:
+      - SMTP connectivity configuration
+    post:
+      description: 'Set the Lightrun SMTP connectivity configuration settings.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: set
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmtpConnectivityConfigurationWriteDTO'
+        required: true
+      responses:
+        '200':
+          description: Write complete SMTP connectivity configuration
+        '400':
+          description: Bad request, Usually due to invalid input.
+      security:
+      - API Token: []
+      summary: Set SMTP connectivity configuration
+      tags:
+      - SMTP connectivity configuration
+components:
+  schemas:
+    SmtpConnectivityConfigurationReadDTO:
+      type: object
+      description: A read only view of the SMTP connectivity configuration
+      properties:
+        authenticationId:
+          type: string
+          description: 'The SMTP server identifier for authentication: user name or API key name; for the custom SMTP server only'
+        authenticationSecret:
+          type: string
+          description: 'The SMTP server secret for authentication: password or API key value; for the custom SMTP server only'
+        authenticationType:
+          type: string
+          description: The SMTP connectivity authentication type for the custom SMTP server
+          enum:
+          - DISABLED
+          - PASSWORD
+          - APIKEY
+        enableSSL:
+          type: boolean
+          description: Whether secured HTTP is required; for the custom SMTP server only
+        enableStartTLS:
+          type: boolean
+          description: Whether StartTLS protocol is required; for the custom SMTP server only
+        fromEmailAddress:
+          type: string
+          description: The email address that will appear in the ‘from’ field of the system generated emails
+        serverHost:
+          type: string
+          description: Custom SMTP server host or IP address
+        serverPort:
+          type: integer
+          format: int32
+          default: 587
+          description: Custom SMTP server port
+        type:
+          type: string
+          default: DEFAULT
+          description: SMTP service configuration type
+          enum:
+          - DISABLED
+          - DEFAULT
+          - CUSTOM
+          example: DEFAULT
+    SmtpCustomConnectivitySpecDTO:
+      type: object
+      description: Custom SMTP connectivity mandatory arguments specification
+      properties:
+        authenticationId:
+          type: string
+          description: 'The SMTP server identifier for authentication: user name or API key name; for the custom SMTP server only'
+        authenticationSecret:
+          type: string
+          description: 'The SMTP server secret for authentication: password or API key value; for the custom SMTP server only'
+        authenticationType:
+          type: string
+          default: DISABLED
+          description: The SMTP connectivity authentication type for the custom SMTP server
+          enum:
+          - DISABLED
+          - PASSWORD
+          - APIKEY
+        enableSSL:
+          type: boolean
+          default: true
+          description: Whether secured HTTP is required; for the custom SMTP server only
+        enableStartTLS:
+          type: boolean
+          default: true
+          description: Whether StartTLS protocol is required; for the custom SMTP server only
+        fromEmailAddress:
+          type: string
+          format: email
+          description: The email address that will appear in the ‘from’ field of the system generated emails
+        serverHost:
+          type: string
+          description: Custom SMTP server host or IP address
+          minLength: 1
+        serverPort:
+          type: integer
+          format: int32
+          default: 587
+          description: Custom SMTP server port
+      required:
+      - authenticationType
+      - enableSSL
+      - enableStartTLS
+      - fromEmailAddress
+      - serverHost
+      - serverPort
+    SmtpConnectivityConfigurationWriteDTO:
+      type: object
+      description: SMTP connectivity configuration mutation DTO
+      properties:
+        customSpec:
+          $ref: '#/components/schemas/SmtpCustomConnectivitySpecDTO'
+          description: The custom SMTP connectivity mandatory arguments specification
+        type:
+          type: string
+          default: DEFAULT
+          description: SMTP service configuration type
+          enum:
+          - DISABLED
+          - DEFAULT
+          - CUSTOM
+          example: DEFAULT
+      required:
+      - type
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

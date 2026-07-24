@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Debug Runbook methods API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- name: Debug Runbook methods
+paths:
+  /api/v1/debug-cases/{caseId}/runbooks/{runbookId}/method/{id}:
+    get:
+      description: 'Get a runbook method by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getRunbookMethod
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Case ID.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Runbook method ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Runbook ID.
+        in: path
+        name: runbookId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunbookMethodPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Get a runbook method by ID
+      tags:
+      - Debug Runbook methods
+components:
+  schemas:
+    RunbookMethodHitPublicDTO:
+      type: object
+      description: Runbook Method Hit Result.
+      properties:
+        agentDisplayName:
+          type: string
+          description: Agent display name of reported hit.
+        agentId:
+          type: string
+          description: Agent ID of reported hit.
+        endTime:
+          type: string
+          format: date-time
+          description: Method exit hit time.
+        hitCount:
+          type: integer
+          format: int32
+          description: Hit count.
+        startTime:
+          type: string
+          format: date-time
+          description: Method entry hit time.
+    ErrorInfoPublicDTO:
+      type: object
+      properties:
+        agentDisplayName:
+          type: string
+        agentId:
+          type: string
+        errorId:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+    RunbookMethodPublicDTO:
+      type: object
+      description: Debug Runbook Method.
+      properties:
+        condition:
+          type: string
+          description: Condition on method.
+        errorsInfoList:
+          type: array
+          description: Method errors.
+          items:
+            $ref: '#/components/schemas/ErrorInfoPublicDTO'
+        filename:
+          type: string
+          description: File full path of the method.
+        hits:
+          type: array
+          description: Method hit results.
+          items:
+            $ref: '#/components/schemas/RunbookMethodHitPublicDTO'
+        maxResults:
+          type: integer
+          format: int32
+          description: Max results.
+        methodName:
+          type: string
+          description: Method name.
+        methodTimeoutSeconds:
+          type: integer
+          format: int64
+          description: Method timeout in seconds.
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

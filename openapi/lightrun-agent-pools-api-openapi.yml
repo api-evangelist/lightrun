@@ -1,0 +1,317 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Agent Pools API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Agent Pools API.
+  name: Agent Pools
+paths:
+  /api/v1/agent-pools:
+    get:
+      description: 'Get a list of all agent pools.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: listAgentPools
+      parameters:
+      - description: Filter agent pools by their name.
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+      - description: Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: The number of items to include on each page of results. The default is 20.
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: 'The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdDate, agentsEnabled.'
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageAgentPoolPublicApiDTO'
+          description: Retrieved all agent pools.
+      security:
+      - API Token: []
+      summary: Get a list of agent pools
+      tags:
+      - Agent Pools
+    post:
+      description: 'Create an agent pool.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: createAgentPool
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdateAgentPoolPublicDto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Created.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Invalid input.
+      security:
+      - API Token: []
+      summary: Create an agent pool
+      tags:
+      - Agent Pools
+  /api/v1/agent-pools/{id}:
+    get:
+      description: 'Get an agent pool by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getAgentPool
+      parameters:
+      - description: Agent pool ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Retrieved the agent pool.
+        '404':
+          description: Agent pool not found.
+      security:
+      - API Token: []
+      summary: Get an agent pool by ID
+      tags:
+      - Agent Pools
+    put:
+      description: 'Update an agent pool by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: updateAgentPool
+      parameters:
+      - description: Agent pool ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdateAgentPoolPublicDto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Agent pool updated.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Invalid input.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Agent pool not found.
+      security:
+      - API Token: []
+      summary: Update an agent pool by ID
+      tags:
+      - Agent Pools
+    delete:
+      description: 'Delete an agent pool by ID. Will fail if there are live agents in the pool.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: deleteAgentPool
+      parameters:
+      - description: Agent pool ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Agent pool deleted.
+        '400':
+          description: Invalid input.
+        '401':
+          description: Unauthorized.
+        '403':
+          description: Default agent pool can not be deleted.
+        '404':
+          description: Agent pool not found.
+        '409':
+          description: There are live agents in the pool.
+      security:
+      - API Token: []
+      summary: Delete an agent pool by ID
+      tags:
+      - Agent Pools
+  /api/v1/agent-pools/{id}/detach-agents:
+    put:
+      description: 'Disables the agent pool by ID, disconnecting active agents and preventing new agents from joining.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: detachAgents
+      parameters:
+      - description: Agent pool ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Agents detached.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Agent pool not found.
+      security:
+      - API Token: []
+      summary: Detach (disable) agents in an agent pool by ID
+      tags:
+      - Agent Pools
+  /api/v1/agent-pools/{id}/enable-agents:
+    put:
+      description: 'Enable agents in an agent pool by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: enableAgents
+      parameters:
+      - description: Agent pool ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Agents enabled.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+          description: Agent pool not found.
+      security:
+      - API Token: []
+      summary: Enable agents in an agent pool by ID
+      tags:
+      - Agent Pools
+components:
+  schemas:
+    CreateOrUpdateAgentPoolPublicDto:
+      type: object
+      description: Agent pool details
+      properties:
+        description:
+          type: string
+          description: Description of the agent pool.
+          maxLength: 255
+          minLength: 0
+        name:
+          type: string
+          description: Name of the agent pool.
+      required:
+      - name
+    AgentPoolPublicApiDTO:
+      type: object
+      properties:
+        agentsEnabled:
+          type: boolean
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+          maxLength: 255
+          minLength: 0
+        id:
+          type: string
+        liveAgentsCount:
+          type: integer
+          format: int64
+        name:
+          type: string
+    PublicApiPageAgentPoolPublicApiDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

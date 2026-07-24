@@ -1,0 +1,359 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Debug Runbooks API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Debug Runbooks API.
+  name: Debug Runbooks
+paths:
+  /api/v1/debug-cases/{caseId}/runbooks:
+    post:
+      description: 'Add runbook.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: addRunbook
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Case ID.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Configuration ID.
+        in: query
+        name: configurationId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunbookPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Add runbook
+      tags:
+      - Debug Runbooks
+  /api/v1/debug-cases/{caseId}/runbooks/stop-all:
+    put:
+      description: 'Stop all runbooks by IDs.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: stopAllRunbooks
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Case ID.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      security:
+      - API Token: []
+      summary: Stop all runbooks by IDs
+      tags:
+      - Debug Runbooks
+  /api/v1/debug-cases/{caseId}/runbooks/{runbookId}:
+    get:
+      description: 'Get a runbook by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getRunbook
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Case ID.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Runbook ID.
+        in: path
+        name: runbookId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunbookPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Get a runbook by ID
+      tags:
+      - Debug Runbooks
+  /api/v1/debug-cases/{caseId}/runbooks/{runbookId}/method/{id}:
+    get:
+      description: 'Get a runbook method by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: getRunbookMethod
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Case ID.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Runbook method ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Runbook ID.
+        in: path
+        name: runbookId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunbookMethodPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Get a runbook method by ID
+      tags:
+      - Debug Runbooks
+  /api/v1/debug-cases/{caseId}/runbooks/{runbookId}/start:
+    put:
+      description: 'Start runbook by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: startRunbook
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Case ID.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Runbook ID.
+        in: path
+        name: runbookId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunbookPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Start runbook by ID
+      tags:
+      - Debug Runbooks
+  /api/v1/debug-cases/{caseId}/runbooks/{runbookId}/stop:
+    put:
+      description: 'Stop runbook by ID.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: stopRunbook
+      parameters:
+      - description: Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Case ID.
+        in: path
+        name: caseId
+        required: true
+        schema:
+          type: string
+      - description: Runbook ID.
+        in: path
+        name: runbookId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunbookPublicDTO'
+          description: OK
+      security:
+      - API Token: []
+      summary: Stop runbook by ID
+      tags:
+      - Debug Runbooks
+components:
+  schemas:
+    RunbookMethodHitPublicDTO:
+      type: object
+      description: Runbook Method Hit Result.
+      properties:
+        agentDisplayName:
+          type: string
+          description: Agent display name of reported hit.
+        agentId:
+          type: string
+          description: Agent ID of reported hit.
+        endTime:
+          type: string
+          format: date-time
+          description: Method exit hit time.
+        hitCount:
+          type: integer
+          format: int32
+          description: Hit count.
+        startTime:
+          type: string
+          format: date-time
+          description: Method entry hit time.
+    ErrorInfoPublicDTO:
+      type: object
+      properties:
+        agentDisplayName:
+          type: string
+        agentId:
+          type: string
+        errorId:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+    RunbookMethodPublicDTO:
+      type: object
+      description: Debug Runbook Method.
+      properties:
+        condition:
+          type: string
+          description: Condition on method.
+        errorsInfoList:
+          type: array
+          description: Method errors.
+          items:
+            $ref: '#/components/schemas/ErrorInfoPublicDTO'
+        filename:
+          type: string
+          description: File full path of the method.
+        hits:
+          type: array
+          description: Method hit results.
+          items:
+            $ref: '#/components/schemas/RunbookMethodHitPublicDTO'
+        maxResults:
+          type: integer
+          format: int32
+          description: Max results.
+        methodName:
+          type: string
+          description: Method name.
+        methodTimeoutSeconds:
+          type: integer
+          format: int64
+          description: Method timeout in seconds.
+    RunbookArgumentPublicDTO:
+      type: object
+      description: Runbook Argument.
+      properties:
+        label:
+          type: string
+          description: Label.
+        value:
+          type: string
+          description: Variable value.
+        variableName:
+          type: string
+          description: Variable name.
+    RunbookPublicDTO:
+      type: object
+      description: Runbook.
+      properties:
+        arguments:
+          type: array
+          description: Arguments.
+          items:
+            $ref: '#/components/schemas/RunbookArgumentPublicDTO'
+        hitCount:
+          type: integer
+          format: int32
+          description: Hit count.
+        id:
+          type: string
+          description: Runbook ID.
+        methodIds:
+          type: array
+          description: Method IDs.
+          items:
+            type: string
+        name:
+          type: string
+          description: Runbook name.
+        state:
+          type: string
+          description: Runbook state.
+          enum:
+          - NOT_STARTED
+          - RUNNING
+          - TERMINATED
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

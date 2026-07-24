@@ -1,0 +1,574 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions User Groups API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: User Groups API.
+  name: User Groups
+paths:
+  /api/v1/groups:
+    get:
+      description: 'Get a list of user groups.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: listGroups
+      parameters:
+      - description: 'Filter by access to agent pool IDs. Matches any of the agent pool IDs. Format: Comma-separated list of IDs.'
+        in: query
+        name: agentPoolIds
+        required: false
+        schema:
+          type: string
+      - description: Fetch group members.
+        in: query
+        name: includeMembers
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - description: Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: The number of items to include on each page of results. The default is 20.
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria.
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageUserGroupPublicDTO'
+          description: Groups retrieved.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageUserGroupPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageUserGroupPublicDTO'
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Get a list of user groups
+      tags:
+      - User Groups
+    post:
+      description: 'Create a group.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: createGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserGroupPublicDTO'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Group created.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Unauthorized.
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Forbidden.
+      security:
+      - API Token: []
+      summary: Create a group
+      tags:
+      - User Groups
+  /api/v1/groups/{id}:
+    get:
+      description: 'Get a group by ID.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: getGroup
+      parameters:
+      - description: Group ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Fetch group members.
+        in: query
+        name: includeMembers
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Group retrieved.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Group not found.
+      security:
+      - API Token: []
+      summary: Get a group by ID
+      tags:
+      - User Groups
+    put:
+      description: 'Update a group.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: updateGroup
+      parameters:
+      - description: Group ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserGroupPublicDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Group updated.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupPublicDTO'
+          description: Group not found.
+      security:
+      - API Token: []
+      summary: Update a group
+      tags:
+      - User Groups
+    delete:
+      description: 'Delete a group.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: deleteGroup
+      parameters:
+      - description: Group ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Group deleted.
+        '400':
+          description: Invalid input.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Group not found.
+      security:
+      - API Token: []
+      summary: Delete a group
+      tags:
+      - User Groups
+  /api/v1/groups/{id}/members:
+    post:
+      description: '
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: addMembers
+      parameters:
+      - description: Group ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponsePublicDtoUserGroupMemberPublicDTO'
+          description: Members added.
+        '207':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponsePublicDtoUserGroupMemberPublicDTO'
+          description: A number of members failed to be added.
+      security:
+      - API Token: []
+      summary: Add group members
+      tags:
+      - User Groups
+    delete:
+      description: '
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: removeMembers
+      parameters:
+      - description: Group ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              uniqueItems: true
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponsePublicDtoString'
+          description: Members removed.
+      security:
+      - API Token: []
+      summary: Remove group members in bulk
+      tags:
+      - User Groups
+  /api/v1/groups/{id}/members/{email}:
+    put:
+      description: '
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: updateMember
+      parameters:
+      - description: Email.
+        in: path
+        name: email
+        required: true
+        schema:
+          type: string
+      - description: Group ID.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserGroupMemberPublicDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+          description: Member updated.
+      security:
+      - API Token: []
+      summary: Update a group member
+      tags:
+      - User Groups
+components:
+  schemas:
+    CreateUserGroupPublicDTO:
+      type: object
+      description: User group details
+      properties:
+        agentPoolIds:
+          type: array
+          description: Agent pool IDs.
+          items:
+            type: string
+          uniqueItems: true
+        name:
+          type: string
+          description: Name of the user group.
+        roles:
+          type: array
+          description: Roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+      required:
+      - name
+    UserGroupPublicDTO:
+      type: object
+      properties:
+        agentPoolIds:
+          type: array
+          description: Agent pool IDs.
+          items:
+            type: string
+          uniqueItems: true
+        createdBy:
+          type: string
+          format: email
+          description: Created by user.
+        createdDate:
+          type: string
+          format: date-time
+          description: Date created.
+        default:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+          description: User group ID.
+        lastModifiedBy:
+          type: string
+          format: email
+          description: Last modified by user.
+        lastModifiedDate:
+          type: string
+          format: date-time
+          description: Last modified date.
+        memberCount:
+          type: integer
+          format: int32
+          description: Number of members in the group.
+        members:
+          type: array
+          description: List of members in the group.
+          items:
+            $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+          uniqueItems: true
+        name:
+          type: string
+          description: Name of the user group.
+        roles:
+          type: array
+          description: Roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+      required:
+      - name
+    BulkOperationFailedItemPublicDtoString:
+      type: object
+      properties:
+        message:
+          type: string
+        payload:
+          type: string
+        status:
+          type: integer
+          format: int32
+    PublicApiPageUserGroupPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    UpdateUserGroupMemberPublicDTO:
+      type: object
+      description: Group membership details
+      properties:
+        elevatedRoles:
+          type: array
+          description: Elevated roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+        groupAdmin:
+          type: boolean
+    BulkOperationResponsePublicDtoUserGroupMemberPublicDTO:
+      type: object
+      properties:
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO'
+        successes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+    UpdateUserGroupPublicDTO:
+      type: object
+      description: User group details
+      properties:
+        agentPoolIds:
+          type: array
+          description: Agent pool IDs.
+          items:
+            type: string
+          uniqueItems: true
+        name:
+          type: string
+          description: Name of the user group.
+        roles:
+          type: array
+          description: Roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+      required:
+      - name
+    UserGroupMemberPublicDTO:
+      type: object
+      description: User group member
+      properties:
+        effectiveRoles:
+          type: array
+          description: Effective roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+        elevatedRoles:
+          type: array
+          description: Elevated roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+        email:
+          type: string
+          format: email
+          description: Email of the user.
+        groupAdmin:
+          type: boolean
+    BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO:
+      type: object
+      properties:
+        message:
+          type: string
+        payload:
+          $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+        status:
+          type: integer
+          format: int32
+    BulkOperationResponsePublicDtoString:
+      type: object
+      properties:
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkOperationFailedItemPublicDtoString'
+        successes:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

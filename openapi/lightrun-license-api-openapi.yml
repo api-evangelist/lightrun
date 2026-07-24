@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions License API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Company License API.
+  name: License
+paths:
+  /api/v1/license:
+    get:
+      description: 'Get the company license.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: getCompanyLicense
+      responses:
+        '200':
+          content:
+            text/plain: {}
+          description: Base64 encoded content of the license .
+        '400':
+          description: A required attribute of the API request is missing.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: The license is not found
+      security:
+      - API Token: []
+      summary: Get the license for an organization
+      tags:
+      - License
+    put:
+      description: 'Update the company license.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: updateCompanyLicense
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrganizationLicenseDTO'
+        required: true
+      responses:
+        '200':
+          description: The license is updated successfully.
+        '400':
+          description: Invalid license content or signature / Newer license exists / A required attribute of the API request is missing.
+        '401':
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Update the company license
+      tags:
+      - License
+components:
+  schemas:
+    UpdateOrganizationLicenseDTO:
+      type: object
+      description: Company id (for multi-tenant deployments only)
+      properties:
+        license:
+          type: string
+          description: Base64-encoded JSON file containing license properties
+          minLength: 1
+        licenseSignature:
+          type: string
+          description: The signature of the Base64-encoded license
+          minLength: 1
+      required:
+      - license
+      - licenseSignature
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

@@ -1,0 +1,302 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Dynamic SBOM API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Dynamic SBOM API.
+  name: Dynamic SBOM
+paths:
+  /api/v1/sbom:
+    get:
+      description: 'Get a software bill of materials (SBOM).
+
+
+        **Required API permission level:** `SECURITY`'
+      operationId: getSBOM
+      parameters:
+      - description: Agent pool ID, required if multiple agent pools configured.
+        in: query
+        name: agentPoolId
+        required: false
+        schema:
+          type: string
+      - description: Timestamp of when the SBOM was created. Format is <YYYY-MM-DD>. (UTC)
+        in: query
+        name: creationTime
+        required: true
+        schema:
+          type: string
+          format: date
+      - description: Get SBOM in the selected data format.
+        in: query
+        name: format
+        required: true
+        schema:
+          type: string
+          enum:
+          - SPDX
+          - CYCLONE_DX
+          - CSV
+      - description: Filter SBOM by package name/s.
+        in: query
+        name: packageNames
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Filter SBOM by package version/s.
+        in: query
+        name: packageVersions
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Package name.
+        in: query
+        name: sbomPackageName
+        required: true
+        schema:
+          type: string
+      - description: Package supplier.
+        in: query
+        name: sbomSupplierName
+        required: true
+        schema:
+          type: string
+      - description: Package version.
+        in: query
+        name: sbomVersion
+        required: true
+        schema:
+          type: string
+      - description: Filters packages based on a distinct combination of tags assigned to the hosts that loaded them.
+        in: query
+        name: tags
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+                oneOf:
+                - $ref: '#/components/schemas/SPDXSbomReportDTO'
+                - $ref: '#/components/schemas/CycloneDXSbomReportDTO'
+            text/plain: {}
+          description: SBOM generated.
+        '400':
+          description: A required attribute of the API request is missing.
+        '401':
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Get a software bill of materials (SBOM)
+      tags:
+      - Dynamic SBOM
+components:
+  schemas:
+    CycloneDXSbomReportMetadataDTO:
+      type: object
+      properties:
+        component:
+          $ref: '#/components/schemas/CycloneDXSbomReportComponentDTO'
+        timestamp:
+          type: string
+        tools:
+          $ref: '#/components/schemas/CycloneDXSbomReportToolDTO'
+    SPDXSbomReportExternalRefDTO:
+      type: object
+      properties:
+        referenceCategory:
+          type: string
+        referenceLocator:
+          type: string
+        referenceType:
+          type: string
+    CycloneDXSbomReportOccurrenceDTO:
+      type: object
+      properties:
+        location:
+          type: string
+    CycloneDXSbomReportHashDTO:
+      type: object
+      properties:
+        alg:
+          type: string
+        content:
+          type: string
+    CycloneDXSbomReportEvidenceDTO:
+      type: object
+      properties:
+        occurrences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportOccurrenceDTO'
+    CycloneDXSbomReportComponentDTO:
+      type: object
+      properties:
+        bom-ref:
+          type: string
+        description:
+          type: string
+        evidence:
+          $ref: '#/components/schemas/CycloneDXSbomReportEvidenceDTO'
+        group:
+          type: string
+        hashes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportHashDTO'
+        licenses:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        purl:
+          type: string
+        scope:
+          type: string
+        type:
+          type: string
+        version:
+          type: string
+    CycloneDXSbomReportDTO:
+      type: object
+      properties:
+        bomFormat:
+          type: string
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportComponentDTO'
+        dependencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportDependecyDTO'
+        metadata:
+          $ref: '#/components/schemas/CycloneDXSbomReportMetadataDTO'
+        serialNumber:
+          type: string
+        specVersion:
+          type: string
+        version:
+          type: integer
+          format: int32
+    CycloneDXSbomReportDependecyDTO:
+      type: object
+      properties:
+        dependsOn:
+          type: array
+          items:
+            type: string
+        ref:
+          type: string
+    CycloneDXSbomReportServiceDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        provider:
+          $ref: '#/components/schemas/CycloneDXSbomReportProviderDTO'
+        version:
+          type: string
+    SPDXSbomReportPackageDTO:
+      type: object
+      properties:
+        SPDXID:
+          type: string
+        copyrightText:
+          type: string
+        downloadLocation:
+          type: string
+        externalRefs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SPDXSbomReportExternalRefDTO'
+        filesAnalyzed:
+          type: boolean
+        licenseConcluded:
+          type: string
+        licenseDeclared:
+          type: string
+        name:
+          type: string
+        packageFileName:
+          type: string
+        supplier:
+          type: string
+        versionInfo:
+          type: string
+    SPDXSbomReportCreationInfoDTO:
+      type: object
+      properties:
+        created:
+          type: string
+        creators:
+          type: array
+          items:
+            type: string
+    SPDXSbomReportDTO:
+      type: object
+      properties:
+        SPDXID:
+          type: string
+        creationInfo:
+          $ref: '#/components/schemas/SPDXSbomReportCreationInfoDTO'
+        dataLicense:
+          type: string
+        documentNamespace:
+          type: string
+        name:
+          type: string
+        packages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SPDXSbomReportPackageDTO'
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/SPDXSbomReportRelationshipDTO'
+        spdxVersion:
+          type: string
+    SPDXSbomReportRelationshipDTO:
+      type: object
+      properties:
+        comment:
+          type: string
+        relatedSpdxElement:
+          type: string
+        relationshipType:
+          type: string
+          enum:
+          - DESCRIBES
+          - RUNTIME_DEPENDENCY_OF
+        spdxElementId:
+          type: string
+    CycloneDXSbomReportToolDTO:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportServiceDTO'
+    CycloneDXSbomReportProviderDTO:
+      type: object
+      properties:
+        name:
+          type: string
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

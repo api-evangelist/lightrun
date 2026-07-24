@@ -1,0 +1,266 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions System access API key API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: System access API key management API.
+  name: System access API key
+paths:
+  /api/v1/access/company/{company}/system-api-key:
+    get:
+      description: 'Get a listing of all system API keys for the specified company
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: getSystemApiKeyList
+      parameters:
+      - description: The ID of the company for which to fetch the system API keys.
+        in: path
+        name: company
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemApiKeyListReadDTO'
+          description: List of system API keys
+      security:
+      - API Token: []
+      summary: Get all system API keys
+      tags:
+      - System access API key
+    post:
+      description: 'Create a new system API key for the specified company
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: createSystemApiKey
+      parameters:
+      - description: The ID of the company for which to add the system API keys.
+        in: path
+        name: company
+        required: true
+        schema:
+          type: string
+      - description: The expiration date of the system API key in days
+        in: query
+        name: expirationDays
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - description: The label of the system API key
+        in: query
+        name: label
+        required: false
+        schema:
+          type: string
+      - description: List of scopes (COMPANY,ENVIRONMENT,APP_SEC). Defaults to all scopes if not provided.
+        in: query
+        name: scopes
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - COMPANY
+            - DEV
+            - SECURITY
+            - CROSS_COMPANY
+          uniqueItems: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemApiKeyValueDTO'
+          description: The newly created system API key
+      security:
+      - API Token: []
+      summary: Create a new system API key
+      tags:
+      - System access API key
+  /api/v1/access/company/{company}/system-api-key/{id}:
+    put:
+      description: 'Update the label of a system API key for the specified company
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: updateSystemApiKeyLabel
+      parameters:
+      - description: The ID of the company for which to update the system API keys.
+        in: path
+        name: company
+        required: true
+        schema:
+          type: string
+      - description: The ID of the system API key to update
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemApiKeyUpdateDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemApiKeyStatusDTO'
+          description: The system API key label was updated successfully
+      security:
+      - API Token: []
+      summary: Update the label of a system API key
+      tags:
+      - System access API key
+    delete:
+      description: 'Delete a system API key for the specified company
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: deleteSystemApiKey
+      parameters:
+      - description: The ID of the company for which to delete the system API keys.
+        in: path
+        name: company
+        required: true
+        schema:
+          type: string
+      - description: The ID of the system API key to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemApiKeyStatusDTO'
+          description: The system API key was deleted successfully
+      security:
+      - API Token: []
+      summary: Delete a system API key
+      tags:
+      - System access API key
+components:
+  schemas:
+    SystemApiKeyUpdateDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        label: someLabel
+      properties:
+        label:
+          type: string
+          description: Custom label to identify the key
+          example: someLabel
+          maxLength: 50
+          minLength: 3
+          pattern: ^[A-Za-z\d][A-Za-z\d _-]*$
+      required:
+      - label
+    SystemApiKeyReadDTO:
+      type: object
+      default: []
+      description: System API Key read-only view
+      example:
+        createdBy: creatorEmailOrName
+        createdDate: '2023-10-01T12:00:00Z'
+        expirationDate: '2023-10-01T12:00:01Z'
+        id: apiKeyId
+        label: apiKeyLabel
+      properties:
+        createdBy:
+          type: string
+          description: The name of the user who created the system API key
+          example: creatorName
+        createdDate:
+          type: string
+          description: The date when the system API key was created (ISO 8601 format)
+          example: '2023-10-01T12:00:00Z'
+        expirationDate:
+          type: string
+          description: The expiration date of the system API key (ISO 8601 format)
+          example: '2023-10-01T12:00:01Z'
+        id:
+          type: string
+          description: The ID of the system API key
+          example: apiKeyId
+        label:
+          type: string
+          description: The label of the system API key
+          example: apiKeyLabel
+        scopes:
+          type: array
+          description: The scopes of the system API key
+          example:
+          - COMPANY
+          - DEV
+          items:
+            type: string
+            description: The scopes of the system API key
+            enum:
+            - COMPANY
+            - DEV
+            - SECURITY
+            - CROSS_COMPANY
+            example:
+            - COMPANY
+            - DEV
+          uniqueItems: true
+    SystemApiKeyListReadDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        items:
+        - createdBy: creatorEmailOrName
+          createdDate: '2023-10-01T12:00:00Z'
+          expirationDate: '2023-10-01T12:01:00Z'
+          id: apiKeyId
+          label: apiKeyLabel
+      properties:
+        items:
+          $ref: '#/components/schemas/SystemApiKeyReadDTO'
+          default: '[]'
+          description: List of system API keys
+      required:
+      - items
+    SystemApiKeyStatusDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        message: System api key successfully revoked
+      properties:
+        message:
+          type: string
+          description: Message indicating the result of the operation
+          example: System api key successfully revoked
+    SystemApiKeyValueDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        apiKey: 135119d4-8034-44c8-bd11-9b36d2d560eb
+      properties:
+        apiKey:
+          type: string
+          description: The actual key value (UUID) to use for authentication
+          example: 135119d4-8034-44c8-bd11-9b36d2d560eb
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

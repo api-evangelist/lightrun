@@ -1,0 +1,541 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Users API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Users API.
+  name: Users
+paths:
+  /api/v1/users:
+    get:
+      description: 'Get a list of users.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: listUsers
+      parameters:
+      - description: 'Fetch group memberships and agent pool permissions.
+
+          Requires RBAC.'
+        in: query
+        name: includeAccessAndPermissions
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - description: Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: Filter by role.
+        in: query
+        name: role
+        required: false
+        schema:
+          type: string
+          enum:
+          - SYSTEM_ADMIN
+          - COMPANY_VIEWER
+          - GROUP_ADMIN
+          - SECURITY
+          - APP_SEC
+          - INCIDENT_RESPONDER
+          - DEVELOPER
+      - description: Search by name or email.
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+      - description: The number of items to include on each page of results. The default is 20.
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: 'The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, email, userManagementType, createdBy, lastModifiedBy, lastModifiedDate, and lastLoginDate.'
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageUserPublicDTO'
+          description: Users retrieved.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageUserPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageUserPublicDTO'
+          description: Unauthorized.
+      security:
+      - API Token: []
+      summary: Get a list of users
+      tags:
+      - Users
+    post:
+      description: 'Create a user.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserPublicDTO'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: User created.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: Unauthorized.
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: Forbidden.
+      security:
+      - API Token: []
+      summary: Create a user
+      tags:
+      - Users
+  /api/v1/users/{email}:
+    get:
+      description: 'Get a user by email.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: getUser
+      parameters:
+      - description: Email.
+        in: path
+        name: email
+        required: true
+        schema:
+          type: string
+      - description: 'Fetch group memberships and agent pool permissions.
+
+          Requires RBAC.'
+        in: query
+        name: includeAccessAndPermissions
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: User retrieved.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: Unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: User not found.
+      security:
+      - API Token: []
+      summary: Get a user by email
+      tags:
+      - Users
+    put:
+      description: 'Update a user.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: updateUser
+      parameters:
+      - description: Email.
+        in: path
+        name: email
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserPublicDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: User updated.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: Invalid input.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: Unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublicDTO'
+          description: User not found.
+      security:
+      - API Token: []
+      summary: Update a user
+      tags:
+      - Users
+    delete:
+      description: 'Delete a user.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: deleteUser
+      parameters:
+      - description: Email.
+        in: path
+        name: email
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User deleted.
+        '400':
+          description: Invalid input.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User not found.
+      security:
+      - API Token: []
+      summary: Delete a user
+      tags:
+      - Users
+  /api/v1/users/{email}/disable:
+    put:
+      description: 'Disable a user.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: disable
+      parameters:
+      - description: Email.
+        in: path
+        name: email
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User disabled.
+        '400':
+          description: Invalid input.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User not found.
+      security:
+      - API Token: []
+      summary: Disable a user
+      tags:
+      - Users
+  /api/v1/users/{email}/enable:
+    put:
+      description: 'Enable a user.
+
+
+        **Required API permission level:** `COMPANY`'
+      operationId: enable
+      parameters:
+      - description: Email.
+        in: path
+        name: email
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User enabled.
+        '400':
+          description: Invalid input.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: User not found.
+      security:
+      - API Token: []
+      summary: Enable a user
+      tags:
+      - Users
+components:
+  schemas:
+    PermissionsOnAgentPoolPublicDTO:
+      type: object
+      description: User permissions on agent pool
+      properties:
+        agentPoolId:
+          type: string
+          format: uuid
+          description: Agent pool ID.
+        permissions:
+          type: array
+          description: Permissions on the agent pool.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - IGNORE_QUOTA
+    UserGroupMembershipPublicDTO:
+      type: object
+      description: User group membership data
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email of the user.
+        groupAdmin:
+          type: boolean
+        groupId:
+          type: string
+          format: uuid
+          description: Group ID.
+    PublicApiPageUserPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    CreateUserPublicDTO:
+      type: object
+      description: User details
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email.
+          maxLength: 254
+          minLength: 5
+        firstName:
+          type: string
+          description: First name.
+        lastName:
+          type: string
+          description: Last name.
+        roles:
+          type: array
+          description: 'Roles.
+
+            Note: When RBAC is off, only `DEVELOPER` and `SYSTEM_ADMIN` are allowed.'
+          items:
+            type: string
+            enum:
+            - SYSTEM_ADMIN
+            - COMPANY_VIEWER
+            - GROUP_ADMIN
+            - SECURITY
+            - APP_SEC
+            - INCIDENT_RESPONDER
+            - DEVELOPER
+      required:
+      - email
+      - firstName
+      - lastName
+    UpdateUserPublicDTO:
+      type: object
+      description: User details
+      properties:
+        firstName:
+          type: string
+          description: First name.
+        lastName:
+          type: string
+          description: Last name.
+        roles:
+          type: array
+          description: 'Roles.
+
+            Note: When RBAC is off, only `DEVELOPER` and `SYSTEM_ADMIN` are allowed.'
+          items:
+            type: string
+            enum:
+            - SYSTEM_ADMIN
+            - COMPANY_VIEWER
+            - GROUP_ADMIN
+            - SECURITY
+            - APP_SEC
+            - INCIDENT_RESPONDER
+            - DEVELOPER
+      required:
+      - firstName
+      - lastName
+      - roles
+    UserPublicDTO:
+      type: object
+      description: User
+      properties:
+        activationLink:
+          type: string
+          description: Activation link. Only available if an SMTP server is not set.
+        agentPoolPermissions:
+          type: array
+          description: 'Permissions on agent pools. Fetched with includeAccessAndPermissions=true.
+
+            Requires RBAC.'
+          items:
+            $ref: '#/components/schemas/PermissionsOnAgentPoolPublicDTO'
+          uniqueItems: true
+        createdBy:
+          type: string
+          format: email
+          description: Created by user.
+        createdDate:
+          type: string
+          format: date-time
+          description: Date created.
+        email:
+          type: string
+          format: email
+          description: Email.
+          maxLength: 254
+          minLength: 5
+        enabled:
+          type: boolean
+          description: Is user enabled?
+        firstName:
+          type: string
+          description: First name.
+        groupMemberships:
+          type: array
+          description: 'Group memberships. Fetched with includeAccessAndPermissions=true.
+
+            Requires RBAC.'
+          items:
+            $ref: '#/components/schemas/UserGroupMembershipPublicDTO'
+          uniqueItems: true
+        id:
+          type: string
+          format: uuid
+          description: User ID.
+        initialActionInserted:
+          type: boolean
+        lastLoginDate:
+          type: string
+          format: date-time
+          description: Date of last login.
+        lastModifiedBy:
+          type: string
+          format: email
+          description: Last modified by user.
+        lastModifiedDate:
+          type: string
+          format: date-time
+          description: Date of last modification.
+        lastName:
+          type: string
+          description: Last name.
+        registerMethod:
+          type: string
+          description: Method used for registration.
+          enum:
+          - USER_PASS
+          - SSO_GOOGLE
+          - SCIM
+          - LDAP
+        roles:
+          type: array
+          description: 'Roles.
+
+            Note: When RBAC is off, only `DEVELOPER` and `SYSTEM_ADMIN` are allowed.'
+          items:
+            type: string
+            enum:
+            - SYSTEM_ADMIN
+            - COMPANY_VIEWER
+            - GROUP_ADMIN
+            - SECURITY
+            - APP_SEC
+            - INCIDENT_RESPONDER
+            - DEVELOPER
+        userManagementType:
+          type: string
+          description: User management type.
+          enum:
+          - SYSTEM
+          - SCIM
+          - SAML_JIT
+          - LDAP
+      required:
+      - email
+      - firstName
+      - lastName
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

@@ -1,0 +1,285 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Watched packages API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Watched packages API.
+  name: Watched packages
+paths:
+  /api/v1/watched-packages:
+    get:
+      description: 'Get a list of all watched packages.
+
+
+        **Required API permission level:** `SECURITY`'
+      operationId: listWatchedPackages
+      parameters:
+      - description: Zero-based page index (0..N)
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: The size of the page to be returned
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PublicApiPageWatchedPackagePublicDTO'
+          description: Watched packages retrieved.
+      security:
+      - API Token: []
+      summary: Get a list of all watched packages
+      tags:
+      - Watched packages
+    post:
+      description: 'Add one or more packages to the watched packages.
+
+
+        **Required API permission level:** `SECURITY`'
+      operationId: addWatchedPackages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Packages to add.
+              items:
+                $ref: '#/components/schemas/PackageDTO'
+              uniqueItems: true
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WatchedPackageDTO'
+          description: Package set as a watched package.
+        '400':
+          description: Invalid input or object.
+        '401':
+          description: Unauthorized.
+        '409':
+          description: Package already marked as watched.
+      security:
+      - API Token: []
+      summary: Add one or more packages to the watched packages
+      tags:
+      - Watched packages
+    delete:
+      description: 'Remove one or more packages from the watch list.
+
+
+        **Required API permission level:** `SECURITY`'
+      operationId: removeWatchedPackages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Package IDs to remove.
+              items:
+                type: string
+              uniqueItems: true
+        required: true
+      responses:
+        '204':
+          description: Package/s removed from watch list.
+        '400':
+          description: Invalid input or object.
+        '404':
+          description: No such package.
+      security:
+      - API Token: []
+      summary: Remove one or more packages from the watch list
+      tags:
+      - Watched packages
+  /api/v1/watched-packages/{id}:
+    put:
+      description: 'Update a watched package.
+
+
+        **Required API permission level:** `SECURITY`'
+      operationId: updateWatchedPackage
+      parameters:
+      - description: The ID of the watched package to update.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWatchedPackagePublicDTO'
+        required: true
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WatchedPackagePublicDTO'
+          description: Watched package updated.
+      security:
+      - API Token: []
+      summary: Update a watched package
+      tags:
+      - Watched packages
+components:
+  schemas:
+    WatchedPackagePublicDTO:
+      type: object
+      description: Watched package
+      properties:
+        classes:
+          type: array
+          description: List of classes to watch
+          example:
+          - org.slf4j.Logger
+          items:
+            type: string
+          uniqueItems: true
+        createdBy:
+          type: string
+          description: The user who created this record
+        createdDate:
+          type: string
+          format: date-time
+          description: Creation date of the watched package
+        id:
+          type: string
+          format: uuid
+          description: ID of the watched package
+        packageName:
+          type: string
+          description: Package name in the format 'groupId:artifactId'
+          example: org.slf4j:slf4j-api
+        updatedDate:
+          type: string
+          format: date-time
+          description: Last update date of the watched package
+        version:
+          type: string
+          description: Package version
+          example: 1.5.4
+      required:
+      - classes
+      - packageName
+      - version
+    PackageDTO:
+      type: object
+      properties:
+        classes:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        notificationWebhookId:
+          type: string
+        organizationId:
+          type: string
+        packageName:
+          type: string
+        version:
+          type: string
+      required:
+      - packageName
+    PublicApiPageWatchedPackagePublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WatchedPackagePublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    WatchedPackageDTO:
+      type: object
+      properties:
+        classes:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        id:
+          type: string
+        notificationWebhookId:
+          type: string
+        organizationId:
+          type: string
+        packageName:
+          type: string
+        updatedDate:
+          type: string
+          format: date-time
+        version:
+          type: string
+      required:
+      - packageName
+    UpdateWatchedPackagePublicDTO:
+      type: object
+      description: Watched package update details
+      properties:
+        classes:
+          type: array
+          description: List of classes to watch
+          example:
+          - org.slf4j.Logger
+          items:
+            type: string
+          uniqueItems: true
+        packageName:
+          type: string
+          description: Package name in the format 'groupId:artifactId'
+          example: org.slf4j:slf4j-api
+        version:
+          type: string
+          description: Package version
+          example: 1.5.4
+      required:
+      - classes
+      - packageName
+      - version
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

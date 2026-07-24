@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Just-In-Time Access API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Just-In-Time Access API.
+  name: Just-In-Time Access
+paths:
+  /api/v1/temp-access:
+    get:
+      description: 'Get a list of all active temporary accesses.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: listTempAccesses
+      parameters:
+      - description: Zero-based page index (0..N)
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      - description: The size of the page to be returned
+        in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+      - description: 'Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiPageGetTempAccessPublicApiDTO'
+          description: Retrieved all active temporary access sessions.
+      security:
+      - API Token: []
+      summary: Get a list of all active temporary access sessions
+      tags:
+      - Just-In-Time Access
+    post:
+      description: 'Grant temporary access to a list of users across multiple agent pools.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: addTempAccess
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTempAccessPublicApiDTO'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTempAccessPublicApiDTO'
+          description: Granted temporary access.
+        '400':
+          description: Invalid input.
+        '403':
+          description: Exceeded limit of temporary access instances. Remove a number of instances and try again.
+        '404':
+          description: Cannot find users or agent pools.
+        '409':
+          description: A temporary access session with this name already exists.
+      security:
+      - API Token: []
+      summary: Grant temporary access to a list of users across multiple agent pools
+      tags:
+      - Just-In-Time Access
+  /api/v1/temp-access/{id}:
+    delete:
+      description: 'Revoke temporary access.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: revokeTempAccess
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Temporary access revoked.
+        '404':
+          description: Temporary access not found.
+      security:
+      - API Token: []
+      summary: Revoke temporary access
+      tags:
+      - Just-In-Time Access
+components:
+  schemas:
+    CreateTempAccessPublicApiDTO:
+      type: object
+      description: Temporary Access to add.
+      properties:
+        agentPoolIds:
+          type: array
+          description: A list of agent pool IDs granted temporary access.
+          example:
+          - agent-pool-id1
+          - agent-pool-id2
+          items:
+            type: string
+        expirationDate:
+          type: string
+          format: date-time
+          description: Expiration date of the temporary access
+          example: '2021-12-31T23:59:59+01:00'
+        incidentId:
+          type: string
+          description: A user-defined identifier for tracking incidents associated with the JIT instance.
+          example: 00001358
+        name:
+          type: string
+          description: The name of the temp access. If not provided, the following template will be used Temp-Access-DDMMYYYY-HHmmss-SSS
+          example: Temporary access to production incident
+        roles:
+          type: array
+          description: Roles granted to users for the duration of temporary access period.
+          example:
+          - Standard
+          items:
+            type: string
+        userEmails:
+          type: array
+          description: A list of user emails granted temporary access.
+          example:
+          - user@gmail.com
+          - user2@gmail.com
+          items:
+            type: string
+      required:
+      - agentPoolIds
+      - expirationDate
+      - roles
+      - userEmails
+    PublicApiPageGetTempAccessPublicApiDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTempAccessPublicApiDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    GetTempAccessPublicApiDTO:
+      type: object
+      description: Get Temporary access
+      properties:
+        agentPoolIds:
+          type: array
+          description: A list of agent pool IDs granted temporary access.
+          example:
+          - agent-pool-id1
+          - agent-pool-id2
+          items:
+            type: string
+        expirationDate:
+          type: string
+          format: date-time
+          description: Expiration date of the temporary access in UTC.
+          example: '2021-12-31T23:59:59Z'
+        id:
+          type: string
+          description: Id of the temporary access
+          example: c0291f3b-a608-42c2-b6cf-79c35eb5523f
+        incidentId:
+          type: string
+          description: A user-defined identifier for tracking incidents associated with the JIT instance.
+          example: 00001358
+        name:
+          type: string
+          description: Temporary access name
+          example: Temporary access to production incident
+        roles:
+          type: array
+          description: Roles granted to users for the duration of temporary access period.
+          example:
+          - Standard
+          items:
+            type: string
+        userEmails:
+          type: array
+          description: A list of user emails granted temporary access.
+          example:
+          - user@gmail.com
+          - user2@gmail.com
+          items:
+            type: string
+      required:
+      - agentPoolIds
+      - expirationDate
+      - roles
+      - userEmails
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http

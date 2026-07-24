@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  description: Lightrun API documentation
+  title: Lightrun Actions Debug Runbooks Configuration API
+  version: v1
+servers:
+- url: http://localhost:8090
+  description: Generated server url
+tags:
+- description: Debug Runbooks Configuration API.
+  name: Debug Runbooks Configuration
+paths:
+  /api/v1/configuration/debug-runbooks:
+    get:
+      description: 'Get a list of all runbook configurations.
+
+
+        **Required API permission level:** `DEV`'
+      operationId: listRunbookConfigurations
+      parameters:
+      - description: Filter configurations by the creation date. Date format is <YYYY-MM-DD>. (UTC)
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          type: string
+          format: date
+      - description: Filter configurations by the user created.
+        in: query
+        name: createdBy
+        required: false
+        schema:
+          type: string
+      - description: Filter configurations by the filename.
+        in: query
+        name: filename
+        required: false
+        schema:
+          type: string
+      - description: Filter configurations by the method name.
+        in: query
+        name: methodName
+        required: false
+        schema:
+          type: string
+      - description: Filter configurations by the name.
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RunbookConfigPublicDTO'
+          description: Retrieved matching configurations.
+      security:
+      - API Token: []
+      summary: Get a list of runbook configurations
+      tags:
+      - Debug Runbooks Configuration
+components:
+  schemas:
+    RunbookConfigPublicDTO:
+      type: object
+      description: Debug Runbook Config.
+      properties:
+        arguments:
+          type: array
+          description: Arguments.
+          items:
+            $ref: '#/components/schemas/RunbookArgumentConfigPublicDTO'
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation time.
+        createdBy:
+          type: string
+          format: email
+          description: Created by user.
+        expirationDurationMinutes:
+          type: integer
+          format: int32
+          description: Expiration duration in minutes.
+        id:
+          type: string
+          description: Configuration ID.
+        methodConfigurations:
+          type: array
+          description: Method configuration list.
+          items:
+            $ref: '#/components/schemas/RunbookMethodConfigPublicDTO'
+        name:
+          type: string
+          description: Configuration name.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Updated time.
+    RunbookArgumentConfigPublicDTO:
+      type: object
+      description: Runbook Argument Config.
+      properties:
+        description:
+          type: string
+          description: Description.
+        label:
+          type: string
+          description: Label.
+        variableName:
+          type: string
+          description: Variable name.
+    RunbookMethodConfigPublicDTO:
+      type: object
+      description: Runbook Method Configuration.
+      properties:
+        condition:
+          type: string
+          description: Condition on method.
+        filename:
+          type: string
+          description: File full path of the method.
+        maxResults:
+          type: integer
+          format: int32
+          description: Max results.
+        methodName:
+          type: string
+          description: Method name.
+        methodTimeoutSeconds:
+          type: integer
+          format: int64
+          description: Method timeout in seconds.
+  securitySchemes:
+    API Token:
+      scheme: bearer
+      type: http
