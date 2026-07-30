@@ -1,23 +1,529 @@
 aid: lightrun
 name: Lightrun
-description: 'Lightrun is a company surfaced as a portfolio company of accel, insight-partners and added
-  to the API Evangelist network as a stub for enrichment. Sector: developer-tools. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Lightrun is a developer-native observability and live-debugging platform. Language agents
+  embedded in a running JVM, Python, Node.js or .NET process accept dynamic actions — logs,
+  snapshots, counters, tic-toc timings and custom metrics — placed on a file and line while
+  the application keeps serving traffic, so engineers can inspect production behavior without
+  redeploying, restarting or attaching a traditional debugger. The platform is driven from
+  JetBrains, VS Code and Visual Studio plugins, a Java CLI, a bearer-authenticated Public REST
+  API, and a published MCP server that gives AI coding assistants live runtime context. Around
+  that core it adds agent-pool RBAC, PII redaction, SSO and SCIM provisioning, and a Dynamic
+  SBOM surface that reports which third-party packages are actually reachable at runtime.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://lightrun.com/
 url: https://raw.githubusercontent.com/api-evangelist/lightrun/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - accel
 - insight-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Developer Tools
-apis: []
+- Observability
+- Debugging
+- Monitoring
+- Logging
+- Application Performance
+- Agent Skills
+- Model Context Protocol
+- DevOps
+apis:
+- aid: lightrun:lightrun-actions-api
+  name: Lightrun Actions API
+  description: Actions API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-actions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-agent-pools-api
+  name: Lightrun Agent Pools API
+  description: Agent Pools API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Agent Pools
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-agent-pools-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-agents-api
+  name: Lightrun Agents API
+  description: Agents API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-agents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-custom-sources-api
+  name: Lightrun Custom sources API
+  description: Custom sources API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Custom sources
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-custom-sources-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-debug-cases-api
+  name: Lightrun Debug Cases API
+  description: Debug Cases API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Debug Cases
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-debug-cases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-debug-runbook-methods-api
+  name: Lightrun Debug Runbook methods API
+  description: The Debug Runbook methods API from Lightrun — 1 operation(s) for debug runbook methods.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Debug Runbook methods
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-debug-runbook-methods-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-debug-runbooks-api
+  name: Lightrun Debug Runbooks API
+  description: Debug Runbooks API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Debug Runbooks
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-debug-runbooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-debug-runbooks-configuration-api
+  name: Lightrun Debug Runbooks Configuration API
+  description: Debug Runbooks Configuration API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Debug Runbooks Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-debug-runbooks-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-dynamic-sbom-api
+  name: Lightrun Dynamic SBOM API
+  description: Dynamic SBOM API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Dynamic SBOM
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-dynamic-sbom-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-identity-management-idm-configuration-api
+  name: Lightrun Identity Management (IdM) configuration API
+  description: Identity Management (IdM) configuration API
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Identity Management (IdM) configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-identity-management-idm-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-just-in-time-access-api
+  name: Lightrun Just-In-Time Access API
+  description: Just-In-Time Access API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Just-In-Time Access
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-just-in-time-access-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-license-api
+  name: Lightrun License API
+  description: Company License API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - License
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-license-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-lightrun-feature-flags-status-api
+  name: Lightrun Lightrun feature flags status API
+  description: Lightrun feature flags status API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Lightrun feature flags status
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-lightrun-feature-flags-status-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-loaded-packages-api
+  name: Lightrun Loaded packages API
+  description: Loaded packages API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Loaded packages
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-loaded-packages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-smtp-connectivity-configuration-api
+  name: Lightrun SMTP connectivity configuration API
+  description: SMTP connectivity configuration API
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - SMTP connectivity configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-smtp-connectivity-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-system-access-api-key-api
+  name: Lightrun System access API key API
+  description: System access API key management API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - System access API key
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-system-access-api-key-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-tags-api
+  name: Lightrun Tags API
+  description: Tags API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-user-groups-api
+  name: Lightrun User Groups API
+  description: User Groups API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - User Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-user-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-users-api
+  name: Lightrun Users API
+  description: Users API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
+- aid: lightrun:lightrun-watched-packages-api
+  name: Lightrun Watched packages API
+  description: Watched packages API.
+  humanURL: https://docs.lightrun.com/public-api/introduction/
+  baseURL: https://app.lightrun.com/api/v1
+  tags:
+  - Watched packages
+  properties:
+  - type: OpenAPI
+    url: openapi/lightrun-watched-packages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lightrun.com/public-api/introduction/
+  - type: APIReference
+    url: https://docs.lightrun.com/public-api/api-reference/
+  - type: Authentication
+    url: authentication/lightrun-authentication.yml
+  - type: OAuthScopes
+    url: scopes/lightrun-scopes.yml
+  - type: ErrorCatalog
+    url: errors/lightrun-problem-types.yml
+  - type: DataModel
+    url: data-model/lightrun-data-model.yml
+  - type: Conventions
+    url: conventions/lightrun-conventions.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +532,76 @@ maintainers:
 common:
 - type: Website
   url: https://lightrun.com/
+- type: DeveloperPortal
+  url: https://docs.lightrun.com/
+- type: Documentation
+  url: https://docs.lightrun.com/
+- type: APIReference
+  url: https://docs.lightrun.com/public-api/api-reference/
+- type: GettingStarted
+  url: https://docs.lightrun.com/get-started/
+- type: Blog
+  url: https://lightrun.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/lightrun-platform
+- type: Pricing
+  url: https://lightrun.com/pricing/
+- type: SignUp
+  url: https://app.lightrun.com/
+- type: PrivacyPolicy
+  url: https://lightrun.com/privacy-policy/
+- type: StatusPage
+  url: https://status.lightrun.com/
+- type: Deprecation
+  url: https://docs.lightrun.com/release_notes/functionality-changes-deprecations/
+- type: ChangeLog
+  url: changelog/lightrun-changelog.yml
+- type: ReleaseNotes
+  url: https://docs.lightrun.com/release_notes/lightrun-release-notes/
+- type: Lifecycle
+  url: lifecycle/lightrun-lifecycle.yml
+- type: MCPServer
+  url: mcp/lightrun-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/lightrun-agentic-access.yml
+- type: CLI
+  url: cli/lightrun-cli.yml
+- type: Packages
+  url: packages/lightrun-packages.yml
+- type: SDKs
+  url: packages/lightrun-packages.yml
+- type: Webhooks
+  url: asyncapi/lightrun-webhooks.yml
+- type: Authentication
+  url: authentication/lightrun-authentication.yml
+- type: OAuthScopes
+  url: scopes/lightrun-scopes.yml
+- type: Conventions
+  url: conventions/lightrun-conventions.yml
+- type: ErrorCatalog
+  url: errors/lightrun-problem-types.yml
+- type: DataModel
+  url: data-model/lightrun-data-model.yml
+- type: Conformance
+  url: conformance/lightrun-conformance.yml
+- type: Compliance
+  url: https://trust.lightrun.com/
+- type: TrustCenter
+  url: security/lightrun-trust-center.yml
+- type: DomainSecurity
+  url: security/lightrun-domain-security.yml
+- type: WellKnown
+  url: well-known/lightrun-well-known.yml
+- type: OpenIDConnect
+  url: well-known/lightrun-openid-configuration.json
+- type: LLMsTxt
+  url: llms/lightrun-llms.txt
+- type: Overlay
+  url: overlays/lightrun-public-api-overlay.yaml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
