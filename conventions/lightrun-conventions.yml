@@ -1,0 +1,103 @@
+# Lightrun Public API cross-cutting conventions
+generated: '2026-07-19'
+method: searched
+source: https://docs.lightrun.com/public-api/introduction/
+derived_from: openapi/lightrun-openapi-original.json
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer API-KEY'
+  scheme_name: API Token
+  note: >-
+    All operations require authentication. A missing or invalid token returns 401 with
+    body {"message": "401 Unauthorized"}. Tokens are personal API keys from the Management
+    Portal, or company-scoped system API keys created through the System access API key
+    endpoints with COMPANY / DEV / SECURITY / CROSS_COMPANY scopes.
+  artifact: authentication/lightrun-authentication.yml
+  scopes: scopes/lightrun-scopes.yml
+authorization:
+  model: permission-level
+  levels: [DEV, COMPANY, SECURITY, CROSS_COMPANY]
+  note: >-
+    Every operation description states its "Required API permission level". DEV covers the
+    debugging surface (actions, agents, pools, cases, runbooks); COMPANY covers tenant
+    configuration (IdM, SMTP, feature flags, system API keys, license).
+  rbac_scoping:
+    parameter: agentPoolId
+    in: query
+    note: >-
+      Agent pool is the RBAC scoping dimension. When RBAC is enabled agentPoolId is
+      mandatory on most Actions, Agents, Custom sources and Debug Case operations; it is
+      ignored when RBAC is disabled.
+versioning:
+  style: uri-path
+  pattern: /api/v<number>/<entity>/...
+  current: v1
+  spec_version: v1
+  available_from: Lightrun Server 1.29
+  artifact: lifecycle/lightrun-lifecycle.yml
+pagination:
+  style: page-number
+  note: >-
+    The spec uses Spring-style page/size/sort parameters on 12 list operations and returns
+    a PublicApiPage<T> envelope. The narrative docs additionally describe offset/limit with
+    a default of 10 records and a maximum of 1000 — treat the spec parameters as
+    authoritative for the operations that declare them.
+  request:
+    - {name: page, in: query, type: integer, default: 0, minimum: 0, description: Zero-based index of the results page.}
+    - {name: size, in: query, type: integer, default: 20, minimum: 1, description: Items per page.}
+    - {name: sort, in: query, type: array, description: 'property,(asc|desc) — chainable for multi-level sorting.'}
+  docs_variant:
+    - {name: offset, default: 0}
+    - {name: limit, default: 10, maximum: 1000}
+  response_envelope: PublicApiPage<T>
+  sortable_fields_examples:
+    actions: [location, line, createdAt]
+    agent_pools: [name, description, createdBy, createdDate, agentsEnabled]
+    debug_cases: [name, description, createdBy, createdAt]
+    custom_sources: [name]
+filtering:
+  wildcard: '*'
+  note: >-
+    Several filters (agent `name`, action `filename`, custom source `name`) accept * as a
+    wildcard to match a common pattern.
+  date_filters:
+    format: YYYY-MM-DD
+    timezone: UTC
+    examples: [createdAtAfter, createdAtBefore, createdAt]
+  timestamp_filters:
+    format: epoch-milliseconds
+    examples: [from, to]
+idempotency:
+  supported: false
+  note: >-
+    Lightrun documents no idempotency key and the OpenAPI declares no Idempotency-Key
+    header or parameter. Creates (createLogAction, createSnapshotAction, createAgentPool,
+    createDebugCase) are not safe to blind-retry. Deletes are idempotent by nature and
+    return 204.
+error_envelope:
+  format: json
+  field: message
+  example: '{"message": "401 Unauthorized"}'
+  problem_json: false
+  statuses_in_spec: [400, 401, 403, 404, 409]
+  documented_statuses: [200, 201, 400, 401, 402, 409]
+  artifact: errors/lightrun-problem-types.yml
+rate_limiting:
+  documented: false
+  headers: none documented
+  note: The Public API documentation specifies no rate limits and no rate-limit response headers.
+request_tracing:
+  request_id_header: not documented
+metadata:
+  supported: false
+field_expansion:
+  supported: false
+content_type:
+  request: application/json
+  response: application/json
+cross_links:
+  errors: errors/lightrun-problem-types.yml
+  lifecycle: lifecycle/lightrun-lifecycle.yml
+  authentication: authentication/lightrun-authentication.yml
+  data_model: data-model/lightrun-data-model.yml
+  webhooks: asyncapi/lightrun-webhooks.yml

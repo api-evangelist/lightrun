@@ -1,0 +1,60 @@
+# Lightrun scopes and permission levels
+generated: '2026-07-19'
+method: searched
+source: openapi/lightrun-openapi-original.json
+docs: https://docs.lightrun.com/public-api/introduction/
+notes: >-
+  Two distinct scope surfaces. (1) The Public REST API does not use OAuth — it authenticates
+  with a bearer API token — but it does have a real permission model: every operation
+  description states a "Required API permission level", and system API keys are minted with
+  an explicit scopes array. (2) The Lightrun identity realm (Keycloak, app.lightrun.com) is a
+  full OIDC provider whose scopes govern SSO and the MCP server. Both are recorded here; the
+  OIDC scopes are verbatim from the live discovery document.
+api_permission_levels:
+  applies_to: Public REST API bearer tokens
+  parameter: 'scopes (query, on createSystemApiKey)'
+  enum_source: openapi/lightrun-openapi-original.json#/paths/~1api~1v1~1access~1company~1{company}~1system-api-key/post
+  levels:
+    - scope: DEV
+      description: >-
+        The debugging surface — actions (logs, snapshots, counters, metrics), agents, agent
+        pools, tags, custom sources, debug cases and runbooks. The level required by the
+        majority of operations.
+    - scope: COMPANY
+      description: >-
+        Tenant administration — IdM authentication and provisioning configuration, SMTP
+        connectivity, feature-flag toggles, license, and system API key management.
+    - scope: SECURITY
+      description: >-
+        Security surface, aligned with the Dynamic SBOM, loaded packages and watched packages
+        APIs. Declared in the system API key scopes enum.
+    - scope: CROSS_COMPANY
+      description: >-
+        Cross-tenant access. Declared in the system API key scopes enum; used for
+        multi-tenant deployments.
+  note: >-
+    The createSystemApiKey `scopes` parameter documents its values as (COMPANY, ENVIRONMENT,
+    APP_SEC) in prose while the schema enum is [COMPANY, DEV, SECURITY, CROSS_COMPANY]. The
+    enum is recorded as authoritative; the prose appears to be a stale label set.
+oidc:
+  applies_to: SSO and the Lightrun MCP server
+  issuer: https://app.lightrun.com/auth/realms/lightrun
+  discovery: well-known/lightrun-openid-configuration.json
+  authorization_endpoint: https://app.lightrun.com/auth/realms/lightrun/protocol/openid-connect/auth
+  token_endpoint: https://app.lightrun.com/auth/realms/lightrun/protocol/openid-connect/token
+  flows: [authorization_code, client_credentials, implicit, password, refresh_token, device_code, jwt-bearer, token-exchange, uma-ticket, ciba]
+  pkce: [plain, S256]
+  scopes:
+    - {scope: openid, description: Standard OIDC scope requesting an ID token.}
+    - {scope: profile, description: Standard OIDC profile claims.}
+    - {scope: email, description: Standard OIDC email claims.}
+    - {scope: address, description: Standard OIDC address claims.}
+    - {scope: phone, description: Standard OIDC phone claims.}
+    - {scope: offline_access, description: Standard OIDC scope requesting a refresh token.}
+    - {scope: roles, description: Keycloak scope adding realm and client role claims.}
+    - {scope: mcp, description: Scope governing access to the Lightrun MCP server at https://app.lightrun.com/mcp.}
+    - {scope: service_account, description: Keycloak service-account scope for machine clients.}
+    - {scope: microprofile-jwt, description: Keycloak MicroProfile JWT claim set.}
+    - {scope: basic, description: Keycloak basic claim set.}
+    - {scope: web-origins, description: Keycloak scope adding allowed CORS origins to the token.}
+    - {scope: acr, description: Authentication context class reference claim.}

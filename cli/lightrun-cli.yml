@@ -1,0 +1,108 @@
+# Lightrun CLI
+generated: '2026-07-19'
+method: searched
+source: https://docs.lightrun.com/cli/cli_reference/
+name: Lightrun CLI
+invocation: java -jar lightrunc.jar
+runtime: java
+docs:
+  reference: https://docs.lightrun.com/cli/cli_reference/
+  manager_reference: https://docs.lightrun.com/cli/manager_cli_reference/
+  installation: https://docs.lightrun.com/cli/installation/
+  authentication: https://docs.lightrun.com/cli/authentication/
+  rbac: https://docs.lightrun.com/cli/rbac/
+install:
+  - method: jar
+    note: Download lightrunc.jar from the Lightrun Management Portal and run it with a JRE.
+    url: https://docs.lightrun.com/cli/installation/
+    package: packages/lightrun-packages.yml
+authentication:
+  note: The CLI authenticates against the Lightrun server before any command; see the CLI authentication guide.
+  url: https://docs.lightrun.com/cli/authentication/
+command_groups:
+  - name: general
+    commands:
+      - {name: listen, description: Listens to agent/log registration events and prints them out.}
+      - {name: version, description: Prints the version of the Lightrun CLI and the backend server.}
+      - {name: user, description: Prints details on the server for the currently logged in user.}
+      - {name: status, description: Prints the current status of the backend.}
+      - {name: detach, description: Disconnects all agents and disables Lightrun instantly.}
+      - {name: logout, description: Logs out the currently logged in user.}
+  - name: agents-tags-sources
+    commands:
+      - {name: list-agents, description: Lists all agents and their associated actions.}
+      - {name: list-agents-by-tag, description: Lists agents related to a specified tag.}
+      - {name: list-tags, description: List the tags.}
+      - {name: list-custom-sources, description: Outputs all available custom sources.}
+      - {name: list-agents-by-custom-source-name, description: Lists agents associated with a custom source.}
+      - {name: list-actions, description: List the actions for the given agent id.}
+      - {name: client-piping, description: Manage output piping configuration.}
+      - {name: enable-piping, description: Enable output piping.}
+      - {name: disable-piping, description: Disable output piping.}
+  - name: actions
+    commands:
+      - {name: toggle-action, description: Enable/Disable an action.}
+      - {name: log, description: Insert a log to the given agent at the given file/line.}
+      - {name: clog, description: Insert a conditional log to the given agent.}
+      - {name: snapshot, description: Insert a snapshot to the given agent.}
+      - {name: snapshot-data, description: Retrieves accumulated snapshot data.}
+      - {name: customMetric, description: Get metrics for the value given by the expression.}
+      - {name: counter, description: Count the number of times each thread hits the requested line.}
+      - {name: print-logs, description: Output captured dynamic logs.}
+      - {name: print-all-logs, description: Output all captured dynamic logs.}
+  - name: pii-redaction
+    commands:
+      - {name: create-pii-redaction-template, description: Create a PII redaction template.}
+      - {name: update-pii-redaction-template, description: Update a PII redaction template.}
+      - {name: list-pii-redaction-templates, description: List PII redaction templates.}
+      - {name: delete-pii-redaction-template, description: Delete a PII redaction template.}
+      - {name: clone-pii-redaction-template, description: Clone a PII redaction template.}
+      - {name: add-pii-redaction-pattern, description: Add a PII redaction pattern.}
+      - {name: list-pii-redaction-pattern, description: List PII redaction patterns.}
+      - {name: delete-pii-redaction-pattern, description: Delete a PII redaction pattern.}
+  - name: certificates
+    commands:
+      - {name: show-certificates, description: Show all the server certificates.}
+      - {name: add-certificate, description: Add a server certificate.}
+      - {name: rm-certificate, description: Remove a server certificate.}
+      - {name: get-pinning-status, description: Get the certificate pinning status.}
+      - {name: enable-pinning-status, description: Enable certificate pinning.}
+      - {name: disable-pinning-status, description: Disable certificate pinning.}
+  - name: groups-and-access
+    tier: Enterprise (RBAC)
+    commands:
+      - {name: create-group, description: Create a group.}
+      - {name: update-group-name, description: Rename a group.}
+      - {name: list-groups, description: List groups.}
+      - {name: delete-group, description: Delete a group.}
+      - {name: duplicate-group, description: Clone a group configuration.}
+      - {name: list-accesses, description: List access configuration.}
+      - {name: update-group-role, description: Update a group role.}
+      - {name: add-group-members, description: Add users to a group.}
+      - {name: remove-group-members, description: Remove users from a group.}
+      - {name: promote-to-group-admins, description: Grant group admin privileges.}
+      - {name: demote-from-group-admins, description: Revoke group admin privileges.}
+      - {name: add-access-to-pools, description: Grant a group access to agent pools.}
+      - {name: remove-access-to-pools, description: Revoke a group's access to agent pools.}
+  - name: agent-pools
+    tier: Enterprise (RBAC)
+    commands:
+      - {name: create-agent-pool, description: Creates a new agent pool.}
+      - {name: agent-pool, description: Specifies the agent pool to be used by the command line.}
+      - {name: update-agent-pool, description: Updates the pool name or description.}
+      - {name: delete-agent-pool, description: Removes an agent pool.}
+      - {name: assign-pii-redaction-to-agent-pool, description: Applies a PII redaction template to a pool.}
+      - {name: get-agent-pool-key, description: Retrieves the pool API key.}
+  - name: roles
+    tier: Enterprise (RBAC)
+    commands:
+      - {name: list-roles, description: List roles available in the system.}
+      - {name: add-elevated-roles, description: Grant elevated permissions.}
+      - {name: remove-elevated-roles, description: Revoke elevated permissions.}
+key_flows:
+  - name: Insert a dynamic log without redeploying
+    commands: [list-agents, log, print-logs]
+  - name: Capture a snapshot and read it back
+    commands: [list-agents, snapshot, snapshot-data]
+  - name: Emergency disable
+    commands: [detach]

@@ -1,0 +1,91 @@
+# Lightrun API error catalog
+generated: '2026-07-19'
+method: derived
+source: openapi/lightrun-openapi-original.json
+docs: https://docs.lightrun.com/public-api/introduction/
+format: json
+notes: >-
+  Lightrun does not emit RFC 9457 application/problem+json. Errors are plain JSON
+  keyed on a `message` field (the docs give `{"message": "401 Unauthorized"}` as the
+  canonical unauthorized body) and carry the meaning in the HTTP status code. Several
+  operations reuse the success schema for their 4xx responses, so the status code —
+  not the body shape — is the discriminator.
+envelope:
+  field: message
+  example: '{"message": "401 Unauthorized"}'
+problems:
+  - status: 400
+    title: Invalid input
+    descriptions:
+      - A required attribute of the API request is missing.
+      - 'Bad request, Usually due to invalid input.'
+      - Invalid input or object.
+      - Invalid input.
+      - Invalid license content or signature / Newer license exists / A required attribute of the API request is missing.
+    remediation: Validate the request body and query parameters against the schema; check date formats (YYYY-MM-DD) and epoch-millisecond timestamps.
+    occurrences: 31
+    example_operations:
+      - addTempAccess
+      - addWatchedPackages
+      - createAgentPool
+      - createGroup
+      - createUser
+      - deleteAction
+  - status: 401
+    title: Unauthorized
+    descriptions:
+      - Unauthorized.
+    remediation: 'Send a valid API token as `Authorization: Bearer <API-KEY>`. Tokens are issued in the Management Portal or via the System access API key endpoints.'
+    occurrences: 23
+    example_operations:
+      - addWatchedPackages
+      - createGroup
+      - createUser
+      - deleteAction
+      - deleteAgentPool
+      - deleteGroup
+  - status: 403
+    title: Forbidden
+    descriptions:
+      - Default agent pool can not be deleted.
+      - Exceeded limit of temporary access instances. Remove a number of instances and try again.
+      - Forbidden.
+    remediation: 'The token lacks the required API permission level (DEV, COMPANY, SECURITY or CROSS_COMPANY) for this operation, or the resource is protected (for example the default agent pool cannot be deleted).'
+    occurrences: 4
+    example_operations:
+      - addTempAccess
+      - createGroup
+      - createUser
+      - deleteAgentPool
+  - status: 404
+    title: Not found
+    descriptions:
+      - Action not found.
+      - Agent pool not found.
+      - Cannot find users or agent pools.
+      - Group not found.
+      - No such package.
+      - Temporary access not found.
+      - The license is not found
+      - User not found.
+    remediation: 'Confirm the resource ID exists and, when RBAC is enabled, that `agentPoolId` names a pool the token can reach.'
+    occurrences: 18
+    example_operations:
+      - addTempAccess
+      - deleteAction
+      - deleteAgentPool
+      - deleteGroup
+      - deleteUser
+      - detachAgents
+  - status: 409
+    title: Conflict
+    descriptions:
+      - A temporary access session with this name already exists.
+      - Package already marked as watched.
+      - There are live agents in the pool.
+    remediation: The resource is in a conflicting state — for example an agent pool that still has live agents attached.
+    occurrences: 3
+    example_operations:
+      - addTempAccess
+      - addWatchedPackages
+      - deleteAgentPool

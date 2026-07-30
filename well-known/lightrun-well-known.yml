@@ -1,0 +1,45 @@
+# Lightrun /.well-known/ discovery surface
+generated: '2026-07-19'
+method: searched
+source: live probes of the Lightrun hosts
+notes: >-
+  Probed three hosts. The marketing site (lightrun.com) and docs host (docs.lightrun.com)
+  publish nothing under /.well-known/ — every path returns 404, including security.txt. The
+  application host (app.lightrun.com) fronts a Keycloak realm and serves both OIDC discovery
+  and RFC 8414 OAuth authorization-server metadata; its other well-known paths return 401
+  because the whole app host is behind authentication rather than because the documents
+  exist.
+hosts:
+  - host: https://app.lightrun.com
+    documents:
+      - {path: /.well-known/openid-configuration, status: 200, file: lightrun-openid-configuration.json, standard: 'OpenID Connect Discovery 1.0'}
+      - {path: /.well-known/oauth-authorization-server, status: 200, file: lightrun-oauth-authorization-server.json, standard: RFC 8414}
+      - {path: /.well-known/security.txt, status: 401}
+      - {path: /.well-known/api-catalog, status: 401}
+      - {path: /.well-known/ai-plugin.json, status: 401}
+      - {path: /llms.txt, status: 401}
+  - host: https://lightrun.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
+      - {path: /security.txt, status: 404}
+  - host: https://docs.lightrun.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
+identity:
+  issuer: https://app.lightrun.com/auth/realms/lightrun
+  provider: Keycloak
+  realm: lightrun
+gaps:
+  - No RFC 9116 security.txt on any public host.
+  - No /.well-known/api-catalog (RFC 9727) pointing at the published OpenAPI.
+  - No llms.txt on the docs host.

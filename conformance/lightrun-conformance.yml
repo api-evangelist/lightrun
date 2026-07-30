@@ -1,0 +1,62 @@
+# Lightrun standards conformance
+generated: '2026-07-19'
+method: searched
+source: https://trust.lightrun.com/
+derived_from: openapi/lightrun-openapi-original.json
+compliance_program:
+  url: https://trust.lightrun.com/
+  certifications: [SOC 2, ISO 27001, HIPAA, GDPR]
+  artifact: security/lightrun-trust-center.yml
+standards:
+  - id: openapi-3.1
+    conforms: true
+    evidence: 'openapi: 3.1.0 published at https://docs.lightrun.com/public-api/lightrun-api.json'
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      app.lightrun.com/.well-known/oauth-authorization-server returns 200; the realm supports
+      authorization_code, client_credentials, device_code, jwt-bearer and token-exchange grants.
+  - id: oidc
+    conforms: true
+    evidence: >-
+      app.lightrun.com/.well-known/openid-configuration returns 200 (Keycloak realm `lightrun`)
+      with issuer, jwks_uri, userinfo and end_session endpoints.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns 200 on app.lightrun.com
+  - id: pkce-rfc7636
+    conforms: true
+    evidence: 'code_challenge_methods_supported: [plain, S256]'
+  - id: saml2
+    conforms: true
+    evidence: SSO via SAML documented for Okta, Ping, Google and Microsoft Entra ID.
+  - id: scim2
+    conforms: true
+    evidence: >-
+      SCIM provisioning documented for Okta, Ping Identity, Microsoft Entra ID and SAP IAS
+      (https://docs.lightrun.com/scim/).
+  - id: mcp
+    conforms: true
+    evidence: >-
+      Published MCP server com.lightrun/mcp-server (streamable-http, https://app.lightrun.com/mcp)
+      with a server.json against the 2025-12-11 MCP server schema.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: 'Errors use a plain JSON {"message": "..."} envelope, not application/problem+json.'
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on lightrun.com and docs.lightrun.com.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: Deprecations are published as a docs page; no Sunset or Deprecation response headers documented.
+  - id: json-api
+    conforms: false
+    evidence: Responses use bespoke DTO and PublicApiPage envelopes.
+  - id: asyncapi
+    conforms: false
+    evidence: Webhooks are documented as a templated JSON notification; no AsyncAPI document is published.
+  - id: cyclonedx-sbom
+    conforms: unknown
+    evidence: >-
+      A Dynamic SBOM API is published, but the docs do not state a CycloneDX or SPDX
+      output format for it.

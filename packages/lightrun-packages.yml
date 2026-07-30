@@ -1,0 +1,77 @@
+# Lightrun agents, SDKs and distributables
+generated: '2026-07-19'
+method: searched
+source: npm, PyPI and https://docs.lightrun.com/
+notes: >-
+  Lightrun's client libraries are runtime *agents* embedded in the application process
+  rather than API client SDKs — the Public REST API has no generated client library.
+  npm `lightrun` and PyPI `lightrun` are first-party and version-locked to the Lightrun
+  server release train (both at 1.89.0). The Java and .NET agents are distributed as
+  downloadable archives from the Management Portal, not via Maven Central or NuGet
+  (both were probed and return no first-party Lightrun coordinates).
+packages:
+  - language: javascript
+    registry: npm
+    name: lightrun
+    url: https://www.npmjs.com/package/lightrun
+    install: npm install lightrun
+    version: 1.89.0
+    description: Lightrun Debug Agent for Node.js
+    repository: https://github.com/lightrun/lightrun
+    docs: https://docs.lightrun.com/node/agent/
+    kind: agent
+    official: true
+  - language: python
+    registry: pypi
+    name: lightrun
+    url: https://pypi.org/project/lightrun/
+    install: pip install lightrun
+    version: 1.89.0
+    description: Add logs and snapshots (virtual breakpoints) to live applications - without stopping them.
+    docs: https://docs.lightrun.com/python/agent/
+    kind: agent
+    official: true
+  - language: java
+    registry: direct-download
+    name: Lightrun Java (JVM) agent
+    url: https://docs.lightrun.com/jvm/agent/
+    docs: https://docs.lightrun.com/jvm/agent-configuration/
+    kind: agent
+    official: true
+    note: Distributed as an archive from the Lightrun Management Portal; no Maven Central group id published.
+  - language: dotnet
+    registry: direct-download
+    name: Lightrun .NET agent
+    url: https://docs.lightrun.com/dotnet/agent/
+    docs: https://docs.lightrun.com/dotnet/agent-configuration/
+    kind: agent
+    official: true
+    note: Distributed as an archive from the Lightrun Management Portal; no first-party NuGet package found.
+  - language: java
+    registry: direct-download
+    name: lightrunc.jar
+    url: https://docs.lightrun.com/cli/installation/
+    docs: https://docs.lightrun.com/cli/cli_reference/
+    kind: cli
+    official: true
+    note: The Lightrun CLI, invoked as `java -jar lightrunc.jar`. Command surface captured in cli/lightrun-cli.yml.
+  - language: go
+    registry: github
+    name: lightrun-k8s-operator
+    url: https://github.com/lightrun-platform/lightrun-k8s-operator
+    docs: https://github.com/lightrun-platform/lightrun-k8s-operator
+    kind: operator
+    official: true
+    note: Kubernetes operator that injects Lightrun agents into application workloads.
+  - language: helm
+    registry: github
+    name: lightrun-helm-chart
+    url: https://github.com/lightrun-platform/lightrun-helm-chart
+    kind: chart
+    official: true
+    note: Official Helm chart for deploying the Lightrun server.
+registries_probed:
+  - {registry: npm, result: found}
+  - {registry: pypi, result: found}
+  - {registry: maven-central, query: 'g:com.lightrun', result: no results}
+  - {registry: nuget, query: lightrun.agent, result: 404}

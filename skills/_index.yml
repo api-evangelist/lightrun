@@ -1,0 +1,48 @@
+# Lightrun Agent Skills — published by the provider
+generated: '2026-07-19'
+method: searched
+source: https://github.com/lightrun-platform/lightrun-ai
+docs: https://docs.lightrun.com/ai/skills/overview/
+notes: >-
+  These are Lightrun's own Agent Skills, saved verbatim from the lightrun-platform/lightrun-ai
+  repository (each skill's SKILL.md). They are distributed as a plugin/marketplace package
+  rather than loose files — Cursor and Claude install by repository URL, Codex copies the
+  skill folders into .agents/skills. Every skill drives the Lightrun MCP server
+  (https://app.lightrun.com/mcp), not the REST API directly, so the operations they ground
+  in are MCP tool names (see mcp/lightrun-mcp.yml) rather than OpenAPI operationIds.
+prerequisites:
+  - Lightrun organization access
+  - Lightrun MCP configured in the AI client
+  - OAuth authorization completed
+skills:
+  - file: lightrun-ask-prod.md
+    name: lightrun-ask-prod
+    title: Ask Prod
+    description: >-
+      Answer questions about live production behavior — current variable values, execution
+      durations, hit counts and value distributions — by instrumenting running services with
+      Lightrun MCP tools, when the question needs live runtime data rather than static analysis.
+    docs: https://docs.lightrun.com/ai/skills/ask-prod/
+    source: https://github.com/lightrun-platform/lightrun-ai/blob/main/skills/lightrun-ask-prod/SKILL.md
+    mcp: mcp/lightrun-mcp.yml
+  - file: lightrun-live-runtime-debugging.md
+    name: lightrun-live-runtime-debugging
+    title: Live Runtime Debugging
+    description: Investigate issues with real runtime evidence captured from live applications.
+    docs: https://docs.lightrun.com/ai/skills/live-runtime-debugging/
+    source: https://github.com/lightrun-platform/lightrun-ai/blob/main/skills/lightrun-live-runtime-debugging/SKILL.md
+    mcp: mcp/lightrun-mcp.yml
+  - file: lightrun-error-remediation-automation.md
+    name: lightrun-error-remediation-automation
+    title: Error Remediation Automation
+    description: Automate error diagnosis and fixes using runtime evidence.
+    docs: https://docs.lightrun.com/ai/skills/error-remediation-automation/
+    source: https://github.com/lightrun-platform/lightrun-ai/blob/main/skills/lightrun-error-remediation-automation/SKILL.md
+    mcp: mcp/lightrun-mcp.yml
+  - file: lightrun-runtime-aware-pr-review.md
+    name: lightrun-runtime-aware-pr-review
+    title: Runtime-Aware PR Review
+    description: Review code changes with runtime context from the live system.
+    docs: https://docs.lightrun.com/ai/skills/runtime-aware-pr-review/
+    source: https://github.com/lightrun-platform/lightrun-ai/blob/main/skills/lightrun-runtime-aware-pr-review/SKILL.md
+    mcp: mcp/lightrun-mcp.yml

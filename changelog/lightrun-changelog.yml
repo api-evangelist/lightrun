@@ -1,0 +1,58 @@
+# Lightrun changelog
+generated: '2026-07-19'
+method: searched
+source: https://docs.lightrun.com/release_notes/lightrun-release-notes/
+docs: https://docs.lightrun.com/whats-new/
+scheme: minor-sequential
+current_version: '1.89'
+cadence: roughly every two to three weeks
+archives:
+  - {year: 2024, url: 'https://docs.lightrun.com/release_notes/2024-releases/'}
+  - {year: 2023, url: 'https://docs.lightrun.com/release_notes/2023-releases/'}
+  - {year: 2022, url: 'https://docs.lightrun.com/release_notes/2022-releases/'}
+deprecations: https://docs.lightrun.com/release_notes/functionality-changes-deprecations/
+known_issues: https://docs.lightrun.com/release_notes/known-issues/
+notes: >-
+  Recent window only — the live release-notes page is the source of truth. Lightrun does
+  not label releases breaking vs non-breaking, so `breaking` is recorded as unknown rather
+  than guessed. The dominant theme across this window is the MCP surface: new asynchronous
+  tool quartets, org-level MCP access control, and Public API endpoints catching up to what
+  MCP already exposes.
+entries:
+  - version: '1.88'
+    date: '2026-06-30'
+    breaking: unknown
+    highlights:
+      - Public API endpoints for retrieving snapshot hits.
+      - Agent pool active-agent threshold warnings.
+      - MCP get_actions tool for AI assistants.
+  - version: '1.87'
+    date: '2026-06-21'
+    breaking: unknown
+    highlights:
+      - Threshold-triggered snapshots for metrics.
+      - Asynchronous execution-duration tools for MCP.
+      - Public API for log message retrieval.
+      - Tic and toc measurements now include the end line.
+  - version: '1.86'
+    date: '2026-06-03'
+    breaking: unknown
+    highlights:
+      - New Management Portal home page.
+      - Wildcard support in the Java agent classpath.
+      - Organization-level MCP access control.
+      - Runtime source discovery split into separate tools.
+  - version: '1.85'
+    date: '2026-05-19'
+    breaking: unknown
+    highlights:
+      - Group membership summaries in user management.
+      - Dedicated directories for agent temporary files.
+      - Asynchronous snapshot tools for MCP.
+  - version: '1.84'
+    date: '2026-05-05'
+    track: QSR
+    breaking: unknown
+    highlights:
+      - Improved MCP tool-call success rates.
+      - Snapshot "Capture more" feature for VS Code.

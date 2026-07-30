@@ -1,0 +1,56 @@
+# Lightrun webhook / event surface
+generated: '2026-07-19'
+method: searched
+source: https://docs.lightrun.com/webhooks/
+spec_type: none
+type: Webhooks
+notes: >-
+  Lightrun publishes no AsyncAPI document. Its event surface is a single outbound webhook
+  used by Runtime Reachability Assessment: when the agents observe a watched package loaded
+  in a running process — for example a package carrying a known CVE — Lightrun POSTs a
+  JSON notification to the configured URL. This is a templated notification webhook rather
+  than a typed event catalog: the event kind travels in the `type` field of the payload and
+  Lightrun does not publish an enumerated list of type values.
+configuration:
+  portal_path: Settings > Runtime Reachability > Webhooks
+  fields:
+    - name: Webhook name
+      note: Unique name for the webhook.
+    - name: Webhook URL
+      note: Endpoint that receives the HTTP POST.
+    - name: Payload
+      note: JSON template, customizable with the supported variables below.
+delivery:
+  method: POST
+  content_type: application/json
+  headers:
+    - name: content-type
+      value: application/json
+      note: Preset by Lightrun; custom headers are not documented.
+  retries: not documented
+  signing: not documented
+  authentication: not documented
+payload:
+  format: json
+  templated: true
+  variables:
+    - {name: '${ID}', maps_to: id, description: Identifier for the notification.}
+    - {name: '${DATE}', maps_to: date, description: Timestamp of the event.}
+    - {name: '${TYPE}', maps_to: type, description: The event type discriminator.}
+    - {name: '${TITLE}', maps_to: title, description: Short human-readable title.}
+    - {name: '${EVENT_MSG}', maps_to: event_msg, description: The event message body.}
+  default_template: >-
+    { "id": "${ID}", "date": "${DATE}", "type": "${TYPE}", "title": "${TITLE}",
+    "event_msg": "${EVENT_MSG}" }
+events:
+  - name: runtime-reachability-notification
+    trigger: A watched package is observed loaded during runtime.
+    use_case: >-
+      Alerting when a package containing a potential CVE is actually reachable in a running
+      process, as opposed to merely present in the dependency manifest.
+    docs: https://docs.lightrun.com/webhooks/
+    related_api_tags: [Watched packages, Loaded packages, Dynamic SBOM]
+gaps:
+  - No AsyncAPI or event-schema document is published.
+  - No enumerated list of ${TYPE} values is documented.
+  - Retry, signing and receiver-authentication semantics are undocumented.

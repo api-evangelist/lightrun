@@ -1,0 +1,43 @@
+# Lightrun API lifecycle
+generated: '2026-07-19'
+method: searched
+source: https://docs.lightrun.com/release_notes/release-information/
+versioning:
+  scheme: uri-path
+  current: v1
+  pattern: /api/v<number>/<entity>/...
+  available_from: Lightrun Server 1.29
+  docs: https://docs.lightrun.com/public-api/introduction/
+  note: >-
+    Two version axes: the REST API path version (v1) and the Lightrun Server product
+    version (1.89 at time of capture), which is what release notes and MCP tool
+    availability are keyed to.
+product_versioning:
+  scheme: minor-sequential
+  current: '1.89'
+  cadence: roughly every two to three weeks
+  support_track:
+    name: Quarterly Support Release (QSR)
+    note: Selected versions are designated QSRs and receive extended maintenance.
+    recent_qsr: '1.84'
+  patch_style: 'x.y.z (e.g. 1.87.1)'
+deprecation:
+  policy_url: https://docs.lightrun.com/release_notes/functionality-changes-deprecations/
+  page_name: Functionality changes and deprecations
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    Lightrun maintains a dedicated functionality-changes-and-deprecations page in the
+    release notes rather than RFC 8594 Sunset/Deprecation response headers. Deprecations
+    observed in practice are MCP tool migrations — the synchronous get_runtime_* tools are
+    being superseded by asynchronous create/status/samples/cancel quartets, with the
+    superseded versions documented by version range.
+deprecated_operations: []
+known_issues: https://docs.lightrun.com/release_notes/known-issues/
+release_notes: https://docs.lightrun.com/release_notes/lightrun-release-notes/
+whats_new: https://docs.lightrun.com/whats-new/
+status_page: https://status.lightrun.com/
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime target is published.

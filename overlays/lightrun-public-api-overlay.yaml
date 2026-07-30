@@ -1,0 +1,79 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Lightrun Public API
+  version: 1.0.0
+extends: openapi/lightrun-openapi-original.json
+x-generated: '2026-07-19'
+x-method: generated
+x-source: >-
+  Enhancements derived from https://docs.lightrun.com/public-api/introduction/ and live
+  probes. Applied as an overlay so openapi/lightrun-openapi-original.json remains the
+  verbatim harvested document.
+actions:
+  # The harvested spec ships the Spring-generated placeholder server. The SaaS API is served
+  # from the application host: https://app.lightrun.com/api/v1/... returns 401 (not 404),
+  # confirming the route exists and requires a bearer token.
+  - target: $.servers
+    description: Replace the generated localhost placeholder with the real production host.
+    remove: true
+  - target: $
+    description: Add the production and self-hosted server entries.
+    update:
+      servers:
+        - url: https://app.lightrun.com
+          description: Lightrun SaaS
+        - url: https://{host}
+          description: Self-hosted / on-premises Lightrun Server
+          variables:
+            host:
+              default: app.lightrun.com
+              description: Hostname of your Lightrun Server deployment.
+  - target: $.info
+    description: Enrich API metadata with contact, docs and the API Evangelist assessment.
+    update:
+      contact:
+        name: Lightrun
+        url: https://docs.lightrun.com/public-api/introduction/
+      x-logo:
+        url: https://lightrun.com/
+      x-apievangelist:
+        catalog: https://apis.io/provider/lightrun
+        available_from: Lightrun Server 1.29
+        conventions: conventions/lightrun-conventions.yml
+        errors: errors/lightrun-problem-types.yml
+        data_model: data-model/lightrun-data-model.yml
+        scopes: scopes/lightrun-scopes.yml
+        mcp: mcp/lightrun-mcp.yml
+  - target: $
+    description: Point at the external documentation root.
+    update:
+      externalDocs:
+        description: Lightrun documentation
+        url: https://docs.lightrun.com/
+  - target: $.components.securitySchemes['API Token']
+    description: Document how the bearer token is obtained and the failure body.
+    update:
+      description: >-
+        Bearer API token, sent as `Authorization: Bearer API-KEY`. Tokens are personal API
+        keys issued in the Lightrun Management Portal, or company-scoped system API keys
+        created via the System access API key endpoints with COMPANY / DEV / SECURITY /
+        CROSS_COMPANY scopes. A missing or invalid token returns 401 with the body
+        {"message": "401 Unauthorized"}.
+      x-permission-levels: [DEV, COMPANY, SECURITY, CROSS_COMPANY]
+      x-docs: https://docs.lightrun.com/public-api/introduction/
+  - target: $.info
+    description: Record the cross-cutting conventions the spec does not state.
+    update:
+      x-pagination:
+        style: page-number
+        parameters: [page, size, sort]
+        default_size: 20
+        envelope: PublicApiPage<T>
+      x-rbac-scoping:
+        parameter: agentPoolId
+        note: Mandatory on most operations when RBAC is enabled; ignored when RBAC is disabled.
+      x-idempotency:
+        supported: false
+        note: No idempotency key is documented; creates are not safe to blind-retry.
+      x-rate-limits:
+        documented: false

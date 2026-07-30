@@ -1,0 +1,135 @@
+# Lightrun entity-relationship model
+generated: '2026-07-19'
+method: derived
+source: openapi/lightrun-openapi-original.json
+docs: https://docs.lightrun.com/public-api/api-reference/
+notes: >-
+  Derived from the Lightrun Public API OpenAPI: 101 component schemas across
+  19 tag groups. Entities are the resources the API exposes as
+  addressable nouns; relationships come from path hierarchy and the id-reference query
+  and body fields (agentPoolId, actionId, agentId, caseId) that link them. Lightrun IDs
+  are opaque strings with no documented type prefixes.
+root: Company
+scoping:
+  primary: agentPoolId
+  note: >-
+    Agent pool is the RBAC scoping dimension. When RBAC is enabled, agentPoolId is
+    mandatory on most Actions, Agents, Custom sources and Debug Cases operations; it is
+    ignored when RBAC is disabled.
+entities:
+  - name: Action
+    tag: Actions
+    description: 'A dynamic instrumentation instruction (log, snapshot, counter, tic-toc or custom metric) placed on a file/line and delivered to agents.'
+    types:
+      - LOG
+      - SNAPSHOT
+      - COUNTER_METRIC
+      - TICTOC_METRIC
+      - CUSTOM_METRIC
+  - name: Agent
+    tag: Agents
+    description: 'A Lightrun agent embedded in a running application process (JVM, Python, Node.js or .NET) that receives and executes actions.'
+  - name: AgentPool
+    tag: Agent Pools
+    description: An RBAC grouping of agents. Mandatory scoping dimension on most operations when RBAC is enabled.
+  - name: Tag
+    tag: Tags
+    description: A label applied to agents so actions can target a fleet rather than one process.
+  - name: CustomSource
+    tag: Custom sources
+    description: A registered source-code origin used to resolve file/line locations for actions.
+  - name: LogData
+    tag: Actions
+    description: A dynamic log message captured by an agent for a log action.
+  - name: SnapshotHit
+    tag: Actions
+    description: 'A single capture of a snapshot action, holding the call stack and evaluated expression values.'
+  - name: DebugCase
+    tag: Debug Cases
+    description: A container that groups runbooks and actions for one investigation.
+  - name: DebugRunbook
+    tag: Debug Runbooks
+    description: A repeatable set of instrumentation steps executed against a case.
+  - name: RunbookConfig
+    tag: Debug Runbooks Configuration
+    description: The saved configuration template a runbook is instantiated from.
+  - name: User
+    tag: Users
+    description: A member of the Lightrun company account.
+  - name: UserGroup
+    tag: User Groups
+    description: An RBAC group binding users to roles and agent-pool access.
+  - name: SystemApiKey
+    tag: System access API key
+    description: A company-scoped machine credential with COMPANY / DEV / SECURITY / CROSS_COMPANY scopes.
+  - name: LoadedPackage
+    tag: Loaded packages
+    description: 'A third-party package observed loaded in a running process, feeding Dynamic SBOM.'
+  - name: WatchedPackage
+    tag: Watched packages
+    description: 'A package flagged for runtime-reachability monitoring, source of webhook notifications.'
+relationships:
+  - from: AgentPool
+    to: Agent
+    type: has_many
+    via: agentPoolId
+  - from: AgentPool
+    to: Action
+    type: has_many
+    via: agentPoolId
+  - from: Agent
+    to: Action
+    type: has_many
+    via: agentId
+  - from: Agent
+    to: Tag
+    type: has_many
+    via: tagName
+  - from: Agent
+    to: LoadedPackage
+    type: has_many
+    via: agentId
+  - from: Action
+    to: LogData
+    type: has_many
+    via: actionId
+  - from: Action
+    to: SnapshotHit
+    type: has_many
+    via: actionId
+  - from: SnapshotHit
+    to: Action
+    type: belongs_to
+    via: actionId
+  - from: DebugCase
+    to: DebugRunbook
+    type: has_many
+    via: caseId
+  - from: DebugRunbook
+    to: RunbookConfig
+    type: belongs_to
+    via: configurationId
+  - from: DebugRunbook
+    to: Action
+    type: has_many
+    via: actionId
+  - from: UserGroup
+    to: User
+    type: has_many
+    via: userId
+  - from: UserGroup
+    to: AgentPool
+    type: has_many
+    via: agentPoolId
+  - from: Company
+    to: SystemApiKey
+    type: has_many
+    via: company
+  - from: Company
+    to: User
+    type: has_many
+    via: company
+  - from: WatchedPackage
+    to: LoadedPackage
+    type: has_many
+    via: packageName
