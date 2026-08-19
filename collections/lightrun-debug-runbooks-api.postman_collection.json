@@ -1,0 +1,873 @@
+{
+  "item": [
+    {
+      "id": "fd4b53ab-b757-4cc8-a602-68b3f2763209",
+      "name": "Debug Runbooks",
+      "description": {
+        "content": "Debug Runbooks API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b8c1f3a-07a6-4e16-b9c7-374a4fde6afe",
+          "name": "Add runbook",
+          "request": {
+            "name": "Add runbook",
+            "description": {
+              "content": "Add runbook.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":caseId",
+                "runbooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                },
+                {
+                  "disabled": false,
+                  "key": "configurationId",
+                  "value": "<string>",
+                  "description": "(Required) Configuration ID."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) Case ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4fde87cd-1190-4633-a976-66529dae8ca1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":caseId",
+                    "runbooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "configurationId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) Case ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"arguments\": [\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    },\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    }\n  ],\n  \"hitCount\": 7074,\n  \"id\": \"string\",\n  \"methodIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"state\": \"NOT_STARTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "491a0984-ef8d-4ce1-a6a6-094c45d4274e",
+          "name": "Stop all runbooks by IDs",
+          "request": {
+            "name": "Stop all runbooks by IDs",
+            "description": {
+              "content": "Stop all runbooks by IDs.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":caseId",
+                "runbooks",
+                "stop-all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) Case ID."
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c885ebb-91c7-4ead-948f-d509951c5a93",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":caseId",
+                    "runbooks",
+                    "stop-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) Case ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a6bee81-eb05-45e4-a08b-5a89acbf9974",
+          "name": "Get a runbook by ID",
+          "request": {
+            "name": "Get a runbook by ID",
+            "description": {
+              "content": "Get a runbook by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":caseId",
+                "runbooks",
+                ":runbookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "runbookId",
+                  "description": "(Required) Runbook ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "91405180-024e-4eaf-9279-cffec6fccd6e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":caseId",
+                    "runbooks",
+                    ":runbookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "runbookId",
+                      "description": "(Required) Runbook ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"arguments\": [\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    },\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    }\n  ],\n  \"hitCount\": 7074,\n  \"id\": \"string\",\n  \"methodIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"state\": \"NOT_STARTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "132ce484-09f0-4dda-b8b2-bad3b8f5a35d",
+          "name": "Get a runbook method by ID",
+          "request": {
+            "name": "Get a runbook method by ID",
+            "description": {
+              "content": "Get a runbook method by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":caseId",
+                "runbooks",
+                ":runbookId",
+                "method",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Runbook method ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "runbookId",
+                  "description": "(Required) Runbook ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0e50734-7e42-4dd4-884e-6e3857a4887e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":caseId",
+                    "runbooks",
+                    ":runbookId",
+                    "method",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Runbook method ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "runbookId",
+                      "description": "(Required) Runbook ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"condition\": \"string\",\n  \"errorsInfoList\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 4973,\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 329,\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"filename\": \"string\",\n  \"hits\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"endTime\": \"1984-07-26T08:23:25.345Z\",\n      \"hitCount\": 4976,\n      \"startTime\": \"2014-12-30T11:43:03.684Z\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"endTime\": \"2015-06-19T22:36:03.154Z\",\n      \"hitCount\": 7533,\n      \"startTime\": \"1973-12-23T10:13:42.101Z\"\n    }\n  ],\n  \"maxResults\": 316,\n  \"methodName\": \"string\",\n  \"methodTimeoutSeconds\": 2045\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ba720aa-71f7-48ec-bd3e-d720240e72c9",
+          "name": "Start runbook by ID",
+          "request": {
+            "name": "Start runbook by ID",
+            "description": {
+              "content": "Start runbook by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":caseId",
+                "runbooks",
+                ":runbookId",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "runbookId",
+                  "description": "(Required) Runbook ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": \"<string>\",\n  \"key_1\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11854f46-3570-4bc3-b289-4f94565917be",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":caseId",
+                    "runbooks",
+                    ":runbookId",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "runbookId",
+                      "description": "(Required) Runbook ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"arguments\": [\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    },\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    }\n  ],\n  \"hitCount\": 7074,\n  \"id\": \"string\",\n  \"methodIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"state\": \"NOT_STARTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c72e9d04-fd8e-44ec-9ad4-adc795a54e51",
+          "name": "Stop runbook by ID",
+          "request": {
+            "name": "Stop runbook by ID",
+            "description": {
+              "content": "Stop runbook by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":caseId",
+                "runbooks",
+                ":runbookId",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "runbookId",
+                  "description": "(Required) Runbook ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bd8d8d37-9224-4f39-a818-cd3d2798eb6b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":caseId",
+                    "runbooks",
+                    ":runbookId",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "runbookId",
+                      "description": "(Required) Runbook ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"arguments\": [\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    },\n    {\n      \"label\": \"string\",\n      \"value\": \"string\",\n      \"variableName\": \"string\"\n    }\n  ],\n  \"hitCount\": 7074,\n  \"id\": \"string\",\n  \"methodIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"state\": \"NOT_STARTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "915fe9d5-00fe-41c5-a072-1f8271c04714",
+    "name": "Lightrun Actions Debug Runbooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

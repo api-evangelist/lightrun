@@ -1,0 +1,2009 @@
+{
+  "item": [
+    {
+      "id": "84d965f9-2b38-4630-870a-dd9474a29dfc",
+      "name": "Actions",
+      "description": {
+        "content": "Actions API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a2ff8a10-8ac6-487a-987c-eddd9e6a73b1",
+          "name": "Get a list of actions",
+          "request": {
+            "name": "Get a list of actions",
+            "description": {
+              "content": "Get a list of actions.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "actionType",
+                  "value": "<string>",
+                  "description": "Filter actions by their type. Type can be any one of the enumerated values."
+                },
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtAfter",
+                  "value": "<date>",
+                  "description": "Filter actions created after the specified date. Date format is <YYYY-MM-DD>."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtBefore",
+                  "value": "<date>",
+                  "description": "Filter actions created before the specified date. Date format is <YYYY-MM-DD>. (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBy",
+                  "value": "<string>",
+                  "description": "Filter actions created by the specified user or API key. Users are identified by their email address."
+                },
+                {
+                  "disabled": false,
+                  "key": "enabled",
+                  "value": "<boolean>",
+                  "description": "Filter actions by their state. State can be either ‘true’ (enabled) or ‘false’ (disabled)."
+                },
+                {
+                  "disabled": false,
+                  "key": "expired",
+                  "value": "<boolean>",
+                  "description": "Filter actions by their expiration state. Expiration state can be either ‘true’ (expired) or ‘false’ (disabled)."
+                },
+                {
+                  "disabled": false,
+                  "key": "filename",
+                  "value": "<string>",
+                  "description": "Filter actions by the file on which they were set. Files are indicated by their full path, as provided in the action’s creation. This filter supports * as a wildcard to match multiple file names with a common pattern."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasErrors",
+                  "value": "<boolean>",
+                  "description": "Filter actions which have any errors. The flag can be either ‘true’ (with errors) or ‘false’ (without errors)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
+                },
+                {
+                  "disabled": false,
+                  "key": "resultsExist",
+                  "value": "<boolean>",
+                  "description": "Filter actions based on whether results have (true) or haven’t (false) been captured for them."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The number of items to include on each page of results. The default is 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: location, line, createdAt."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: location, line, createdAt."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter actions by status. Status can be any one of the enumerated values."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "edb78562-f388-4bad-907b-bb402ebc520e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtAfter",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "createdAtBefore",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "createdBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "expired",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasErrors",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "resultsExist",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"actionType\": \"SNAPSHOT\",\n      \"createdAt\": \"2002-07-10T09:27:45.707Z\",\n      \"createdBy\": \"string\",\n      \"enabled\": true,\n      \"expired\": false,\n      \"hasErrors\": false,\n      \"id\": \"string\",\n      \"line\": 2277,\n      \"location\": \"string\",\n      \"source\": {\n        \"id\": \"string\",\n        \"type\": \"CUSTOM_SOURCE\"\n      },\n      \"status\": \"ACCEPTED\"\n    },\n    {\n      \"actionType\": \"SNAPSHOT\",\n      \"createdAt\": \"1957-12-28T13:34:16.025Z\",\n      \"createdBy\": \"string\",\n      \"enabled\": true,\n      \"expired\": true,\n      \"hasErrors\": true,\n      \"id\": \"string\",\n      \"line\": 8526,\n      \"location\": \"string\",\n      \"source\": {\n        \"id\": \"string\",\n        \"type\": \"TAG\"\n      },\n      \"status\": \"SUBMITTED\"\n    }\n  ],\n  \"limit\": 4782,\n  \"offset\": 2827,\n  \"total\": 9153\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0a0350f-6b29-4841-9fd4-3312f2c7fb9b",
+          "name": "Create a log action",
+          "request": {
+            "name": "Create a log action",
+            "description": {
+              "content": "Create a log action.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filename\": \"<string>\",\n  \"format\": \"<string>\",\n  \"line\": \"<integer>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"agentPoolId\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"expirationSeconds\": 3600,\n  \"logLevel\": \"<string>\",\n  \"targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"versionControl\": {\n    \"branch\": \"<string>\",\n    \"commit\": \"<string>\",\n    \"headTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"repo\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84458f56-6cdb-40a0-97f7-e7b7d7b9b4fe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filename\": \"<string>\",\n  \"format\": \"<string>\",\n  \"line\": \"<integer>\",\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"agentPoolId\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"expirationSeconds\": 3600,\n  \"logLevel\": \"<string>\",\n  \"targets\": [\n    \"<string>\"\n  ],\n  \"versionControl\": {\n    \"branch\": \"string\",\n    \"commit\": \"string\",\n    \"headTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"repo\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actionType\": \"TICTOC_METRIC\",\n  \"createdAt\": \"2001-12-24T13:56:28.261Z\",\n  \"createdBy\": \"string\",\n  \"enabled\": false,\n  \"expired\": false,\n  \"hasErrors\": true,\n  \"id\": \"string\",\n  \"line\": 885,\n  \"location\": \"string\",\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"status\": \"SUBMITTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3842a4e3-7c2b-4ff2-925b-3625b3849c10",
+          "name": "Get log messages",
+          "request": {
+            "name": "Get log messages",
+            "description": {
+              "content": "Get list of agent log messages by action id.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                "logs",
+                ":actionId",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentId",
+                  "value": "<string>",
+                  "description": "Filter logs by agent ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "agentName",
+                  "value": "<string>",
+                  "description": "Filter logs by agent name."
+                },
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                },
+                {
+                  "disabled": false,
+                  "key": "freeText",
+                  "value": "<string>",
+                  "description": "Filter logs by free text found in log data or agent ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>",
+                  "description": "Filter logs created from the specified timestamp in milliseconds since epoch."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The number of items to include on each page of results. The default is 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc)."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagName",
+                  "value": "<string>",
+                  "description": "Filter logs by agent tag."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>",
+                  "description": "Filter logs created up to the specified timestamp in milliseconds since epoch."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "actionId",
+                  "description": "(Required) Log action ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e445a319-92ef-4b60-8ac4-d7326532baa1",
+              "name": "Log messages retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "logs",
+                    ":actionId",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freeText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionId",
+                      "description": "(Required) Log action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"actionId\": \"string\",\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"agentTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"data\": \"string\",\n      \"level\": \"ERROR\",\n      \"timestamp\": 1056\n    },\n    {\n      \"actionId\": \"string\",\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"agentTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"data\": \"string\",\n      \"level\": \"ERROR\",\n      \"timestamp\": 9136\n    }\n  ],\n  \"limit\": 6102,\n  \"offset\": 5464,\n  \"total\": 5563\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88030570-deb0-4787-bc64-da8425c0f3c7",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "logs",
+                    ":actionId",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freeText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionId",
+                      "description": "(Required) Log action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"actionId\": \"string\",\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"agentTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"data\": \"string\",\n      \"level\": \"ERROR\",\n      \"timestamp\": 1056\n    },\n    {\n      \"actionId\": \"string\",\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"agentTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"data\": \"string\",\n      \"level\": \"ERROR\",\n      \"timestamp\": 9136\n    }\n  ],\n  \"limit\": 6102,\n  \"offset\": 5464,\n  \"total\": 5563\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f3774eb-8cab-46bf-a92c-1bc0f8b7b294",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "logs",
+                    ":actionId",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freeText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionId",
+                      "description": "(Required) Log action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"actionId\": \"string\",\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"agentTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"data\": \"string\",\n      \"level\": \"ERROR\",\n      \"timestamp\": 1056\n    },\n    {\n      \"actionId\": \"string\",\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"agentTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"data\": \"string\",\n      \"level\": \"ERROR\",\n      \"timestamp\": 9136\n    }\n  ],\n  \"limit\": 6102,\n  \"offset\": 5464,\n  \"total\": 5563\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a39af29c-c3b9-488f-8169-2d0e3e0e54be",
+          "name": "Get a log action by ID",
+          "request": {
+            "name": "Get a log action by ID",
+            "description": {
+              "content": "Get a log action by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                "logs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Log action ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d53c6a58-1d9b-46fb-8b15-8161911874a4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "logs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Log action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"agentPoolId\": \"string\",\n  \"agentsWithHitsCount\": 1787,\n  \"condition\": \"string\",\n  \"createdAt\": \"2003-07-01T19:56:39.597Z\",\n  \"createdBy\": \"string\",\n  \"enabled\": false,\n  \"errorsInfoList\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 7118,\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 346,\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"expirationSeconds\": 1517,\n  \"expired\": true,\n  \"format\": \"string\",\n  \"hitCount\": 3445,\n  \"id\": \"string\",\n  \"line\": 4878,\n  \"location\": \"string\",\n  \"logLevel\": \"ERROR\",\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"status\": \"SUBMITTED\",\n  \"targets\": [\n    \"DYNATRACE\",\n    \"STATSD\"\n  ],\n  \"updatedAt\": \"2012-04-20T21:36:11.988Z\",\n  \"versionControl\": {\n    \"branch\": \"string\",\n    \"commit\": \"string\",\n    \"headTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"repo\": \"string\"\n  },\n  \"warningsInfoList\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"warningId\": 960,\n      \"warningMessage\": \"string\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"warningId\": 6194,\n      \"warningMessage\": \"string\"\n    }\n  ],\n  \"webPortalPageLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8df8253-cd6c-45db-b470-23758f2db7f0",
+          "name": "Create a snapshot action",
+          "request": {
+            "name": "Create a snapshot action",
+            "description": {
+              "content": "Create a snapshot action.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                "snapshots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filename\": \"<string>\",\n  \"line\": \"<integer>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"agentPoolId\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"expirationSeconds\": 3600,\n  \"isMaxHitCountDistributed\": false,\n  \"maxHitCount\": 10,\n  \"versionControl\": {\n    \"branch\": \"<string>\",\n    \"commit\": \"<string>\",\n    \"headTags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"repo\": \"<string>\"\n  },\n  \"watchExpressions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68cfd08d-9b23-449f-9e10-789de742bb45",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filename\": \"<string>\",\n  \"line\": \"<integer>\",\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"TAG\"\n  },\n  \"agentPoolId\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"expirationSeconds\": 3600,\n  \"isMaxHitCountDistributed\": false,\n  \"maxHitCount\": 10,\n  \"versionControl\": {\n    \"branch\": \"string\",\n    \"commit\": \"string\",\n    \"headTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"repo\": \"string\"\n  },\n  \"watchExpressions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actionType\": \"TICTOC_METRIC\",\n  \"createdAt\": \"2001-12-24T13:56:28.261Z\",\n  \"createdBy\": \"string\",\n  \"enabled\": false,\n  \"expired\": false,\n  \"hasErrors\": true,\n  \"id\": \"string\",\n  \"line\": 885,\n  \"location\": \"string\",\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"status\": \"SUBMITTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be1827f0-e3a6-47dd-a7ee-050298f3ce4b",
+          "name": "Get snapshot hit data",
+          "request": {
+            "name": "Get snapshot hit data",
+            "description": {
+              "content": "Get snapshot hit data by id\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                "snapshots",
+                "hit",
+                ":hitId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hitId",
+                  "description": "(Required) Hit ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e4d7cc78-acc6-4749-9c27-a58839ecac21",
+              "name": "Snapshot hit retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots",
+                    "hit",
+                    ":hitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hitId",
+                      "description": "(Required) Hit ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actionId\": \"string\",\n  \"agentDisplayName\": \"string\",\n  \"agentId\": \"string\",\n  \"agentTags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"captureTime\": \"1990-01-06T12:14:46.090Z\",\n  \"evaluatedContext\": {\n    \"isEvaluatedExpression\": false,\n    \"name\": \"string\",\n    \"status\": {\n      \"description\": {\n        \"errorId\": 3091,\n        \"format\": \"string\",\n        \"parameters\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"isAccepted\": true,\n      \"isError\": true,\n      \"refersTo\": \"string\"\n    },\n    \"type\": \"string\",\n    \"value\": \"string\",\n    \"varTableIndex\": 5465\n  },\n  \"evaluatedContextExpressions\": [\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 9869,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 5855\n    },\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 981,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 4844\n    }\n  ],\n  \"evaluatedExpressions\": [\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 4241,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 1550\n    },\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 3149,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 6382\n    }\n  ],\n  \"id\": \"string\",\n  \"stackFrames\": [\n    {\n      \"arguments\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 585\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 5140\n        }\n      ],\n      \"function\": \"string\",\n      \"locals\": [\n        {\n          \"isEvaluatedExpression\": true,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 5328\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": false,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 3511\n        }\n      ],\n      \"location\": {\n        \"column\": 6901,\n        \"endOfLine\": true,\n        \"lambdaIndex\": 9003,\n        \"line\": 1738,\n        \"path\": \"string\"\n      }\n    },\n    {\n      \"arguments\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 4809\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 145\n        }\n      ],\n      \"function\": \"string\",\n      \"locals\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 9300\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": false,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 1740\n        }\n      ],\n      \"location\": {\n        \"column\": 9235,\n        \"endOfLine\": false,\n        \"lambdaIndex\": 2720,\n        \"line\": 9557,\n        \"path\": \"string\"\n      }\n    }\n  ],\n  \"variableTable\": [\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 5644,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 2321\n    },\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 1599,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 1402\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0611bbdb-3c1b-4b33-934b-bca15826d8b5",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots",
+                    "hit",
+                    ":hitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hitId",
+                      "description": "(Required) Hit ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actionId\": \"string\",\n  \"agentDisplayName\": \"string\",\n  \"agentId\": \"string\",\n  \"agentTags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"captureTime\": \"1990-01-06T12:14:46.090Z\",\n  \"evaluatedContext\": {\n    \"isEvaluatedExpression\": false,\n    \"name\": \"string\",\n    \"status\": {\n      \"description\": {\n        \"errorId\": 3091,\n        \"format\": \"string\",\n        \"parameters\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"isAccepted\": true,\n      \"isError\": true,\n      \"refersTo\": \"string\"\n    },\n    \"type\": \"string\",\n    \"value\": \"string\",\n    \"varTableIndex\": 5465\n  },\n  \"evaluatedContextExpressions\": [\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 9869,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 5855\n    },\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 981,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 4844\n    }\n  ],\n  \"evaluatedExpressions\": [\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 4241,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 1550\n    },\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 3149,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 6382\n    }\n  ],\n  \"id\": \"string\",\n  \"stackFrames\": [\n    {\n      \"arguments\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 585\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 5140\n        }\n      ],\n      \"function\": \"string\",\n      \"locals\": [\n        {\n          \"isEvaluatedExpression\": true,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 5328\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": false,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 3511\n        }\n      ],\n      \"location\": {\n        \"column\": 6901,\n        \"endOfLine\": true,\n        \"lambdaIndex\": 9003,\n        \"line\": 1738,\n        \"path\": \"string\"\n      }\n    },\n    {\n      \"arguments\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 4809\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 145\n        }\n      ],\n      \"function\": \"string\",\n      \"locals\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 9300\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": false,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 1740\n        }\n      ],\n      \"location\": {\n        \"column\": 9235,\n        \"endOfLine\": false,\n        \"lambdaIndex\": 2720,\n        \"line\": 9557,\n        \"path\": \"string\"\n      }\n    }\n  ],\n  \"variableTable\": [\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 5644,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 2321\n    },\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 1599,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 1402\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82a5dff1-304d-44cc-a6ed-90435dbc77cb",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots",
+                    "hit",
+                    ":hitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hitId",
+                      "description": "(Required) Hit ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actionId\": \"string\",\n  \"agentDisplayName\": \"string\",\n  \"agentId\": \"string\",\n  \"agentTags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"captureTime\": \"1990-01-06T12:14:46.090Z\",\n  \"evaluatedContext\": {\n    \"isEvaluatedExpression\": false,\n    \"name\": \"string\",\n    \"status\": {\n      \"description\": {\n        \"errorId\": 3091,\n        \"format\": \"string\",\n        \"parameters\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"isAccepted\": true,\n      \"isError\": true,\n      \"refersTo\": \"string\"\n    },\n    \"type\": \"string\",\n    \"value\": \"string\",\n    \"varTableIndex\": 5465\n  },\n  \"evaluatedContextExpressions\": [\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 9869,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 5855\n    },\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 981,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 4844\n    }\n  ],\n  \"evaluatedExpressions\": [\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 4241,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 1550\n    },\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 3149,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 6382\n    }\n  ],\n  \"id\": \"string\",\n  \"stackFrames\": [\n    {\n      \"arguments\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 585\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 5140\n        }\n      ],\n      \"function\": \"string\",\n      \"locals\": [\n        {\n          \"isEvaluatedExpression\": true,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 5328\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": false,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 3511\n        }\n      ],\n      \"location\": {\n        \"column\": 6901,\n        \"endOfLine\": true,\n        \"lambdaIndex\": 9003,\n        \"line\": 1738,\n        \"path\": \"string\"\n      }\n    },\n    {\n      \"arguments\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 4809\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": false,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 145\n        }\n      ],\n      \"function\": \"string\",\n      \"locals\": [\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": true,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 9300\n        },\n        {\n          \"isEvaluatedExpression\": false,\n          \"name\": \"string\",\n          \"status\": {\n            \"description\": {\n              \"errorId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"isAccepted\": false,\n            \"isError\": true,\n            \"refersTo\": \"string\"\n          },\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"varTableIndex\": 1740\n        }\n      ],\n      \"location\": {\n        \"column\": 9235,\n        \"endOfLine\": false,\n        \"lambdaIndex\": 2720,\n        \"line\": 9557,\n        \"path\": \"string\"\n      }\n    }\n  ],\n  \"variableTable\": [\n    {\n      \"isEvaluatedExpression\": true,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 5644,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": false,\n        \"isError\": true,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 2321\n    },\n    {\n      \"isEvaluatedExpression\": false,\n      \"name\": \"string\",\n      \"status\": {\n        \"description\": {\n          \"errorId\": 1599,\n          \"format\": \"string\",\n          \"parameters\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"isAccepted\": true,\n        \"isError\": false,\n        \"refersTo\": \"string\"\n      },\n      \"type\": \"string\",\n      \"value\": \"string\",\n      \"varTableIndex\": 1402\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57dbc117-1769-44de-952e-bc1f5f9d186c",
+          "name": "Get list of snapshot hits",
+          "request": {
+            "name": "Get list of snapshot hits",
+            "description": {
+              "content": "Get list of snapshot hits by action ID\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                "snapshots",
+                "hits",
+                ":actionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentName",
+                  "value": "<string>",
+                  "description": "Filter snapshot hits by agent name."
+                },
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>",
+                  "description": "Filter snapshot hits created from the specified timestamp in milliseconds since epoch."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagName",
+                  "value": "<string>",
+                  "description": "Filter snapshot hits by agent tag."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>",
+                  "description": "Filter snapshot hits created up to the specified timestamp in milliseconds since epoch."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "actionId",
+                  "description": "(Required) Snapshot action ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b49b08b7-c105-4596-a60e-b208fc06fd75",
+              "name": "Snapshot hits retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots",
+                    "hits",
+                    ":actionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "tagName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionId",
+                      "description": "(Required) Snapshot action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actionId\": \"string\",\n    \"agentDisplayName\": \"string\",\n    \"agentId\": \"string\",\n    \"agentTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"captureTime\": \"1988-06-03T05:47:30.154Z\",\n    \"id\": \"string\"\n  },\n  {\n    \"actionId\": \"string\",\n    \"agentDisplayName\": \"string\",\n    \"agentId\": \"string\",\n    \"agentTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"captureTime\": \"2010-05-21T21:04:34.420Z\",\n    \"id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87ad0bb3-d754-4e8c-ae5f-7a3d366e5f18",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots",
+                    "hits",
+                    ":actionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "tagName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionId",
+                      "description": "(Required) Snapshot action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actionId\": \"string\",\n    \"agentDisplayName\": \"string\",\n    \"agentId\": \"string\",\n    \"agentTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"captureTime\": \"1988-06-03T05:47:30.154Z\",\n    \"id\": \"string\"\n  },\n  {\n    \"actionId\": \"string\",\n    \"agentDisplayName\": \"string\",\n    \"agentId\": \"string\",\n    \"agentTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"captureTime\": \"2010-05-21T21:04:34.420Z\",\n    \"id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08471c56-6a8b-4e8a-89b2-72ecad6aa834",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots",
+                    "hits",
+                    ":actionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "tagName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "actionId",
+                      "description": "(Required) Snapshot action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actionId\": \"string\",\n    \"agentDisplayName\": \"string\",\n    \"agentId\": \"string\",\n    \"agentTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"captureTime\": \"1988-06-03T05:47:30.154Z\",\n    \"id\": \"string\"\n  },\n  {\n    \"actionId\": \"string\",\n    \"agentDisplayName\": \"string\",\n    \"agentId\": \"string\",\n    \"agentTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"captureTime\": \"2010-05-21T21:04:34.420Z\",\n    \"id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4094863b-ff9c-4eba-993f-7a419b7d1522",
+          "name": "Get a snapshot action by ID",
+          "request": {
+            "name": "Get a snapshot action by ID",
+            "description": {
+              "content": "Get a snapshot action by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                "snapshots",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Snapshot action ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "91feb765-8f6b-407d-b6e5-985427979734",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    "snapshots",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Snapshot action ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"agentPoolId\": \"string\",\n  \"agentsWithHitsCount\": 9358,\n  \"condition\": \"string\",\n  \"createdAt\": \"2005-08-28T20:11:06.738Z\",\n  \"createdBy\": \"string\",\n  \"enabled\": true,\n  \"errorsInfoList\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 1095,\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 7115,\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"expirationSeconds\": 8671,\n  \"expired\": true,\n  \"hitCount\": 2151,\n  \"id\": \"string\",\n  \"isMaxHitCountDistributed\": true,\n  \"line\": 3610,\n  \"location\": \"string\",\n  \"maxHitCount\": 2452,\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"status\": \"REQUESTED\",\n  \"updatedAt\": \"1959-07-07T08:46:20.834Z\",\n  \"versionControl\": {\n    \"branch\": \"string\",\n    \"commit\": \"string\",\n    \"headTags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"repo\": \"string\"\n  },\n  \"warningsInfoList\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"warningId\": 3046,\n      \"warningMessage\": \"string\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"warningId\": 9780,\n      \"warningMessage\": \"string\"\n    }\n  ],\n  \"watchExpressions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"webPortalPageLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbee3631-152c-47c7-920d-30847dc44560",
+          "name": "Delete an action",
+          "request": {
+            "name": "Delete an action",
+            "description": {
+              "content": "Delete an action.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "actions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Action-ID of the action to be deleted."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a06e75c-d113-4e47-ab32-f544db90bfb4",
+              "name": "Action deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Action-ID of the action to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cfcc6973-9199-4020-b112-ffd8a081c823",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Action-ID of the action to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1e9df8a-a4d7-4654-83c6-77c8fea69d02",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Action-ID of the action to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17297a94-532c-444f-8abe-43099a542641",
+              "name": "Action not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Action-ID of the action to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b9da4940-eea8-41f2-9b28-c4ece4aa5cdd",
+    "name": "Lightrun Actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

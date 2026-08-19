@@ -1,0 +1,536 @@
+{
+  "item": [
+    {
+      "id": "63fc03d8-607d-4c28-93b2-049ecd372cf7",
+      "name": "Identity Management (IdM) configuration",
+      "description": {
+        "content": "Identity Management (IdM) configuration API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae0bc395-df38-4402-a06e-a3fe1a170a51",
+          "name": "Get IdM authentication configuration",
+          "request": {
+            "name": "Get IdM authentication configuration",
+            "description": {
+              "content": "Get a JSON file with the current IdM authentication settings.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "configuration",
+                "idm",
+                "authentication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ecbff4b6-8cc9-4182-b297-97b7b0d92012",
+              "name": "Returns the complete authentication configuration for the IdM.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "idm",
+                    "authentication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentLoginMethod\": \"SSO\",\n  \"sso\": {\n    \"oidc\": {\n      \"clientId\": \"string\",\n      \"discoveryUrl\": \"string\",\n      \"redirectUrl\": \"https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint\"\n    },\n    \"protocol\": \"OIDC\",\n    \"saml\": {\n      \"entityId\": \"string\",\n      \"idpUrl\": \"string\",\n      \"redirectUrl\": \"https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e06eb6b8-df43-408e-9cdd-65f0ca98d86f",
+          "name": "Set IdM configuration",
+          "request": {
+            "name": "Set IdM configuration",
+            "description": {
+              "content": "Update the IdM authentication settings.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "configuration",
+                "idm",
+                "authentication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loginMethod\": \"<string>\",\n  \"ssoProtocolOptions\": {\n    \"protocol\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27842a43-e8b6-4487-b487-6ea5bd949bcd",
+              "name": "Update IdM configuration authentication settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "idm",
+                    "authentication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loginMethod\": \"SSO\",\n  \"ssoProtocolOptions\": {\n    \"protocol\": \"OIDC\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef9501f5-f3f4-4f75-958d-24c075beac31",
+              "name": "Bad request, Usually due to invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "idm",
+                    "authentication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loginMethod\": \"SSO\",\n  \"ssoProtocolOptions\": {\n    \"protocol\": \"OIDC\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d801696-0b7d-4ece-8b97-8fa0033b7eed",
+          "name": "Get IdM provisioning configuration",
+          "request": {
+            "name": "Get IdM provisioning configuration",
+            "description": {
+              "content": "Get a JSON file with the current IdM provisioning configuration settings.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "configuration",
+                "idm",
+                "provisioning"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f14b9c8-4d24-415f-b280-390db4bfcdb7",
+              "name": "Returns the complete IdM provisioning configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "idm",
+                    "provisioning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jitProvisionEnabled\": true,\n  \"scim\": {\n    \"createExistingUsersEnabled\": false,\n    \"enabled\": false,\n    \"endpointUrl\": \"https://some.host:8443/api/company/e582658d-ddaa-4987-90b4-8ed1910365d4/scim/v2\",\n    \"oauthAccessTokenUrl\": \"string\",\n    \"oauthAuthorizationUrl\": \"string\",\n    \"oauthClientId\": \"string\",\n    \"oauthClientSecret\": \"string\",\n    \"syncGroupsEnabled\": true,\n    \"syncRolesEnabled\": false\n  },\n  \"selfRegistrationAllowedDomains\": [\n    \"string\",\n    \"string\"\n  ],\n  \"selfRegistrationEnabled\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05295284-ad03-4c83-9862-bd699bcbdc5a",
+          "name": "Set IdM provisioning configuration",
+          "request": {
+            "name": "Set IdM provisioning configuration",
+            "description": {
+              "content": "Update the IdM configuration provisioning settings\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "configuration",
+                "idm",
+                "provisioning"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jitProvisionEnabled\": false,\n  \"scim\": {\n    \"createExistingUsersEnabled\": true,\n    \"enabled\": \"<boolean>\",\n    \"syncGroupsEnabled\": \"<boolean>\",\n    \"syncRolesEnabled\": \"<boolean>\"\n  },\n  \"selfRegistrationAllowedDomains\": \"[]\",\n  \"selfRegistrationEnabled\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a262180-645c-4db2-b1b5-12af4f2348c7",
+              "name": "Update IdM configuration provisioning settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "idm",
+                    "provisioning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jitProvisionEnabled\": false,\n  \"scim\": {\n    \"createExistingUsersEnabled\": true,\n    \"enabled\": false,\n    \"syncGroupsEnabled\": false,\n    \"syncRolesEnabled\": true\n  },\n  \"selfRegistrationAllowedDomains\": [\n    \"example.com\",\n    \"example.org\"\n  ],\n  \"selfRegistrationEnabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22cfe08f-3b45-4d38-b84a-0c8ae7581dd3",
+              "name": "Bad request, Usually due to invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "idm",
+                    "provisioning"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jitProvisionEnabled\": false,\n  \"scim\": {\n    \"createExistingUsersEnabled\": true,\n    \"enabled\": false,\n    \"syncGroupsEnabled\": false,\n    \"syncRolesEnabled\": true\n  },\n  \"selfRegistrationAllowedDomains\": [\n    \"example.com\",\n    \"example.org\"\n  ],\n  \"selfRegistrationEnabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "64d5b8c2-08ee-429d-91ec-20f0df94903f",
+    "name": "Lightrun Actions Identity Management (IdM) configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

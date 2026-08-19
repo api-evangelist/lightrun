@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions Debug Runbooks API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Debug Runbooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add runbook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/debug-cases/:caseId/runbooks",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "Case ID."
+              },
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "query",
+                "description": "Configuration ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add runbook.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Stop all runbooks by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8090/api/v1/debug-cases/:caseId/runbooks/stop-all",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "Case ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Stop all runbooks by IDs.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get a runbook by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/debug-cases/:caseId/runbooks/:runbookId",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "Case ID."
+              },
+              {
+                "name": "runbookId",
+                "value": "",
+                "type": "path",
+                "description": "Runbook ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a runbook by ID.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get a runbook method by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/debug-cases/:caseId/runbooks/:runbookId/method/:id",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "Case ID."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Runbook method ID."
+              },
+              {
+                "name": "runbookId",
+                "value": "",
+                "type": "path",
+                "description": "Runbook ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a runbook method by ID.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Start runbook by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8090/api/v1/debug-cases/:caseId/runbooks/:runbookId/start",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "Case ID."
+              },
+              {
+                "name": "runbookId",
+                "value": "",
+                "type": "path",
+                "description": "Runbook ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Start runbook by ID.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Stop runbook by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8090/api/v1/debug-cases/:caseId/runbooks/:runbookId/stop",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "Case ID."
+              },
+              {
+                "name": "runbookId",
+                "value": "",
+                "type": "path",
+                "description": "Runbook ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Stop runbook by ID.\n\n**Required API permission level:** `DEV`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

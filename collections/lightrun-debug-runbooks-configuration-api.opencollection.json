@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions Debug Runbooks Configuration API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Debug Runbooks Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of runbook configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/configuration/debug-runbooks",
+            "params": [
+              {
+                "name": "createdAt",
+                "value": "",
+                "type": "query",
+                "description": "Filter configurations by the creation date. Date format is <YYYY-MM-DD>. (UTC)"
+              },
+              {
+                "name": "createdBy",
+                "value": "",
+                "type": "query",
+                "description": "Filter configurations by the user created."
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "query",
+                "description": "Filter configurations by the filename."
+              },
+              {
+                "name": "methodName",
+                "value": "",
+                "type": "query",
+                "description": "Filter configurations by the method name."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter configurations by the name."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of all runbook configurations.\n\n**Required API permission level:** `DEV`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

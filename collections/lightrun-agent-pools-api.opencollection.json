@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions Agent Pools API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agent Pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of agent pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/agent-pools",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter agent pools by their name."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include on each page of results. The default is 20."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdDate, agentsEnabled."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of all agent pools.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Create an agent pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/agent-pools",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an agent pool.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get an agent pool by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/agent-pools/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agent pool ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get an agent pool by ID.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Update an agent pool by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8090/api/v1/agent-pools/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agent pool ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an agent pool by ID.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Delete an agent pool by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8090/api/v1/agent-pools/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agent pool ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an agent pool by ID. Will fail if there are live agents in the pool.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Detach (disable) agents in an agent pool by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8090/api/v1/agent-pools/:id/detach-agents",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agent pool ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Disables the agent pool by ID, disconnecting active agents and preventing new agents from joining.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Enable agents in an agent pool by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8090/api/v1/agent-pools/:id/enable-agents",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Agent pool ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Enable agents in an agent pool by ID.\n\n**Required API permission level:** `DEV`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

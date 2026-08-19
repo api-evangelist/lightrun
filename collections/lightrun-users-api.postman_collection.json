@@ -1,0 +1,1978 @@
+{
+  "item": [
+    {
+      "id": "b4424368-4980-435f-8c97-b30597f78e25",
+      "name": "Users",
+      "description": {
+        "content": "Users API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6c282df-cb9e-476e-95e8-385d5c239310",
+          "name": "Get a list of users",
+          "request": {
+            "name": "Get a list of users",
+            "description": {
+              "content": "Get a list of users.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeAccessAndPermissions",
+                  "value": "false",
+                  "description": "Fetch group memberships and agent pool permissions.\nRequires RBAC."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "Filter by role."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search by name or email."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The number of items to include on each page of results. The default is 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, email, userManagementType, createdBy, lastModifiedBy, lastModifiedDate, and lastLoginDate."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, email, userManagementType, createdBy, lastModifiedBy, lastModifiedDate, and lastLoginDate."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2ef7d06b-03a4-4512-be05-1bee1b4f97b7",
+              "name": "Users retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccessAndPermissions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"email\": \"YyNcS@LhazxqSodIUQbLwUsl.lx\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"activationLink\": \"string\",\n      \"agentPoolPermissions\": [\n        {\n          \"agentPoolId\": \"ad50205c-4344-3193-20a1-4fcc7e971197\",\n          \"permissions\": [\n            \"STANDARD\",\n            \"IGNORE_QUOTA\"\n          ]\n        },\n        {\n          \"agentPoolId\": \"ea89b776-ade5-fe50-8380-ff85b9d118c7\",\n          \"permissions\": [\n            \"STANDARD\",\n            \"STANDARD\"\n          ]\n        }\n      ],\n      \"createdBy\": \"e4aWIxyg@HKjSgHeKACMMjEjCUOilhNVpf.sd\",\n      \"createdDate\": \"1965-01-01T11:19:32.887Z\",\n      \"enabled\": true,\n      \"groupMemberships\": [\n        {\n          \"email\": \"k-LUaMUXBD2yZN@mEkWlYgJmfcszHcJfmfzmIRiPjTDLAlg.zq\",\n          \"groupAdmin\": true,\n          \"groupId\": \"5354891f-e9e5-e381-347a-c5fff89c2de4\"\n        },\n        {\n          \"email\": \"s2UXST@CMKqURUDUuXDnqgRSRnaTLAPTRPOChRA.qlwk\",\n          \"groupAdmin\": true,\n          \"groupId\": \"db0a1ece-af1d-2b60-8ccc-177453f50f0a\"\n        }\n      ],\n      \"id\": \"d40dee66-d691-f7be-ced3-e57ac6e2e3b1\",\n      \"initialActionInserted\": true,\n      \"lastLoginDate\": \"1992-06-05T14:33:46.031Z\",\n      \"lastModifiedBy\": \"SXNb84JKMDoJ@rXmEPawhrjOfLQPEVYsxOMbfvGEj.fq\",\n      \"lastModifiedDate\": \"1975-11-13T19:44:44.824Z\",\n      \"registerMethod\": \"USER_PASS\",\n      \"roles\": [\n        \"INCIDENT_RESPONDER\",\n        \"INCIDENT_RESPONDER\"\n      ],\n      \"userManagementType\": \"LDAP\"\n    },\n    {\n      \"email\": \"MA7l2o8w@ESWAnlgJZiTxg.mvqa\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"activationLink\": \"string\",\n      \"agentPoolPermissions\": [\n        {\n          \"agentPoolId\": \"884d4d33-7105-0810-6b19-34af61328091\",\n          \"permissions\": [\n            \"IGNORE_QUOTA\",\n            \"STANDARD\"\n          ]\n        },\n        {\n          \"agentPoolId\": \"1f4d3dbe-cb31-fa96-fa3f-78573e93db8a\",\n          \"permissions\": [\n            \"IGNORE_QUOTA\",\n            \"IGNORE_QUOTA\"\n          ]\n        }\n      ],\n      \"createdBy\": \"uNovKIak@RHIqDwGEkWJBNLSBGDTXNUPqHV.nfe\",\n      \"createdDate\": \"1963-01-28T20:11:53.282Z\",\n      \"enabled\": true,\n      \"groupMemberships\": [\n        {\n          \"email\": \"rkO@vESJgxtljlFGzFXSgsPSEfVgtIoqhV.gj\",\n          \"groupAdmin\": false,\n          \"groupId\": \"c1ab5670-3fb5-4053-f4fd-612aec84c6a2\"\n        },\n        {\n          \"email\": \"3hN66I@OhwNsvTkbXWTHIPWByVRTmR.vlq\",\n          \"groupAdmin\": true,\n          \"groupId\": \"68af5ac9-e26c-7cc0-693e-065d983c9d24\"\n        }\n      ],\n      \"id\": \"23df677b-5d44-1a07-d195-f2561e5694eb\",\n      \"initialActionInserted\": true,\n      \"lastLoginDate\": \"1964-10-18T22:35:29.616Z\",\n      \"lastModifiedBy\": \"dwiyXzBxGDDKkac@jRTHJAkhCCzuzGLtpNTCPCEj.ay\",\n      \"lastModifiedDate\": \"1979-05-22T23:17:26.684Z\",\n      \"registerMethod\": \"SSO_GOOGLE\",\n      \"roles\": [\n        \"SYSTEM_ADMIN\",\n        \"INCIDENT_RESPONDER\"\n      ],\n      \"userManagementType\": \"SCIM\"\n    }\n  ],\n  \"limit\": 9592,\n  \"offset\": 3469,\n  \"total\": 4948\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c315d4c3-5aae-4189-aba3-e9162fe4275c",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccessAndPermissions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"email\": \"YyNcS@LhazxqSodIUQbLwUsl.lx\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"activationLink\": \"string\",\n      \"agentPoolPermissions\": [\n        {\n          \"agentPoolId\": \"ad50205c-4344-3193-20a1-4fcc7e971197\",\n          \"permissions\": [\n            \"STANDARD\",\n            \"IGNORE_QUOTA\"\n          ]\n        },\n        {\n          \"agentPoolId\": \"ea89b776-ade5-fe50-8380-ff85b9d118c7\",\n          \"permissions\": [\n            \"STANDARD\",\n            \"STANDARD\"\n          ]\n        }\n      ],\n      \"createdBy\": \"e4aWIxyg@HKjSgHeKACMMjEjCUOilhNVpf.sd\",\n      \"createdDate\": \"1965-01-01T11:19:32.887Z\",\n      \"enabled\": true,\n      \"groupMemberships\": [\n        {\n          \"email\": \"k-LUaMUXBD2yZN@mEkWlYgJmfcszHcJfmfzmIRiPjTDLAlg.zq\",\n          \"groupAdmin\": true,\n          \"groupId\": \"5354891f-e9e5-e381-347a-c5fff89c2de4\"\n        },\n        {\n          \"email\": \"s2UXST@CMKqURUDUuXDnqgRSRnaTLAPTRPOChRA.qlwk\",\n          \"groupAdmin\": true,\n          \"groupId\": \"db0a1ece-af1d-2b60-8ccc-177453f50f0a\"\n        }\n      ],\n      \"id\": \"d40dee66-d691-f7be-ced3-e57ac6e2e3b1\",\n      \"initialActionInserted\": true,\n      \"lastLoginDate\": \"1992-06-05T14:33:46.031Z\",\n      \"lastModifiedBy\": \"SXNb84JKMDoJ@rXmEPawhrjOfLQPEVYsxOMbfvGEj.fq\",\n      \"lastModifiedDate\": \"1975-11-13T19:44:44.824Z\",\n      \"registerMethod\": \"USER_PASS\",\n      \"roles\": [\n        \"INCIDENT_RESPONDER\",\n        \"INCIDENT_RESPONDER\"\n      ],\n      \"userManagementType\": \"LDAP\"\n    },\n    {\n      \"email\": \"MA7l2o8w@ESWAnlgJZiTxg.mvqa\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"activationLink\": \"string\",\n      \"agentPoolPermissions\": [\n        {\n          \"agentPoolId\": \"884d4d33-7105-0810-6b19-34af61328091\",\n          \"permissions\": [\n            \"IGNORE_QUOTA\",\n            \"STANDARD\"\n          ]\n        },\n        {\n          \"agentPoolId\": \"1f4d3dbe-cb31-fa96-fa3f-78573e93db8a\",\n          \"permissions\": [\n            \"IGNORE_QUOTA\",\n            \"IGNORE_QUOTA\"\n          ]\n        }\n      ],\n      \"createdBy\": \"uNovKIak@RHIqDwGEkWJBNLSBGDTXNUPqHV.nfe\",\n      \"createdDate\": \"1963-01-28T20:11:53.282Z\",\n      \"enabled\": true,\n      \"groupMemberships\": [\n        {\n          \"email\": \"rkO@vESJgxtljlFGzFXSgsPSEfVgtIoqhV.gj\",\n          \"groupAdmin\": false,\n          \"groupId\": \"c1ab5670-3fb5-4053-f4fd-612aec84c6a2\"\n        },\n        {\n          \"email\": \"3hN66I@OhwNsvTkbXWTHIPWByVRTmR.vlq\",\n          \"groupAdmin\": true,\n          \"groupId\": \"68af5ac9-e26c-7cc0-693e-065d983c9d24\"\n        }\n      ],\n      \"id\": \"23df677b-5d44-1a07-d195-f2561e5694eb\",\n      \"initialActionInserted\": true,\n      \"lastLoginDate\": \"1964-10-18T22:35:29.616Z\",\n      \"lastModifiedBy\": \"dwiyXzBxGDDKkac@jRTHJAkhCCzuzGLtpNTCPCEj.ay\",\n      \"lastModifiedDate\": \"1979-05-22T23:17:26.684Z\",\n      \"registerMethod\": \"SSO_GOOGLE\",\n      \"roles\": [\n        \"SYSTEM_ADMIN\",\n        \"INCIDENT_RESPONDER\"\n      ],\n      \"userManagementType\": \"SCIM\"\n    }\n  ],\n  \"limit\": 9592,\n  \"offset\": 3469,\n  \"total\": 4948\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cbcf757-bc98-459e-a8c9-10d3c93721b1",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccessAndPermissions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"email\": \"YyNcS@LhazxqSodIUQbLwUsl.lx\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"activationLink\": \"string\",\n      \"agentPoolPermissions\": [\n        {\n          \"agentPoolId\": \"ad50205c-4344-3193-20a1-4fcc7e971197\",\n          \"permissions\": [\n            \"STANDARD\",\n            \"IGNORE_QUOTA\"\n          ]\n        },\n        {\n          \"agentPoolId\": \"ea89b776-ade5-fe50-8380-ff85b9d118c7\",\n          \"permissions\": [\n            \"STANDARD\",\n            \"STANDARD\"\n          ]\n        }\n      ],\n      \"createdBy\": \"e4aWIxyg@HKjSgHeKACMMjEjCUOilhNVpf.sd\",\n      \"createdDate\": \"1965-01-01T11:19:32.887Z\",\n      \"enabled\": true,\n      \"groupMemberships\": [\n        {\n          \"email\": \"k-LUaMUXBD2yZN@mEkWlYgJmfcszHcJfmfzmIRiPjTDLAlg.zq\",\n          \"groupAdmin\": true,\n          \"groupId\": \"5354891f-e9e5-e381-347a-c5fff89c2de4\"\n        },\n        {\n          \"email\": \"s2UXST@CMKqURUDUuXDnqgRSRnaTLAPTRPOChRA.qlwk\",\n          \"groupAdmin\": true,\n          \"groupId\": \"db0a1ece-af1d-2b60-8ccc-177453f50f0a\"\n        }\n      ],\n      \"id\": \"d40dee66-d691-f7be-ced3-e57ac6e2e3b1\",\n      \"initialActionInserted\": true,\n      \"lastLoginDate\": \"1992-06-05T14:33:46.031Z\",\n      \"lastModifiedBy\": \"SXNb84JKMDoJ@rXmEPawhrjOfLQPEVYsxOMbfvGEj.fq\",\n      \"lastModifiedDate\": \"1975-11-13T19:44:44.824Z\",\n      \"registerMethod\": \"USER_PASS\",\n      \"roles\": [\n        \"INCIDENT_RESPONDER\",\n        \"INCIDENT_RESPONDER\"\n      ],\n      \"userManagementType\": \"LDAP\"\n    },\n    {\n      \"email\": \"MA7l2o8w@ESWAnlgJZiTxg.mvqa\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"activationLink\": \"string\",\n      \"agentPoolPermissions\": [\n        {\n          \"agentPoolId\": \"884d4d33-7105-0810-6b19-34af61328091\",\n          \"permissions\": [\n            \"IGNORE_QUOTA\",\n            \"STANDARD\"\n          ]\n        },\n        {\n          \"agentPoolId\": \"1f4d3dbe-cb31-fa96-fa3f-78573e93db8a\",\n          \"permissions\": [\n            \"IGNORE_QUOTA\",\n            \"IGNORE_QUOTA\"\n          ]\n        }\n      ],\n      \"createdBy\": \"uNovKIak@RHIqDwGEkWJBNLSBGDTXNUPqHV.nfe\",\n      \"createdDate\": \"1963-01-28T20:11:53.282Z\",\n      \"enabled\": true,\n      \"groupMemberships\": [\n        {\n          \"email\": \"rkO@vESJgxtljlFGzFXSgsPSEfVgtIoqhV.gj\",\n          \"groupAdmin\": false,\n          \"groupId\": \"c1ab5670-3fb5-4053-f4fd-612aec84c6a2\"\n        },\n        {\n          \"email\": \"3hN66I@OhwNsvTkbXWTHIPWByVRTmR.vlq\",\n          \"groupAdmin\": true,\n          \"groupId\": \"68af5ac9-e26c-7cc0-693e-065d983c9d24\"\n        }\n      ],\n      \"id\": \"23df677b-5d44-1a07-d195-f2561e5694eb\",\n      \"initialActionInserted\": true,\n      \"lastLoginDate\": \"1964-10-18T22:35:29.616Z\",\n      \"lastModifiedBy\": \"dwiyXzBxGDDKkac@jRTHJAkhCCzuzGLtpNTCPCEj.ay\",\n      \"lastModifiedDate\": \"1979-05-22T23:17:26.684Z\",\n      \"registerMethod\": \"SSO_GOOGLE\",\n      \"roles\": [\n        \"SYSTEM_ADMIN\",\n        \"INCIDENT_RESPONDER\"\n      ],\n      \"userManagementType\": \"SCIM\"\n    }\n  ],\n  \"limit\": 9592,\n  \"offset\": 3469,\n  \"total\": 4948\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39b0edfb-eaec-4d61-bfd0-63a28b14fd7c",
+          "name": "Create a user",
+          "request": {
+            "name": "Create a user",
+            "description": {
+              "content": "Create a user.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "60989a1e-cf50-4de8-a0d5-e5edc1a9bb42",
+              "name": "User created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6308f820-9dfc-4dff-9fc8-9eeef764c7c6",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca920bbc-1349-4261-9d27-546dca39f382",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52556afa-fc69-40d1-8559-d9889e99b0bb",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b61ed80f-531c-445d-a85b-fab2aa4b1727",
+          "name": "Get a user by email",
+          "request": {
+            "name": "Get a user by email",
+            "description": {
+              "content": "Get a user by email.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeAccessAndPermissions",
+                  "value": "false",
+                  "description": "Fetch group memberships and agent pool permissions.\nRequires RBAC."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) Email."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f016085f-cf9c-4be5-8c6f-01ae778535c9",
+              "name": "User retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccessAndPermissions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4f30a0f-b488-4cc8-9a7d-8833557402db",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccessAndPermissions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fb8e99a-1738-4663-bdfc-57aefd53f4c0",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccessAndPermissions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ada98eb-f7da-4509-a5af-02b5d38d658b",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAccessAndPermissions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17c88dcb-f560-4906-8a7a-39235449e664",
+          "name": "Update a user",
+          "request": {
+            "name": "Update a user",
+            "description": {
+              "content": "Update a user.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) Email."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3c3d1e1-d79e-44db-8218-7f22e2eb3fa4",
+              "name": "User updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fddce3c5-8a92-489e-b304-74d37725cbc9",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ce47313-65bc-434d-b2b6-e81472f8daac",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5984096-3a50-4730-af4e-224f24dc3d80",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"AVymryoXW@LhJrKMgyPsuuAkBFmtIUlTaDqclWXp.zh\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"activationLink\": \"string\",\n  \"agentPoolPermissions\": [\n    {\n      \"agentPoolId\": \"b8118ae8-4938-9eca-38ce-74f8b4f6e728\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    },\n    {\n      \"agentPoolId\": \"e514d74e-1829-6139-4125-4b8b60dbe28c\",\n      \"permissions\": [\n        \"STANDARD\",\n        \"IGNORE_QUOTA\"\n      ]\n    }\n  ],\n  \"createdBy\": \"FR8trLsSijA@nUcZPeJN.dlww\",\n  \"createdDate\": \"2022-10-12T04:12:35.172Z\",\n  \"enabled\": false,\n  \"groupMemberships\": [\n    {\n      \"email\": \"oeUrAYVVUrM@DjNVkxHMXZNDSh.tytc\",\n      \"groupAdmin\": true,\n      \"groupId\": \"2df8fa9d-6e90-8ecc-af42-f3d5be71d168\"\n    },\n    {\n      \"email\": \"GbuyQpXBNavrI@MgHuZfld.xgk\",\n      \"groupAdmin\": false,\n      \"groupId\": \"7d16297c-cc12-d9c8-ef85-532cc261390b\"\n    }\n  ],\n  \"id\": \"bdaf94b3-513e-e490-1fb3-4d9f169ddcd5\",\n  \"initialActionInserted\": false,\n  \"lastLoginDate\": \"2008-03-16T00:52:25.486Z\",\n  \"lastModifiedBy\": \"VRTN0rO4jUmWoGI@OQhq.xj\",\n  \"lastModifiedDate\": \"2009-07-05T08:26:56.054Z\",\n  \"registerMethod\": \"SSO_GOOGLE\",\n  \"roles\": [\n    \"INCIDENT_RESPONDER\",\n    \"GROUP_ADMIN\"\n  ],\n  \"userManagementType\": \"LDAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b63c2c3-3f31-4342-8187-a48395d06ead",
+          "name": "Delete a user",
+          "request": {
+            "name": "Delete a user",
+            "description": {
+              "content": "Delete a user.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) Email."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f612138e-ad28-4711-85ab-368c7f17d985",
+              "name": "User deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "023260f1-4fd8-4f8c-bea4-12e05e88c2d6",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd04a569-5bc8-4826-a2e5-bedfffee5bb4",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9fb3f9f-544d-43c3-bf5f-245cb0ccb10f",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2552870c-01ff-4c00-b68c-a00a34f403c3",
+          "name": "Disable a user",
+          "request": {
+            "name": "Disable a user",
+            "description": {
+              "content": "Disable a user.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":email",
+                "disable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) Email."
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "72106013-691e-4945-b7e6-6f8188d53490",
+              "name": "User disabled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08097bde-bc3a-4b04-93b4-974dd4a2dc8f",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f88604b3-4b68-459d-9ee7-e1b6e8f139c1",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28fde679-b172-4434-869a-a55f19d9911f",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5186bb0-8eeb-463e-9788-39372b21aec7",
+          "name": "Enable a user",
+          "request": {
+            "name": "Enable a user",
+            "description": {
+              "content": "Enable a user.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "users",
+                ":email",
+                "enable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) Email."
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa4cee2f-750c-4b87-a15a-65735d302655",
+              "name": "User enabled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1a5413e0-c7ca-4fc5-b64b-c43a18a3a5f8",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a6af2cf-1103-4777-b584-f21003e77aca",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "478be69b-3c1d-4ae3-93da-c22d5482fa0b",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "users",
+                    ":email",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7453ff23-39a9-4d99-997a-2aaea95e8182",
+    "name": "Lightrun Actions Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

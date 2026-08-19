@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions System access API key API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System access API key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all system API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/access/company/:company/system-api-key",
+            "params": [
+              {
+                "name": "company",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the company for which to fetch the system API keys."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a listing of all system API keys for the specified company\n\n**Required API permission level:** `COMPANY`"
+        },
+        {
+          "info": {
+            "name": "Create a new system API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/access/company/:company/system-api-key",
+            "params": [
+              {
+                "name": "company",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the company for which to add the system API keys."
+              },
+              {
+                "name": "expirationDays",
+                "value": "",
+                "type": "query",
+                "description": "The expiration date of the system API key in days"
+              },
+              {
+                "name": "label",
+                "value": "",
+                "type": "query",
+                "description": "The label of the system API key"
+              },
+              {
+                "name": "scopes",
+                "value": "",
+                "type": "query",
+                "description": "List of scopes (COMPANY,ENVIRONMENT,APP_SEC). Defaults to all scopes if not provided."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new system API key for the specified company\n\n**Required API permission level:** `COMPANY`"
+        },
+        {
+          "info": {
+            "name": "Update the label of a system API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8090/api/v1/access/company/:company/system-api-key/:id",
+            "params": [
+              {
+                "name": "company",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the company for which to update the system API keys."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the system API key to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the label of a system API key for the specified company\n\n**Required API permission level:** `COMPANY`"
+        },
+        {
+          "info": {
+            "name": "Delete a system API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8090/api/v1/access/company/:company/system-api-key/:id",
+            "params": [
+              {
+                "name": "company",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the company for which to delete the system API keys."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the system API key to delete"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a system API key for the specified company\n\n**Required API permission level:** `COMPANY`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

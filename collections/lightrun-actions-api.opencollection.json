@@ -1,0 +1,409 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/actions",
+            "params": [
+              {
+                "name": "actionType",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions by their type. Type can be any one of the enumerated values."
+              },
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "createdAtAfter",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions created after the specified date. Date format is <YYYY-MM-DD>."
+              },
+              {
+                "name": "createdAtBefore",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions created before the specified date. Date format is <YYYY-MM-DD>. (UTC)"
+              },
+              {
+                "name": "createdBy",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions created by the specified user or API key. Users are identified by their email address."
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions by their state. State can be either ‘true’ (enabled) or ‘false’ (disabled)."
+              },
+              {
+                "name": "expired",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions by their expiration state. Expiration state can be either ‘true’ (expired) or ‘false’ (disabled)."
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions by the file on which they were set. Files are indicated by their full path, as provided in the action’s creation. This filter supports * as a wildcard to match multiple file names with a common pattern."
+              },
+              {
+                "name": "hasErrors",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions which have any errors. The flag can be either ‘true’ (with errors) or ‘false’ (without errors)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
+              },
+              {
+                "name": "resultsExist",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions based on whether results have (true) or haven’t (false) been captured for them."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include on each page of results. The default is 20."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: location, line, createdAt."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter actions by status. Status can be any one of the enumerated values."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of actions.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Create a log action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/actions/logs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a log action.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get log messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/actions/logs/:actionId/messages",
+            "params": [
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "Log action ID."
+              },
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by agent ID."
+              },
+              {
+                "name": "agentName",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by agent name."
+              },
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "freeText",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by free text found in log data or agent ID."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs created from the specified timestamp in milliseconds since epoch."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to include on each page of results. The default is 20."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc)."
+              },
+              {
+                "name": "tagName",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by agent tag."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs created up to the specified timestamp in milliseconds since epoch."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get list of agent log messages by action id.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get a log action by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/actions/logs/:id",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Log action ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a log action by ID.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Create a snapshot action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/actions/snapshots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a snapshot action.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get snapshot hit data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/actions/snapshots/hit/:hitId",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "hitId",
+                "value": "",
+                "type": "path",
+                "description": "Hit ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get snapshot hit data by id\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get list of snapshot hits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/actions/snapshots/hits/:actionId",
+            "params": [
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "Snapshot action ID."
+              },
+              {
+                "name": "agentName",
+                "value": "",
+                "type": "query",
+                "description": "Filter snapshot hits by agent name."
+              },
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter snapshot hits created from the specified timestamp in milliseconds since epoch."
+              },
+              {
+                "name": "tagName",
+                "value": "",
+                "type": "query",
+                "description": "Filter snapshot hits by agent tag."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter snapshot hits created up to the specified timestamp in milliseconds since epoch."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get list of snapshot hits by action ID\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Get a snapshot action by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/actions/snapshots/:id",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Snapshot action ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a snapshot action by ID.\n\n**Required API permission level:** `DEV`"
+        },
+        {
+          "info": {
+            "name": "Delete an action",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8090/api/v1/actions/:id",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Action-ID of the action to be deleted."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an action.\n\n**Required API permission level:** `DEV`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

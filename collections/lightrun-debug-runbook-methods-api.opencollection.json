@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions Debug Runbook methods API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Debug Runbook methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a runbook method by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/debug-cases/:caseId/runbooks/:runbookId/method/:id",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+              },
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "Case ID."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Runbook method ID."
+              },
+              {
+                "name": "runbookId",
+                "value": "",
+                "type": "path",
+                "description": "Runbook ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a runbook method by ID.\n\n**Required API permission level:** `DEV`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

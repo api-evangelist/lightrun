@@ -1,0 +1,437 @@
+{
+  "item": [
+    {
+      "id": "9cff964d-d562-4251-b46a-6f3e762329a5",
+      "name": "Debug Cases",
+      "description": {
+        "content": "Debug Cases API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1d64da91-9d06-4732-8bd1-a10d884c88f3",
+          "name": "Get a list of cases",
+          "request": {
+            "name": "Get a list of cases",
+            "description": {
+              "content": "Get a list of all debug cases.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt",
+                  "value": "<date>",
+                  "description": "Filter cases by the creation date. Date format is <YYYY-MM-DD>. (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBy",
+                  "value": "<string>",
+                  "description": "Filter cases by the user created."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The number of items to include on each page of results. The default is 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdAt."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdAt."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "238b47ef-77fb-416b-bbe9-8d946392ff03",
+              "name": "Retrieved all matching cases.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "createdBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"createdAt\": \"2022-08-11T19:52:56.545Z\",\n      \"createdBy\": \"NTxe-oQhQ4EreR@RuSWqSTC.piml\",\n      \"description\": \"string\",\n      \"hitCount\": 5882,\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"runbooksIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": {\n        \"id\": \"string\",\n        \"type\": \"AGENT\"\n      },\n      \"updatedAt\": \"1989-04-15T00:23:51.625Z\",\n      \"updatedBy\": \"irN-yjUr@Icrvtdo.yqgx\",\n      \"webPortalPageLink\": \"string\"\n    },\n    {\n      \"createdAt\": \"1982-11-17T13:21:35.669Z\",\n      \"createdBy\": \"cEfwNzfIE@AdPqqElesaMF.ilca\",\n      \"description\": \"string\",\n      \"hitCount\": 2642,\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"runbooksIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": {\n        \"id\": \"string\",\n        \"type\": \"TAG\"\n      },\n      \"updatedAt\": \"1960-08-13T04:19:07.651Z\",\n      \"updatedBy\": \"EEqxONnXYC045g3@DEfxykGEgSiFoDDiZLazR.uv\",\n      \"webPortalPageLink\": \"string\"\n    }\n  ],\n  \"limit\": 4189,\n  \"offset\": 7793,\n  \"total\": 2855\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f18e13bd-cd66-4b5c-bca5-11de3074b3c6",
+          "name": "Create a case",
+          "request": {
+            "name": "Create a case",
+            "description": {
+              "content": "Create a case.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06049372-8006-4b4e-8f73-03d5d4c302fc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"AGENT\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2006-11-01T07:58:33.960Z\",\n  \"createdBy\": \"zxYG0G@PpgJwSIXCKsiMzsuDyoMAcRzQuxDJcHKI.mgo\",\n  \"description\": \"string\",\n  \"hitCount\": 4860,\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"runbooksIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"TAG\"\n  },\n  \"updatedAt\": \"1970-01-10T23:09:23.405Z\",\n  \"updatedBy\": \"WPR46t@vgQVSDdAAaOlWEOtrkhxN.kuzd\",\n  \"webPortalPageLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "333d16be-bd8c-4f47-8394-1860a1814c34",
+          "name": "Get a case by ID",
+          "request": {
+            "name": "Get a case by ID",
+            "description": {
+              "content": "Get a case by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Case ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "982c5769-d62f-457e-b362-6d468bd277f2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Case ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2006-11-01T07:58:33.960Z\",\n  \"createdBy\": \"zxYG0G@PpgJwSIXCKsiMzsuDyoMAcRzQuxDJcHKI.mgo\",\n  \"description\": \"string\",\n  \"hitCount\": 4860,\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"runbooksIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"TAG\"\n  },\n  \"updatedAt\": \"1970-01-10T23:09:23.405Z\",\n  \"updatedBy\": \"WPR46t@vgQVSDdAAaOlWEOtrkhxN.kuzd\",\n  \"webPortalPageLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "04b8c0a1-48ad-4d9c-a051-b2d4b67c1414",
+    "name": "Lightrun Actions Debug Cases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

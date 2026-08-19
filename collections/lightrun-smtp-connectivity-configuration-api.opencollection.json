@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions SMTP connectivity configuration API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMTP connectivity configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SMTP connectivity configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/configuration/connectivity/smtp",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a JSON file with the current Lightrun SMTP connectivity configuration settings.\n\n**Required API permission level:** `COMPANY`"
+        },
+        {
+          "info": {
+            "name": "Set SMTP connectivity configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/configuration/connectivity/smtp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set the Lightrun SMTP connectivity configuration settings.\n\n**Required API permission level:** `COMPANY`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

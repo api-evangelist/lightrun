@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions Identity Management (IdM) configuration API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity Management (IdM) configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get IdM authentication configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/configuration/idm/authentication",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a JSON file with the current IdM authentication settings.\n\n**Required API permission level:** `COMPANY`"
+        },
+        {
+          "info": {
+            "name": "Set IdM configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/configuration/idm/authentication",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the IdM authentication settings.\n\n**Required API permission level:** `COMPANY`"
+        },
+        {
+          "info": {
+            "name": "Get IdM provisioning configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/configuration/idm/provisioning",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a JSON file with the current IdM provisioning configuration settings.\n\n**Required API permission level:** `COMPANY`"
+        },
+        {
+          "info": {
+            "name": "Set IdM provisioning configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8090/api/v1/configuration/idm/provisioning",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the IdM configuration provisioning settings\n\n**Required API permission level:** `COMPANY`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

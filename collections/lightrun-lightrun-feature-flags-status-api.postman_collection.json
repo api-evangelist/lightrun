@@ -1,0 +1,315 @@
+{
+  "item": [
+    {
+      "id": "f6b197f0-ffc7-43cd-a33f-c0a0bf198581",
+      "name": "Lightrun feature flags status",
+      "description": {
+        "content": "Lightrun feature flags status API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "946a5e3e-7c55-4fe1-a3f1-60933723d79d",
+          "name": "Get Lightrun system feature configuration",
+          "request": {
+            "name": "Get Lightrun system feature configuration",
+            "description": {
+              "content": "Get a JSON file with the current Lightrun feature flags toggle status.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "configuration",
+                "feature",
+                "toggle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<string>",
+                  "description": "Company ID for which to read the feature configuration. Required for non-single-tenant deployments"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b001ce92-197e-4282-8c38-4775c55f39ad",
+              "name": "Lightrun feature flags toggle status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "feature",
+                    "toggle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "company",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"FEATURE_1\": \"ENABLED\",\n  \"FEATURE_2\": \"DISABLED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b099108a-3d73-4fa2-8cb7-99f6bbf8a059",
+          "name": "Update Lightrun feature flag toggle status",
+          "request": {
+            "name": "Update Lightrun feature flag toggle status",
+            "description": {
+              "content": "Update the Lightrun feature flags toggle status.\n\n**Required API permission level:** `COMPANY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "configuration",
+                "feature",
+                "toggle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "(Required) Signature for the request content",
+                    "type": "text/plain"
+                  },
+                  "key": "signature",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expirationDays\": \"<long>\",\n  \"features\": {\n    \"empty\": \"<boolean>\",\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"organizationId\": \"<string>\",\n  \"account\": \"<string>\",\n  \"businessUnit\": \"<string>\",\n  \"deployment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab80d872-3dc1-4f23-9cdf-0efca5ec517f",
+              "name": "Lightrun feature flag status updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "feature",
+                    "toggle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "signature",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expirationDays\": 90,\n  \"features\": {\n    \"FEATURE_1\": \"ENABLED\",\n    \"FEATURE_2\": \"DISABLED\"\n  },\n  \"organizationId\": \"org123\",\n  \"account\": \"account123\",\n  \"businessUnit\": \"BU123\",\n  \"deployment\": \"deployment123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58dc8f58-112d-4085-9300-2b7e83022c77",
+              "name": "Bad request, Usually due to invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "feature",
+                    "toggle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "signature",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expirationDays\": 90,\n  \"features\": {\n    \"FEATURE_1\": \"ENABLED\",\n    \"FEATURE_2\": \"DISABLED\"\n  },\n  \"organizationId\": \"org123\",\n  \"account\": \"account123\",\n  \"businessUnit\": \"BU123\",\n  \"deployment\": \"deployment123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9f382efc-416e-4e4c-9f14-9f639fff72b9",
+    "name": "Lightrun Actions Lightrun feature flags status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,477 @@
+{
+  "item": [
+    {
+      "id": "7b5e991e-ac3b-4cbb-861a-7b810ed522c9",
+      "name": "Loaded packages",
+      "description": {
+        "content": "Loaded packages API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "016837bd-d973-47ba-9f5e-76f08696ecaa",
+          "name": "Get an array of loaded packages",
+          "request": {
+            "name": "Get an array of loaded packages",
+            "description": {
+              "content": "Get an array of loaded packages.\n\n**Required API permission level:** `SECURITY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "loaded-packages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "loadDateEnd",
+                  "value": "<date>",
+                  "description": "Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "loadDateStart",
+                  "value": "<date>",
+                  "description": "Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "packageNames",
+                  "value": "<string>",
+                  "description": "Filter packages by package names."
+                },
+                {
+                  "disabled": false,
+                  "key": "packageNames",
+                  "value": "<string>",
+                  "description": "Filter packages by package names."
+                },
+                {
+                  "disabled": false,
+                  "key": "packageVersions",
+                  "value": "<string>",
+                  "description": "Filter packages by package versions."
+                },
+                {
+                  "disabled": false,
+                  "key": "packageVersions",
+                  "value": "<string>",
+                  "description": "Filter packages by package versions."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Specify the status of packages for filtering: active, inactive, pending."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Specify the status of packages for filtering: active, inactive, pending."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f1d06d4-6c4e-452d-bdd3-d7cb042cfd63",
+              "name": "Loaded packages retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "loaded-packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "loadDateEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "loadDateStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"classes\": [\n        {\n          \"name\": \"string\",\n          \"status\": \"LOADED\"\n        },\n        {\n          \"name\": \"string\",\n          \"status\": \"NOT_LOADED\"\n        }\n      ],\n      \"packageName\": \"string\",\n      \"status\": \"NOT_LOADED\",\n      \"type\": \"JAVA\",\n      \"version\": \"string\"\n    },\n    {\n      \"classes\": [\n        {\n          \"name\": \"string\",\n          \"status\": \"NOT_LOADED\"\n        },\n        {\n          \"name\": \"string\",\n          \"status\": \"LOADED\"\n        }\n      ],\n      \"packageName\": \"string\",\n      \"status\": \"LOADED_WITH_CLASSES\",\n      \"type\": \"JAVA\",\n      \"version\": \"string\"\n    }\n  ],\n  \"limit\": 847,\n  \"offset\": 4305,\n  \"total\": 7682\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d368466-8d55-4592-b8f2-d72755f41d4e",
+              "name": "Invalid input or object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "loaded-packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "loadDateEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "loadDateStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae74a54e-8095-486e-84d5-32fe77efa845",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "loaded-packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "loadDateEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "loadDateStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2f352d62-9443-4202-a589-e0164ea36d5a",
+    "name": "Lightrun Actions Loaded packages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

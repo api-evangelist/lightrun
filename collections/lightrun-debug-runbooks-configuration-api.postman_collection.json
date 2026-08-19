@@ -1,0 +1,176 @@
+{
+  "item": [
+    {
+      "id": "21a52c97-6229-4ced-ba51-8b1f088c704f",
+      "name": "Debug Runbooks Configuration",
+      "description": {
+        "content": "Debug Runbooks Configuration API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe6f8c90-6c69-49a4-b89b-ccceb0abcdb7",
+          "name": "Get a list of runbook configurations",
+          "request": {
+            "name": "Get a list of runbook configurations",
+            "description": {
+              "content": "Get a list of all runbook configurations.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "configuration",
+                "debug-runbooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "createdAt",
+                  "value": "<date>",
+                  "description": "Filter configurations by the creation date. Date format is <YYYY-MM-DD>. (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBy",
+                  "value": "<string>",
+                  "description": "Filter configurations by the user created."
+                },
+                {
+                  "disabled": false,
+                  "key": "filename",
+                  "value": "<string>",
+                  "description": "Filter configurations by the filename."
+                },
+                {
+                  "disabled": false,
+                  "key": "methodName",
+                  "value": "<string>",
+                  "description": "Filter configurations by the method name."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter configurations by the name."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0ea3a58b-c376-4c30-a77a-8b08117d5a46",
+              "name": "Retrieved matching configurations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "configuration",
+                    "debug-runbooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAt",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "createdBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "methodName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"arguments\": [\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"variableName\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"variableName\": \"string\"\n      }\n    ],\n    \"createdAt\": \"1956-04-10T14:03:49.955Z\",\n    \"createdBy\": \"4YMGufWG@mDYvKqINQLsRxBUsPrHopuJHiY.janl\",\n    \"expirationDurationMinutes\": 6178,\n    \"id\": \"string\",\n    \"methodConfigurations\": [\n      {\n        \"condition\": \"string\",\n        \"filename\": \"string\",\n        \"maxResults\": 8014,\n        \"methodName\": \"string\",\n        \"methodTimeoutSeconds\": 5630\n      },\n      {\n        \"condition\": \"string\",\n        \"filename\": \"string\",\n        \"maxResults\": 7596,\n        \"methodName\": \"string\",\n        \"methodTimeoutSeconds\": 8798\n      }\n    ],\n    \"name\": \"string\",\n    \"updatedAt\": \"2013-11-24T19:01:39.404Z\"\n  },\n  {\n    \"arguments\": [\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"variableName\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"variableName\": \"string\"\n      }\n    ],\n    \"createdAt\": \"2005-09-06T21:00:40.198Z\",\n    \"createdBy\": \"cc1L@JAIvnRWnKYIzlNVCqzXtAWNTxUR.gw\",\n    \"expirationDurationMinutes\": 6486,\n    \"id\": \"string\",\n    \"methodConfigurations\": [\n      {\n        \"condition\": \"string\",\n        \"filename\": \"string\",\n        \"maxResults\": 9928,\n        \"methodName\": \"string\",\n        \"methodTimeoutSeconds\": 9417\n      },\n      {\n        \"condition\": \"string\",\n        \"filename\": \"string\",\n        \"maxResults\": 8679,\n        \"methodName\": \"string\",\n        \"methodTimeoutSeconds\": 6172\n      }\n    ],\n    \"name\": \"string\",\n    \"updatedAt\": \"2021-05-27T07:07:18.923Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bbc003cf-b9e8-4761-aa16-28f8d91a89b2",
+    "name": "Lightrun Actions Debug Runbooks Configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

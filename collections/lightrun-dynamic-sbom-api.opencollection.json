@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions Dynamic SBOM API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dynamic SBOM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a software bill of materials (SBOM)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/sbom",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query",
+                "description": "Agent pool ID, required if multiple agent pools configured."
+              },
+              {
+                "name": "creationTime",
+                "value": "",
+                "type": "query",
+                "description": "Timestamp of when the SBOM was created. Format is <YYYY-MM-DD>. (UTC)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Get SBOM in the selected data format."
+              },
+              {
+                "name": "packageNames",
+                "value": "",
+                "type": "query",
+                "description": "Filter SBOM by package name/s."
+              },
+              {
+                "name": "packageVersions",
+                "value": "",
+                "type": "query",
+                "description": "Filter SBOM by package version/s."
+              },
+              {
+                "name": "sbomPackageName",
+                "value": "",
+                "type": "query",
+                "description": "Package name."
+              },
+              {
+                "name": "sbomSupplierName",
+                "value": "",
+                "type": "query",
+                "description": "Package supplier."
+              },
+              {
+                "name": "sbomVersion",
+                "value": "",
+                "type": "query",
+                "description": "Package version."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filters packages based on a distinct combination of tags assigned to the hosts that loaded them."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a software bill of materials (SBOM).\n\n**Required API permission level:** `SECURITY`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,424 @@
+{
+  "item": [
+    {
+      "id": "9f449cea-fc85-4631-a78a-d55f272a9a9f",
+      "name": "Dynamic SBOM",
+      "description": {
+        "content": "Dynamic SBOM API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "898874f6-07c7-4c77-a853-fd2684f42331",
+          "name": "Get a software bill of materials (SBOM)",
+          "request": {
+            "name": "Get a software bill of materials (SBOM)",
+            "description": {
+              "content": "Get a software bill of materials (SBOM).\n\n**Required API permission level:** `SECURITY`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sbom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID, required if multiple agent pools configured."
+                },
+                {
+                  "disabled": false,
+                  "key": "creationTime",
+                  "value": "<date>",
+                  "description": "(Required) Timestamp of when the SBOM was created. Format is <YYYY-MM-DD>. (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "(Required) Get SBOM in the selected data format."
+                },
+                {
+                  "disabled": false,
+                  "key": "packageNames",
+                  "value": "<string>",
+                  "description": "Filter SBOM by package name/s."
+                },
+                {
+                  "disabled": false,
+                  "key": "packageNames",
+                  "value": "<string>",
+                  "description": "Filter SBOM by package name/s."
+                },
+                {
+                  "disabled": false,
+                  "key": "packageVersions",
+                  "value": "<string>",
+                  "description": "Filter SBOM by package version/s."
+                },
+                {
+                  "disabled": false,
+                  "key": "packageVersions",
+                  "value": "<string>",
+                  "description": "Filter SBOM by package version/s."
+                },
+                {
+                  "disabled": false,
+                  "key": "sbomPackageName",
+                  "value": "<string>",
+                  "description": "(Required) Package name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sbomSupplierName",
+                  "value": "<string>",
+                  "description": "(Required) Package supplier."
+                },
+                {
+                  "disabled": false,
+                  "key": "sbomVersion",
+                  "value": "<string>",
+                  "description": "(Required) Package version."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filters packages based on a distinct combination of tags assigned to the hosts that loaded them."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filters packages based on a distinct combination of tags assigned to the hosts that loaded them."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "57b72ebe-c713-4b75-8dfe-1dd822f16e64",
+              "name": "SBOM generated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sbom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationTime",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomPackageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomSupplierName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SPDXID\": \"string\",\n  \"creationInfo\": {\n    \"created\": \"string\",\n    \"creators\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"dataLicense\": \"string\",\n  \"documentNamespace\": \"string\",\n  \"name\": \"string\",\n  \"packages\": [\n    {\n      \"SPDXID\": \"string\",\n      \"copyrightText\": \"string\",\n      \"downloadLocation\": \"string\",\n      \"externalRefs\": [\n        {\n          \"referenceCategory\": \"string\",\n          \"referenceLocator\": \"string\",\n          \"referenceType\": \"string\"\n        },\n        {\n          \"referenceCategory\": \"string\",\n          \"referenceLocator\": \"string\",\n          \"referenceType\": \"string\"\n        }\n      ],\n      \"filesAnalyzed\": true,\n      \"licenseConcluded\": \"string\",\n      \"licenseDeclared\": \"string\",\n      \"name\": \"string\",\n      \"packageFileName\": \"string\",\n      \"supplier\": \"string\",\n      \"versionInfo\": \"string\"\n    },\n    {\n      \"SPDXID\": \"string\",\n      \"copyrightText\": \"string\",\n      \"downloadLocation\": \"string\",\n      \"externalRefs\": [\n        {\n          \"referenceCategory\": \"string\",\n          \"referenceLocator\": \"string\",\n          \"referenceType\": \"string\"\n        },\n        {\n          \"referenceCategory\": \"string\",\n          \"referenceLocator\": \"string\",\n          \"referenceType\": \"string\"\n        }\n      ],\n      \"filesAnalyzed\": true,\n      \"licenseConcluded\": \"string\",\n      \"licenseDeclared\": \"string\",\n      \"name\": \"string\",\n      \"packageFileName\": \"string\",\n      \"supplier\": \"string\",\n      \"versionInfo\": \"string\"\n    }\n  ],\n  \"relationships\": [\n    {\n      \"comment\": \"string\",\n      \"relatedSpdxElement\": \"string\",\n      \"relationshipType\": \"DESCRIBES\",\n      \"spdxElementId\": \"string\"\n    },\n    {\n      \"comment\": \"string\",\n      \"relatedSpdxElement\": \"string\",\n      \"relationshipType\": \"RUNTIME_DEPENDENCY_OF\",\n      \"spdxElementId\": \"string\"\n    }\n  ],\n  \"spdxVersion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07331ec5-a3ca-41c8-b47e-fad36359f6cd",
+              "name": "A required attribute of the API request is missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sbom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationTime",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomPackageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomSupplierName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "379cf8b7-15e9-4c89-b4fd-2768d6f837ad",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sbom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationTime",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "packageVersions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomPackageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomSupplierName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sbomVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "131a1f78-3c78-4c53-b0c1-9ef101711750",
+    "name": "Lightrun Actions Dynamic SBOM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

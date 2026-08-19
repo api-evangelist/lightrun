@@ -1,0 +1,188 @@
+{
+  "item": [
+    {
+      "id": "a6844d16-269b-427e-9d23-831be072dfea",
+      "name": "Debug Runbook methods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d177e66-44a1-43db-a6ea-b7f85510e2b1",
+          "name": "Get a runbook method by ID",
+          "request": {
+            "name": "Get a runbook method by ID",
+            "description": {
+              "content": "Get a runbook method by ID.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "debug-cases",
+                ":caseId",
+                "runbooks",
+                ":runbookId",
+                "method",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agentPoolId",
+                  "value": "<string>",
+                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Runbook method ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "runbookId",
+                  "description": "(Required) Runbook ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8d5ca33d-5b24-4756-96aa-7da3a0e84296",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "debug-cases",
+                    ":caseId",
+                    "runbooks",
+                    ":runbookId",
+                    "method",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agentPoolId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) Case ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Runbook method ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "runbookId",
+                      "description": "(Required) Runbook ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"condition\": \"string\",\n  \"errorsInfoList\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 1042,\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"errorId\": 8642,\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"filename\": \"string\",\n  \"hits\": [\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"endTime\": \"1956-04-06T00:31:18.205Z\",\n      \"hitCount\": 9438,\n      \"startTime\": \"1993-01-22T09:39:00.140Z\"\n    },\n    {\n      \"agentDisplayName\": \"string\",\n      \"agentId\": \"string\",\n      \"endTime\": \"1959-11-27T18:55:51.117Z\",\n      \"hitCount\": 9362,\n      \"startTime\": \"1987-07-15T02:38:50.830Z\"\n    }\n  ],\n  \"maxResults\": 4577,\n  \"methodName\": \"string\",\n  \"methodTimeoutSeconds\": 733\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9fc571b5-8935-450d-b95c-271f170b7d6f",
+    "name": "Lightrun Actions Debug Runbook methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

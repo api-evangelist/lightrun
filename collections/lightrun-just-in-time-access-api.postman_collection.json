@@ -1,0 +1,619 @@
+{
+  "item": [
+    {
+      "id": "fb4d4ab9-2191-42de-8f26-26e55c6504cc",
+      "name": "Just-In-Time Access",
+      "description": {
+        "content": "Just-In-Time Access API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b310031-4d95-4e3f-8039-bf98e9767465",
+          "name": "Get a list of all active temporary access sessions",
+          "request": {
+            "name": "Get a list of all active temporary access sessions",
+            "description": {
+              "content": "Get a list of all active temporary accesses.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "temp-access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page index (0..N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "The size of the page to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36a8cfee-3c93-46ab-b760-57f45269a5a3",
+              "name": "Retrieved all active temporary access sessions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"agentPoolIds\": [\n        \"agent-pool-id1\",\n        \"agent-pool-id2\"\n      ],\n      \"expirationDate\": \"2021-12-31T23:59:59Z\",\n      \"roles\": [\n        \"Standard\"\n      ],\n      \"userEmails\": [\n        \"user@gmail.com\",\n        \"user2@gmail.com\"\n      ],\n      \"id\": \"c0291f3b-a608-42c2-b6cf-79c35eb5523f\",\n      \"incidentId\": \"string\",\n      \"name\": \"Temporary access to production incident\"\n    },\n    {\n      \"agentPoolIds\": [\n        \"agent-pool-id1\",\n        \"agent-pool-id2\"\n      ],\n      \"expirationDate\": \"2021-12-31T23:59:59Z\",\n      \"roles\": [\n        \"Standard\"\n      ],\n      \"userEmails\": [\n        \"user@gmail.com\",\n        \"user2@gmail.com\"\n      ],\n      \"id\": \"c0291f3b-a608-42c2-b6cf-79c35eb5523f\",\n      \"incidentId\": \"string\",\n      \"name\": \"Temporary access to production incident\"\n    }\n  ],\n  \"limit\": 8155,\n  \"offset\": 3360,\n  \"total\": 582\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5abce14b-5161-4084-b0e9-63f1a554b36b",
+          "name": "Grant temporary access to a list of users across multiple agent pools",
+          "request": {
+            "name": "Grant temporary access to a list of users across multiple agent pools",
+            "description": {
+              "content": "Grant temporary access to a list of users across multiple agent pools.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "temp-access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agentPoolIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"expirationDate\": \"<dateTime>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"incidentId\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2766a85e-d424-48a0-8120-db5b6e6e6f6e",
+              "name": "Granted temporary access.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentPoolIds\": [\n    \"agent-pool-id1\",\n    \"agent-pool-id2\"\n  ],\n  \"expirationDate\": \"2021-12-31T23:59:59+01:00\",\n  \"roles\": [\n    \"Standard\"\n  ],\n  \"userEmails\": [\n    \"user@gmail.com\",\n    \"user2@gmail.com\"\n  ],\n  \"incidentId\": \"<string>\",\n  \"name\": \"Temporary access to production incident\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"agentPoolIds\": [\n    \"agent-pool-id1\",\n    \"agent-pool-id2\"\n  ],\n  \"expirationDate\": \"2021-12-31T23:59:59Z\",\n  \"roles\": [\n    \"Standard\"\n  ],\n  \"userEmails\": [\n    \"user@gmail.com\",\n    \"user2@gmail.com\"\n  ],\n  \"id\": \"c0291f3b-a608-42c2-b6cf-79c35eb5523f\",\n  \"incidentId\": \"string\",\n  \"name\": \"Temporary access to production incident\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8c58644-803a-4216-a6e2-ebdc28bf7447",
+              "name": "Invalid input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentPoolIds\": [\n    \"agent-pool-id1\",\n    \"agent-pool-id2\"\n  ],\n  \"expirationDate\": \"2021-12-31T23:59:59+01:00\",\n  \"roles\": [\n    \"Standard\"\n  ],\n  \"userEmails\": [\n    \"user@gmail.com\",\n    \"user2@gmail.com\"\n  ],\n  \"incidentId\": \"<string>\",\n  \"name\": \"Temporary access to production incident\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb001ae4-574c-4895-8089-6317e8f6b0ed",
+              "name": "Exceeded limit of temporary access instances. Remove a number of instances and try again.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentPoolIds\": [\n    \"agent-pool-id1\",\n    \"agent-pool-id2\"\n  ],\n  \"expirationDate\": \"2021-12-31T23:59:59+01:00\",\n  \"roles\": [\n    \"Standard\"\n  ],\n  \"userEmails\": [\n    \"user@gmail.com\",\n    \"user2@gmail.com\"\n  ],\n  \"incidentId\": \"<string>\",\n  \"name\": \"Temporary access to production incident\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e9924c3-265d-43e5-8cb6-e54fb977175d",
+              "name": "Cannot find users or agent pools.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentPoolIds\": [\n    \"agent-pool-id1\",\n    \"agent-pool-id2\"\n  ],\n  \"expirationDate\": \"2021-12-31T23:59:59+01:00\",\n  \"roles\": [\n    \"Standard\"\n  ],\n  \"userEmails\": [\n    \"user@gmail.com\",\n    \"user2@gmail.com\"\n  ],\n  \"incidentId\": \"<string>\",\n  \"name\": \"Temporary access to production incident\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b48ca636-78c1-4151-809c-72a92ad19751",
+              "name": "A temporary access session with this name already exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentPoolIds\": [\n    \"agent-pool-id1\",\n    \"agent-pool-id2\"\n  ],\n  \"expirationDate\": \"2021-12-31T23:59:59+01:00\",\n  \"roles\": [\n    \"Standard\"\n  ],\n  \"userEmails\": [\n    \"user@gmail.com\",\n    \"user2@gmail.com\"\n  ],\n  \"incidentId\": \"<string>\",\n  \"name\": \"Temporary access to production incident\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cbc0144-b0d1-4717-aab3-9829574b8b26",
+          "name": "Revoke temporary access",
+          "request": {
+            "name": "Revoke temporary access",
+            "description": {
+              "content": "Revoke temporary access.\n\n**Required API permission level:** `DEV`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "temp-access",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3ea18042-3c4e-452b-b315-0f83dfc8c199",
+              "name": "Temporary access revoked.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcb325be-6a14-4090-9bc9-262437663e5a",
+              "name": "Temporary access not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "temp-access",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7b07d118-019e-427b-9794-d53b2dcd8373",
+    "name": "Lightrun Actions Just-In-Time Access API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lightrun API documentation",
+      "type": "text/plain"
+    }
+  }
+}

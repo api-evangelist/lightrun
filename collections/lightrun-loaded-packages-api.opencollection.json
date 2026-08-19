@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lightrun Actions Loaded packages API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loaded packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an array of loaded packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8090/api/v1/loaded-packages",
+            "params": [
+              {
+                "name": "agentPoolId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "loadDateEnd",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)"
+              },
+              {
+                "name": "loadDateStart",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)"
+              },
+              {
+                "name": "packageNames",
+                "value": "",
+                "type": "query",
+                "description": "Filter packages by package names."
+              },
+              {
+                "name": "packageVersions",
+                "value": "",
+                "type": "query",
+                "description": "Filter packages by package versions."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page index (0..N)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page to be returned"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Specify the status of packages for filtering: active, inactive, pending."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get an array of loaded packages.\n\n**Required API permission level:** `SECURITY`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

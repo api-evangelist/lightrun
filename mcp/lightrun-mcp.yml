@@ -1,4 +1,3 @@
-# Lightrun MCP server
 generated: '2026-07-19'
 method: searched
 status: published
@@ -20,11 +19,9 @@ server:
   embedded_in: Lightrun Server
 authentication:
   type: oauth2
-  note: >-
-    The MCP endpoint is served from the same host as the Lightrun app and authorizes
-    through the Lightrun Keycloak realm. The realm advertises a dedicated `mcp` scope
-    in its OpenID discovery document, alongside authorization_code, client_credentials,
-    device_code and token-exchange grants with PKCE (S256).
+  note: The MCP endpoint is served from the same host as the Lightrun app and authorizes through the Lightrun
+    Keycloak realm. The realm advertises a dedicated `mcp` scope in its OpenID discovery document, alongside
+    authorization_code, client_credentials, device_code and token-exchange grants with PKCE (S256).
   authorization_endpoint: https://app.lightrun.com/auth/realms/lightrun/protocol/openid-connect/auth
   token_endpoint: https://app.lightrun.com/auth/realms/lightrun/protocol/openid-connect/token
   scope: mcp
@@ -33,60 +30,66 @@ access_control:
   organization_level: true
   note: Organization-level MCP access control shipped in v1.86 (3 June 2026).
 clients:
-  - name: Cursor
-    config: https://github.com/lightrun-platform/lightrun-ai/blob/main/.cursor/mcp.json
-  - name: Claude Code
-    config: https://github.com/lightrun-platform/lightrun-ai/blob/main/lightrun-mcp-server/examples/claude-code.md
-  - name: GitHub Copilot (VS Code)
-    config: https://github.com/lightrun-platform/lightrun-ai/blob/main/lightrun-mcp-server/examples/copilot-vscode-mcp.json
-  - name: OpenAI Agents
-    config: https://github.com/lightrun-platform/lightrun-ai/blob/main/lightrun-mcp-server/examples/openai-agents.md
+- name: Cursor
+  config: https://github.com/lightrun-platform/lightrun-ai/blob/main/.cursor/mcp.json
+- name: Claude Code
+  config: https://github.com/lightrun-platform/lightrun-ai/blob/main/lightrun-mcp-server/examples/claude-code.md
+- name: GitHub Copilot (VS Code)
+  config: https://github.com/lightrun-platform/lightrun-ai/blob/main/lightrun-mcp-server/examples/copilot-vscode-mcp.json
+- name: OpenAI Agents
+  config: https://github.com/lightrun-platform/lightrun-ai/blob/main/lightrun-mcp-server/examples/openai-agents.md
 tools:
-  - name: get_runtime_sources
-    description: Discover available applications, services and runtime environments available for debugging.
-  - name: get_runtime_expression_values
-    description: Inspect variable values and expressions at a code location (synchronous; v1.75-1.84).
-  - name: get_runtime_callstack
-    description: Capture call stacks at a specific code location (synchronous; v1.75-1.84).
-  - name: snapshot_create
-    description: Initialize an asynchronous runtime snapshot action (v1.85+).
-  - name: snapshot_status
-    description: Poll the status of a snapshot action.
-  - name: snapshot_cancel
-    description: Terminate a running snapshot action.
-  - name: snapshot_get_values
-    description: Retrieve captured expression values from a snapshot.
-  - name: snapshot_get_call_stack
-    description: Retrieve captured call stacks from a snapshot.
-  - name: get_runtime_execution_duration
-    description: Measure how long a code section takes to execute (synchronous; v1.78-1.86).
-  - name: get_runtime_execution_duration_samples
-    description: Retrieve detailed execution-duration measurement samples.
-  - name: get_runtime_execution_count
-    description: Count how many times a code path executes (synchronous; v1.80-1.88).
-  - name: execution_count_create
-    description: Initialize an asynchronous execution-count action (v1.89+).
-  - name: execution_count_status
-    description: Poll the status of an execution-count action.
-  - name: execution_count_samples
-    description: Retrieve execution-count samples.
-  - name: execution_count_cancel
-    description: Stop execution-count collection.
-  - name: get_runtime_numeric_metric
-    description: Capture integer expression values as a metric (synchronous; v1.79-1.88).
-  - name: get_runtime_numeric_metric_samples
-    description: Retrieve numeric-metric sample details.
-  - name: custom_metric_create
-    description: Initialize an asynchronous custom-metric action (v1.89+).
-  - name: custom_metric_status
-    description: Poll the status of a custom-metric action.
-  - name: custom_metric_samples
-    description: Retrieve custom-metric samples.
-  - name: custom_metric_cancel
-    description: Stop custom-metric collection.
-  - name: get_actions
-    description: List the Lightrun actions currently in place, for AI assistants (added v1.88, 30 June 2026).
-notes: >-
-  Lightrun is shifting its MCP surface from synchronous get_runtime_* tools to
-  create/status/samples/cancel tool quartets so long-running captures do not block the
-  assistant. The synchronous variants remain documented with the version ranges above.
+- name: get_runtime_sources
+  description: Discover available applications, services and runtime environments available for debugging.
+- name: get_runtime_expression_values
+  description: Inspect variable values and expressions at a code location (synchronous; v1.75-1.84).
+- name: get_runtime_callstack
+  description: Capture call stacks at a specific code location (synchronous; v1.75-1.84).
+- name: snapshot_create
+  description: Initialize an asynchronous runtime snapshot action (v1.85+).
+- name: snapshot_status
+  description: Poll the status of a snapshot action.
+- name: snapshot_cancel
+  description: Terminate a running snapshot action.
+- name: snapshot_get_values
+  description: Retrieve captured expression values from a snapshot.
+- name: snapshot_get_call_stack
+  description: Retrieve captured call stacks from a snapshot.
+- name: get_runtime_execution_duration
+  description: Measure how long a code section takes to execute (synchronous; v1.78-1.86).
+- name: get_runtime_execution_duration_samples
+  description: Retrieve detailed execution-duration measurement samples.
+- name: get_runtime_execution_count
+  description: Count how many times a code path executes (synchronous; v1.80-1.88).
+- name: execution_count_create
+  description: Initialize an asynchronous execution-count action (v1.89+).
+- name: execution_count_status
+  description: Poll the status of an execution-count action.
+- name: execution_count_samples
+  description: Retrieve execution-count samples.
+- name: execution_count_cancel
+  description: Stop execution-count collection.
+- name: get_runtime_numeric_metric
+  description: Capture integer expression values as a metric (synchronous; v1.79-1.88).
+- name: get_runtime_numeric_metric_samples
+  description: Retrieve numeric-metric sample details.
+- name: custom_metric_create
+  description: Initialize an asynchronous custom-metric action (v1.89+).
+- name: custom_metric_status
+  description: Poll the status of a custom-metric action.
+- name: custom_metric_samples
+  description: Retrieve custom-metric samples.
+- name: custom_metric_cancel
+  description: Stop custom-metric collection.
+- name: get_actions
+  description: List the Lightrun actions currently in place, for AI assistants (added v1.88, 30 June 2026).
+notes: Lightrun is shifting its MCP surface from synchronous get_runtime_* tools to create/status/samples/cancel
+  tool quartets so long-running captures do not block the assistant. The synchronous variants remain documented
+  with the version ranges above.
+deployment:
+  mode: remote
+  endpoint: https://app.lightrun.com/mcp
+  verified: probed
+  probe: wall
+  checked: '2026-08-12'
+  source: catalog MCP census
