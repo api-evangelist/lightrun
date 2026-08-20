@@ -41,6 +41,17 @@ tags:
 - Logging
 - Application Performance
 - Agent Skills
+- MCP
+- DevOps
+tags_raw:
+- Company
+- Developer Tools
+- Observability
+- Debugging
+- Monitoring
+- Logging
+- Application Performance
+- Agent Skills
 - Model Context Protocol
 - DevOps
 apis:
@@ -482,6 +493,8 @@ apis:
   humanURL: https://docs.lightrun.com/public-api/introduction/
   baseURL: https://app.lightrun.com/api/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
