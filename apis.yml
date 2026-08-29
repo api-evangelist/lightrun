@@ -10,6 +10,18 @@ description: >-
   API, and a published MCP server that gives AI coding assistants live runtime context. Around
   that core it adds agent-pool RBAC, PII redaction, SSO and SCIM provisioning, and a Dynamic
   SBOM surface that reports which third-party packages are actually reachable at runtime.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
