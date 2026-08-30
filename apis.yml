@@ -145,6 +145,8 @@ apis:
   humanURL: https://docs.lightrun.com/public-api/introduction/
   baseURL: https://app.lightrun.com/api/v1
   tags:
+  - Custom Sources
+  tags_raw:
   - Custom sources
   properties:
   - type: OpenAPI
