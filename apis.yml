@@ -1,15 +1,13 @@
 aid: lightrun
 name: Lightrun
-description: >-
-  Lightrun is a developer-native observability and live-debugging platform. Language agents
-  embedded in a running JVM, Python, Node.js or .NET process accept dynamic actions — logs,
-  snapshots, counters, tic-toc timings and custom metrics — placed on a file and line while
-  the application keeps serving traffic, so engineers can inspect production behavior without
-  redeploying, restarting or attaching a traditional debugger. The platform is driven from
-  JetBrains, VS Code and Visual Studio plugins, a Java CLI, a bearer-authenticated Public REST
-  API, and a published MCP server that gives AI coding assistants live runtime context. Around
-  that core it adds agent-pool RBAC, PII redaction, SSO and SCIM provisioning, and a Dynamic
-  SBOM surface that reports which third-party packages are actually reachable at runtime.
+description: Lightrun is a developer-native observability and live-debugging platform. Language agents
+  embedded in a running JVM, Python, Node.js or .NET process accept dynamic actions — logs, snapshots,
+  counters, tic-toc timings and custom metrics — placed on a file and line while the application keeps
+  serving traffic, so engineers can inspect production behavior without redeploying, restarting or attaching
+  a traditional debugger. The platform is driven from JetBrains, VS Code and Visual Studio plugins, a
+  Java CLI, a bearer-authenticated Public REST API, and a published MCP server that gives AI coding assistants
+  live runtime context. Around that core it adds agent-pool RBAC, PII redaction, SSO and SCIM provisioning,
+  and a Dynamic SBOM surface that reports which third-party packages are actually reachable at runtime.
 deliveryModel:
   model: saas
   open_source: false
@@ -45,7 +43,7 @@ x-backed-by:
 - insight-partners
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-09-16'
 tags:
 - Company
 - Developer Tools
@@ -360,7 +358,7 @@ apis:
   - type: Conventions
     url: conventions/lightrun-conventions.yml
 - aid: lightrun:lightrun-lightrun-feature-flags-status-api
-  name: Lightrun Lightrun feature flags status API
+  name: Lightrun feature flags status API
   description: Lightrun feature flags status API.
   humanURL: https://docs.lightrun.com/public-api/introduction/
   baseURL: https://app.lightrun.com/api/v1
