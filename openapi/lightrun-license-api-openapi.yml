@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   description: Lightrun API documentation
-  title: Lightrun Actions License API
+  title: Lightrun License API
   version: v1
 servers:
 - url: http://localhost:8090
@@ -75,6 +75,6 @@ components:
       - license
       - licenseSignature
   securitySchemes:
-    API Token:
+    API_Token:
       scheme: bearer
       type: http

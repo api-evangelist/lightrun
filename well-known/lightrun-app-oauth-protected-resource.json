@@ -1,0 +1,1 @@
+{"resource":"https://app.lightrun.com/mcp","authorization_servers":["https://app.lightrun.com/auth/realms/lightrun"],"resource_name":"Lightrun MCP Server","bearer_methods_supported":["header"]}

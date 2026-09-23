@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   description: Lightrun API documentation
-  title: Lightrun Actions System access API key API
+  title: Lightrun System access API key API
   version: v1
 servers:
 - url: http://localhost:8090
@@ -159,6 +159,16 @@ paths:
       - System access API key
 components:
   schemas:
+    SystemApiKeyValueDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        apiKey: 135119d4-8034-44c8-bd11-9b36d2d560eb
+      properties:
+        apiKey:
+          type: string
+          description: The actual key value (UUID) to use for authentication
+          example: 135119d4-8034-44c8-bd11-9b36d2d560eb
     SystemApiKeyUpdateDTO:
       type: object
       description: System API Key list read-only view
@@ -223,6 +233,16 @@ components:
             - COMPANY
             - DEV
           uniqueItems: true
+    SystemApiKeyStatusDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        message: System api key successfully revoked
+      properties:
+        message:
+          type: string
+          description: Message indicating the result of the operation
+          example: System api key successfully revoked
     SystemApiKeyListReadDTO:
       type: object
       description: System API Key list read-only view
@@ -240,27 +260,7 @@ components:
           description: List of system API keys
       required:
       - items
-    SystemApiKeyStatusDTO:
-      type: object
-      description: System API Key list read-only view
-      example:
-        message: System api key successfully revoked
-      properties:
-        message:
-          type: string
-          description: Message indicating the result of the operation
-          example: System api key successfully revoked
-    SystemApiKeyValueDTO:
-      type: object
-      description: System API Key list read-only view
-      example:
-        apiKey: 135119d4-8034-44c8-bd11-9b36d2d560eb
-      properties:
-        apiKey:
-          type: string
-          description: The actual key value (UUID) to use for authentication
-          example: 135119d4-8034-44c8-bd11-9b36d2d560eb
   securitySchemes:
-    API Token:
+    API_Token:
       scheme: bearer
       type: http

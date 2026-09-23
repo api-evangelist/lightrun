@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   description: Lightrun API documentation
-  title: Lightrun Actions Agents API
+  title: Lightrun Agents API
   version: v1
 servers:
 - url: http://localhost:8090
@@ -130,6 +130,6 @@ components:
           type: integer
           format: int64
   securitySchemes:
-    API Token:
+    API_Token:
       scheme: bearer
       type: http

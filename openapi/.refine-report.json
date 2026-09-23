@@ -1,26 +1,7 @@
 {
   "provider": "lightrun",
   "sources": [
-    "lightrun-actions-api-openapi.yml",
-    "lightrun-agent-pools-api-openapi.yml",
-    "lightrun-agents-api-openapi.yml",
-    "lightrun-custom-sources-api-openapi.yml",
-    "lightrun-debug-cases-api-openapi.yml",
-    "lightrun-debug-runbook-methods-api-openapi.yml",
-    "lightrun-debug-runbooks-api-openapi.yml",
-    "lightrun-debug-runbooks-configuration-api-openapi.yml",
-    "lightrun-dynamic-sbom-api-openapi.yml",
-    "lightrun-identity-management-idm-configuration-api-openapi.yml",
-    "lightrun-just-in-time-access-api-openapi.yml",
-    "lightrun-license-api-openapi.yml",
-    "lightrun-lightrun-feature-flags-status-api-openapi.yml",
-    "lightrun-loaded-packages-api-openapi.yml",
-    "lightrun-smtp-connectivity-configuration-api-openapi.yml",
-    "lightrun-system-access-api-key-api-openapi.yml",
-    "lightrun-tags-api-openapi.yml",
-    "lightrun-user-groups-api-openapi.yml",
-    "lightrun-users-api-openapi.yml",
-    "lightrun-watched-packages-api-openapi.yml"
+    "_original/lightrun-openapi-original.json"
   ],
   "outputs": [
     "lightrun-actions-api-openapi.yml",
@@ -47,6 +28,32 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "lightrun-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Token)",
+    "lightrun-openapi-original.json: declared missing tag: Debug Runbook methods",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "lightrun-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-agent-pools-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-agents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-custom-sources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-debug-cases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-debug-runbook-methods-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-debug-runbooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-debug-runbooks-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-dynamic-sbom-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-identity-management-idm-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-just-in-time-access-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-license-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-lightrun-feature-flags-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-loaded-packages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-smtp-connectivity-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-system-access-api-key-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-user-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lightrun-watched-packages-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

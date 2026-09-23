@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   description: Lightrun API documentation
-  title: Lightrun Actions Debug Runbooks Configuration API
+  title: Lightrun Debug Runbooks Configuration API
   version: v1
 servers:
 - url: http://localhost:8090
@@ -65,6 +65,27 @@ paths:
       - Debug Runbooks Configuration
 components:
   schemas:
+    RunbookMethodConfigPublicDTO:
+      type: object
+      description: Runbook Method Configuration.
+      properties:
+        condition:
+          type: string
+          description: Condition on method.
+        filename:
+          type: string
+          description: File full path of the method.
+        maxResults:
+          type: integer
+          format: int32
+          description: Max results.
+        methodName:
+          type: string
+          description: Method name.
+        methodTimeoutSeconds:
+          type: integer
+          format: int64
+          description: Method timeout in seconds.
     RunbookConfigPublicDTO:
       type: object
       description: Debug Runbook Config.
@@ -114,28 +135,7 @@ components:
         variableName:
           type: string
           description: Variable name.
-    RunbookMethodConfigPublicDTO:
-      type: object
-      description: Runbook Method Configuration.
-      properties:
-        condition:
-          type: string
-          description: Condition on method.
-        filename:
-          type: string
-          description: File full path of the method.
-        maxResults:
-          type: integer
-          format: int32
-          description: Max results.
-        methodName:
-          type: string
-          description: Method name.
-        methodTimeoutSeconds:
-          type: integer
-          format: int64
-          description: Method timeout in seconds.
   securitySchemes:
-    API Token:
+    API_Token:
       scheme: bearer
       type: http

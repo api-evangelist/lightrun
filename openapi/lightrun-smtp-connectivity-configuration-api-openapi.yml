@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   description: Lightrun API documentation
-  title: Lightrun Actions SMTP connectivity configuration API
+  title: Lightrun SMTP connectivity configuration API
   version: v1
 servers:
 - url: http://localhost:8090
@@ -53,49 +53,6 @@ paths:
       - SMTP connectivity configuration
 components:
   schemas:
-    SmtpConnectivityConfigurationReadDTO:
-      type: object
-      description: A read only view of the SMTP connectivity configuration
-      properties:
-        authenticationId:
-          type: string
-          description: 'The SMTP server identifier for authentication: user name or API key name; for the custom SMTP server only'
-        authenticationSecret:
-          type: string
-          description: 'The SMTP server secret for authentication: password or API key value; for the custom SMTP server only'
-        authenticationType:
-          type: string
-          description: The SMTP connectivity authentication type for the custom SMTP server
-          enum:
-          - DISABLED
-          - PASSWORD
-          - APIKEY
-        enableSSL:
-          type: boolean
-          description: Whether secured HTTP is required; for the custom SMTP server only
-        enableStartTLS:
-          type: boolean
-          description: Whether StartTLS protocol is required; for the custom SMTP server only
-        fromEmailAddress:
-          type: string
-          description: The email address that will appear in the ‘from’ field of the system generated emails
-        serverHost:
-          type: string
-          description: Custom SMTP server host or IP address
-        serverPort:
-          type: integer
-          format: int32
-          default: 587
-          description: Custom SMTP server port
-        type:
-          type: string
-          default: DEFAULT
-          description: SMTP service configuration type
-          enum:
-          - DISABLED
-          - DEFAULT
-          - CUSTOM
-          example: DEFAULT
     SmtpCustomConnectivitySpecDTO:
       type: object
       description: Custom SMTP connectivity mandatory arguments specification
@@ -142,6 +99,49 @@ components:
       - fromEmailAddress
       - serverHost
       - serverPort
+    SmtpConnectivityConfigurationReadDTO:
+      type: object
+      description: A read only view of the SMTP connectivity configuration
+      properties:
+        authenticationId:
+          type: string
+          description: 'The SMTP server identifier for authentication: user name or API key name; for the custom SMTP server only'
+        authenticationSecret:
+          type: string
+          description: 'The SMTP server secret for authentication: password or API key value; for the custom SMTP server only'
+        authenticationType:
+          type: string
+          description: The SMTP connectivity authentication type for the custom SMTP server
+          enum:
+          - DISABLED
+          - PASSWORD
+          - APIKEY
+        enableSSL:
+          type: boolean
+          description: Whether secured HTTP is required; for the custom SMTP server only
+        enableStartTLS:
+          type: boolean
+          description: Whether StartTLS protocol is required; for the custom SMTP server only
+        fromEmailAddress:
+          type: string
+          description: The email address that will appear in the ‘from’ field of the system generated emails
+        serverHost:
+          type: string
+          description: Custom SMTP server host or IP address
+        serverPort:
+          type: integer
+          format: int32
+          default: 587
+          description: Custom SMTP server port
+        type:
+          type: string
+          default: DEFAULT
+          description: SMTP service configuration type
+          enum:
+          - DISABLED
+          - DEFAULT
+          - CUSTOM
+          example: DEFAULT
     SmtpConnectivityConfigurationWriteDTO:
       type: object
       description: SMTP connectivity configuration mutation DTO
@@ -161,6 +161,6 @@ components:
       required:
       - type
   securitySchemes:
-    API Token:
+    API_Token:
       scheme: bearer
       type: http

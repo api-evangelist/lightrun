@@ -1,0 +1,33 @@
+# Front Door AI Index — lightrun — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: lightrun
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: lightrun.com
+  final_host: lightrun.com
+  ownership: own
+  owner: lightrun
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 44
+  host_score: 44
+  density: 33.46
+  words: 1315
+  tiers:
+    agentic: 12
+    core: 28
+    model: 4
+  ambiguous: 15
+  top_terms:
+    AI: 28
+    agent: 15
+    AI agent: 5
+    agentic: 3
+    Claude: 2
+    Gemini: 2
+    copilot: 2
+    MCP: 1
+    prompts: 1
