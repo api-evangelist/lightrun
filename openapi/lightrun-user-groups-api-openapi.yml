@@ -353,41 +353,6 @@ paths:
       - User Groups
 components:
   schemas:
-    BulkOperationFailedItemPublicDtoString:
-      type: object
-      properties:
-        message:
-          type: string
-        payload:
-          type: string
-        status:
-          type: integer
-          format: int32
-    UpdateUserGroupMemberPublicDTO:
-      type: object
-      description: Group membership details
-      properties:
-        elevatedRoles:
-          type: array
-          description: Elevated roles.
-          items:
-            type: string
-            enum:
-            - STANDARD
-            - PRIVILEGED
-          uniqueItems: true
-        groupAdmin:
-          type: boolean
-    BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO:
-      type: object
-      properties:
-        message:
-          type: string
-        payload:
-          $ref: '#/components/schemas/UserGroupMemberPublicDTO'
-        status:
-          type: integer
-          format: int32
     UserGroupPublicDTO:
       type: object
       properties:
@@ -454,6 +419,16 @@ components:
           type: array
           items:
             type: string
+    BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO:
+      type: object
+      properties:
+        message:
+          type: string
+        payload:
+          $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+        status:
+          type: integer
+          format: int32
     PublicApiPageUserGroupPublicDTO:
       type: object
       properties:
@@ -472,7 +447,22 @@ components:
         total:
           type: integer
           format: int64
-    UpdateUserGroupPublicDTO:
+    UpdateUserGroupMemberPublicDTO:
+      type: object
+      description: Group membership details
+      properties:
+        elevatedRoles:
+          type: array
+          description: Elevated roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+        groupAdmin:
+          type: boolean
+    CreateUserGroupPublicDTO:
       type: object
       description: User group details
       properties:
@@ -524,7 +514,18 @@ components:
           description: Email of the user.
         groupAdmin:
           type: boolean
-    CreateUserGroupPublicDTO:
+    BulkOperationResponsePublicDtoUserGroupMemberPublicDTO:
+      type: object
+      properties:
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO'
+        successes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+    UpdateUserGroupPublicDTO:
       type: object
       description: User group details
       properties:
@@ -548,17 +549,16 @@ components:
           uniqueItems: true
       required:
       - name
-    BulkOperationResponsePublicDtoUserGroupMemberPublicDTO:
+    BulkOperationFailedItemPublicDtoString:
       type: object
       properties:
-        failures:
-          type: array
-          items:
-            $ref: '#/components/schemas/BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO'
-        successes:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+        message:
+          type: string
+        payload:
+          type: string
+        status:
+          type: integer
+          format: int32
   securitySchemes:
     API_Token:
       scheme: bearer

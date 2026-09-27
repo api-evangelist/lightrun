@@ -258,20 +258,6 @@ paths:
       - Agent Pools
 components:
   schemas:
-    CreateOrUpdateAgentPoolPublicDto:
-      type: object
-      description: Agent pool details
-      properties:
-        description:
-          type: string
-          description: Description of the agent pool.
-          maxLength: 255
-          minLength: 0
-        name:
-          type: string
-          description: Name of the agent pool.
-      required:
-      - name
     AgentPoolPublicApiDTO:
       type: object
       properties:
@@ -311,6 +297,20 @@ components:
         total:
           type: integer
           format: int64
+    CreateOrUpdateAgentPoolPublicDto:
+      type: object
+      description: Agent pool details
+      properties:
+        description:
+          type: string
+          description: Description of the agent pool.
+          maxLength: 255
+          minLength: 0
+        name:
+          type: string
+          description: Name of the agent pool.
+      required:
+      - name
   securitySchemes:
     API_Token:
       scheme: bearer

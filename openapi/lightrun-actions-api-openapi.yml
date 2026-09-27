@@ -508,36 +508,6 @@ paths:
       - Actions
 components:
   schemas:
-    PublicApiPageActionSummaryPublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionSummaryPublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-    WarningInfoPublicDTO:
-      type: object
-      properties:
-        agentDisplayName:
-          type: string
-        agentId:
-          type: string
-        warningId:
-          type: integer
-          format: int32
-        warningMessage:
-          type: string
     LogDataPublicDTO:
       type: object
       description: Log Data.
@@ -571,6 +541,307 @@ components:
           type: integer
           format: int64
           description: Log time.
+    PublicApiPageActionSummaryPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionSummaryPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    LogActionPublicDTO:
+      type: object
+      description: Log action.
+      properties:
+        agentPoolId:
+          type: string
+          description: Action agent pool ID.
+        agentsWithHitsCount:
+          type: integer
+          format: int32
+          description: Action agents with hits count.
+        condition:
+          type: string
+          description: Action condition.
+        createdAt:
+          type: string
+          format: date-time
+          description: Action creation time.
+        createdBy:
+          type: string
+          description: User who created the action.
+        enabled:
+          type: boolean
+          description: Action enabled.
+        errorsInfoList:
+          type: array
+          description: Action errors per breakpoint.
+          items:
+            $ref: '#/components/schemas/ErrorInfoPublicDTO'
+        expirationSeconds:
+          type: integer
+          format: int32
+          description: Action expiration time in seconds.
+        expired:
+          type: boolean
+          description: Action expired.
+        format:
+          type: string
+          description: Log action messages format.
+        hitCount:
+          type: integer
+          format: int32
+          description: Action hits count.
+        id:
+          type: string
+          description: Action ID.
+        line:
+          type: integer
+          format: int32
+          description: Log action line.
+        location:
+          type: string
+          description: Action full file path.
+        logLevel:
+          type: string
+          description: Log action messages log level.
+          enum:
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        status:
+          type: string
+          description: Action status.
+          enum:
+          - SUBMITTED
+          - REQUESTED
+          - ACCEPTED
+        targets:
+          type: array
+          description: Log action targets.
+          items:
+            type: string
+            enum:
+            - PLUGIN
+            - STDOUT
+            - PROMETHEUS
+            - STATSD
+            - DYNATRACE
+          uniqueItems: true
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last updated timestamp (UTC).
+        versionControl:
+          $ref: '#/components/schemas/VersionControlPublicDTO'
+          description: Action version control info.
+        warningsInfoList:
+          type: array
+          description: Action warnings per breakpoint.
+          items:
+            $ref: '#/components/schemas/WarningInfoPublicDTO'
+        webPortalPageLink:
+          type: string
+          description: Link to Log action in the Lightrun Management Portal.
+    SnapshotLocationPublicDTO:
+      type: object
+      description: Snapshot location.
+      properties:
+        column:
+          type: integer
+          format: int32
+          description: Column.
+        endOfLine:
+          type: boolean
+          description: Whether this is end of line.
+        lambdaIndex:
+          type: integer
+          format: int32
+          description: Lambda index.
+        line:
+          type: integer
+          format: int32
+          description: Line.
+        path:
+          type: string
+          description: Path.
+    SnapshotActionCreatePublicDTO:
+      type: object
+      description: Create snapshot action.
+      properties:
+        agentPoolId:
+          type: string
+          description: Action agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        condition:
+          type: string
+          description: Action condition.
+        expirationSeconds:
+          type: integer
+          format: int32
+          default: 3600
+          description: Action expiration time. Defaults to 3600 seconds (1 hour).
+        filename:
+          type: string
+          description: Action full file path.
+          minLength: 1
+        isMaxHitCountDistributed:
+          type: boolean
+          default: false
+          description: Whether action hits should be distributed among agents evenly. Disabled by default.
+        line:
+          type: integer
+          format: int32
+          description: Snapshot action line.
+        maxHitCount:
+          type: integer
+          format: int32
+          default: 10
+          description: Snapshot action hits maximum.
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        versionControl:
+          $ref: '#/components/schemas/VersionControlPublicDTO'
+          description: Action version control info.
+        watchExpressions:
+          type: array
+          description: Snapshot action watch expressions.
+          items:
+            type: string
+      required:
+      - filename
+      - line
+      - source
+    LogActionCreatePublicDTO:
+      type: object
+      description: Create log action.
+      properties:
+        agentPoolId:
+          type: string
+          description: Action agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
+        condition:
+          type: string
+          description: Action condition.
+        expirationSeconds:
+          type: integer
+          format: int32
+          default: 3600
+          description: Action expiration time. Defaults to 3600 seconds (1 hour).
+        filename:
+          type: string
+          description: Action full file path.
+          minLength: 1
+        format:
+          type: string
+          description: Log action messages format. Supports placeholders for expressions like "Hello log {myVar}".
+          minLength: 1
+        line:
+          type: integer
+          format: int32
+          description: Log action line.
+        logLevel:
+          type: string
+          description: Log action messages log level.
+          enum:
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+        targets:
+          type: array
+          description: Log action targets.
+          items:
+            type: string
+            enum:
+            - PLUGIN
+            - STDOUT
+            - PROMETHEUS
+            - STATSD
+            - DYNATRACE
+          uniqueItems: true
+        versionControl:
+          $ref: '#/components/schemas/VersionControlPublicDTO'
+          description: Action version control info.
+      required:
+      - filename
+      - format
+      - line
+      - source
+    SnapshotEntryPublicDTO:
+      type: object
+      description: Snapshot Entry.
+      properties:
+        isEvaluatedExpression:
+          type: boolean
+          description: Whether this is an evaluated expression.
+        members:
+          type: array
+          description: Members.
+          items:
+            description: Snapshot Entry.
+        name:
+          type: string
+          description: Name.
+        status:
+          $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
+          description: Status.
+        type:
+          type: string
+          description: Type.
+        value:
+          type: string
+          description: Value.
+        varTableIndex:
+          type: integer
+          format: int32
+          description: Variable Table Index.
+    ErrorInfoPublicDTO:
+      type: object
+      properties:
+        agentDisplayName:
+          type: string
+        agentId:
+          type: string
+        errorId:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+    SourceSummaryPublicDTO:
+      type: object
+      description: Source.
+      properties:
+        id:
+          type: string
+          description: Source ID.
+          minLength: 1
+        type:
+          type: string
+          description: Source type.
+          enum:
+          - CUSTOM_SOURCE
+          - AGENT
+          - TAG
+      required:
+      - id
+      - type
     SnapshotActionPublicDTO:
       type: object
       description: Snapshot actions.
@@ -707,151 +978,68 @@ components:
           - SUBMITTED
           - REQUESTED
           - ACCEPTED
-    SnapshotActionCreatePublicDTO:
+    WarningInfoPublicDTO:
       type: object
-      description: Create snapshot action.
       properties:
-        agentPoolId:
+        agentDisplayName:
           type: string
-          description: Action agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
-        condition:
+        agentId:
           type: string
-          description: Action condition.
-        expirationSeconds:
+        warningId:
           type: integer
           format: int32
-          default: 3600
-          description: Action expiration time. Defaults to 3600 seconds (1 hour).
-        filename:
+        warningMessage:
           type: string
-          description: Action full file path.
-          minLength: 1
-        isMaxHitCountDistributed:
-          type: boolean
-          default: false
-          description: Whether action hits should be distributed among agents evenly. Disabled by default.
-        line:
-          type: integer
-          format: int32
-          description: Snapshot action line.
-        maxHitCount:
-          type: integer
-          format: int32
-          default: 10
-          description: Snapshot action hits maximum.
-        source:
-          $ref: '#/components/schemas/SourceSummaryPublicDTO'
-          description: Source.
-        versionControl:
-          $ref: '#/components/schemas/VersionControlPublicDTO'
-          description: Action version control info.
-        watchExpressions:
-          type: array
-          description: Snapshot action watch expressions.
-          items:
-            type: string
-      required:
-      - filename
-      - line
-      - source
-    LogActionPublicDTO:
+    SnapshotBreakpointStatusPublicDTO:
       type: object
-      description: Log action.
+      description: Snapshot breakpoint status.
       properties:
-        agentPoolId:
+        description:
+          $ref: '#/components/schemas/SnapshotBreakpointStatusDescriptionPublicDTO'
+          description: Description.
+        isAccepted:
+          type: boolean
+          description: Whether this is accepted.
+        isError:
+          type: boolean
+          description: Whether this is an error.
+        refersTo:
           type: string
-          description: Action agent pool ID.
-        agentsWithHitsCount:
+          description: Refers to.
+    SnapshotBreakpointStatusDescriptionPublicDTO:
+      type: object
+      description: Snapshot breakpoint status description.
+      properties:
+        errorId:
           type: integer
           format: int32
-          description: Action agents with hits count.
-        condition:
-          type: string
-          description: Action condition.
-        createdAt:
-          type: string
-          format: date-time
-          description: Action creation time.
-        createdBy:
-          type: string
-          description: User who created the action.
-        enabled:
-          type: boolean
-          description: Action enabled.
-        errorsInfoList:
-          type: array
-          description: Action errors per breakpoint.
-          items:
-            $ref: '#/components/schemas/ErrorInfoPublicDTO'
-        expirationSeconds:
-          type: integer
-          format: int32
-          description: Action expiration time in seconds.
-        expired:
-          type: boolean
-          description: Action expired.
+          description: Error ID.
         format:
           type: string
-          description: Log action messages format.
-        hitCount:
-          type: integer
-          format: int32
-          description: Action hits count.
-        id:
-          type: string
-          description: Action ID.
-        line:
-          type: integer
-          format: int32
-          description: Log action line.
-        location:
-          type: string
-          description: Action full file path.
-        logLevel:
-          type: string
-          description: Log action messages log level.
-          enum:
-          - DEBUG
-          - INFO
-          - WARN
-          - ERROR
-        source:
-          $ref: '#/components/schemas/SourceSummaryPublicDTO'
-          description: Source.
-        status:
-          type: string
-          description: Action status.
-          enum:
-          - SUBMITTED
-          - REQUESTED
-          - ACCEPTED
-        targets:
+          description: Format.
+        parameters:
           type: array
-          description: Log action targets.
+          description: Parameters.
           items:
             type: string
-            enum:
-            - PLUGIN
-            - STDOUT
-            - PROMETHEUS
-            - STATSD
-            - DYNATRACE
-          uniqueItems: true
-        updatedAt:
-          type: string
-          format: date-time
-          description: Last updated timestamp (UTC).
-        versionControl:
-          $ref: '#/components/schemas/VersionControlPublicDTO'
-          description: Action version control info.
-        warningsInfoList:
+    PublicApiPageLogDataPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
           type: array
-          description: Action warnings per breakpoint.
           items:
-            $ref: '#/components/schemas/WarningInfoPublicDTO'
-        webPortalPageLink:
-          type: string
-          description: Link to Log action in the Lightrun Management Portal.
+            $ref: '#/components/schemas/LogDataPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
     SnapshotStackFramePublicDTO:
       type: object
       description: Snapshot stack frame.
@@ -924,132 +1112,6 @@ components:
         location:
           $ref: '#/components/schemas/SnapshotLocationPublicDTO'
           description: Location.
-    SnapshotLocationPublicDTO:
-      type: object
-      description: Snapshot location.
-      properties:
-        column:
-          type: integer
-          format: int32
-          description: Column.
-        endOfLine:
-          type: boolean
-          description: Whether this is end of line.
-        lambdaIndex:
-          type: integer
-          format: int32
-          description: Lambda index.
-        line:
-          type: integer
-          format: int32
-          description: Line.
-        path:
-          type: string
-          description: Path.
-    SnapshotBreakpointStatusDescriptionPublicDTO:
-      type: object
-      description: Snapshot breakpoint status description.
-      properties:
-        errorId:
-          type: integer
-          format: int32
-          description: Error ID.
-        format:
-          type: string
-          description: Format.
-        parameters:
-          type: array
-          description: Parameters.
-          items:
-            type: string
-    ErrorInfoPublicDTO:
-      type: object
-      properties:
-        agentDisplayName:
-          type: string
-        agentId:
-          type: string
-        errorId:
-          type: integer
-          format: int32
-        errorMessage:
-          type: string
-    SourceSummaryPublicDTO:
-      type: object
-      description: Source.
-      properties:
-        id:
-          type: string
-          description: Source ID.
-          minLength: 1
-        type:
-          type: string
-          description: Source type.
-          enum:
-          - CUSTOM_SOURCE
-          - AGENT
-          - TAG
-      required:
-      - id
-      - type
-    LogActionCreatePublicDTO:
-      type: object
-      description: Create log action.
-      properties:
-        agentPoolId:
-          type: string
-          description: Action agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.
-        condition:
-          type: string
-          description: Action condition.
-        expirationSeconds:
-          type: integer
-          format: int32
-          default: 3600
-          description: Action expiration time. Defaults to 3600 seconds (1 hour).
-        filename:
-          type: string
-          description: Action full file path.
-          minLength: 1
-        format:
-          type: string
-          description: Log action messages format. Supports placeholders for expressions like "Hello log {myVar}".
-          minLength: 1
-        line:
-          type: integer
-          format: int32
-          description: Log action line.
-        logLevel:
-          type: string
-          description: Log action messages log level.
-          enum:
-          - DEBUG
-          - INFO
-          - WARN
-          - ERROR
-        source:
-          $ref: '#/components/schemas/SourceSummaryPublicDTO'
-          description: Source.
-        targets:
-          type: array
-          description: Log action targets.
-          items:
-            type: string
-            enum:
-            - PLUGIN
-            - STDOUT
-            - PROMETHEUS
-            - STATSD
-            - DYNATRACE
-          uniqueItems: true
-        versionControl:
-          $ref: '#/components/schemas/VersionControlPublicDTO'
-          description: Action version control info.
-      required:
-      - filename
-      - format
-      - line
-      - source
     VersionControlPublicDTO:
       type: object
       description: Version control.
@@ -1064,34 +1126,31 @@ components:
             type: string
         repo:
           type: string
-    SnapshotEntryPublicDTO:
+    SnapshotHitPublicDTO:
       type: object
-      description: Snapshot Entry.
+      description: Snapshot Hit.
       properties:
-        isEvaluatedExpression:
-          type: boolean
-          description: Whether this is an evaluated expression.
-        members:
+        actionId:
+          type: string
+          description: Action ID.
+        agentDisplayName:
+          type: string
+          description: Agent Display Name.
+        agentId:
+          type: string
+          description: Agent ID.
+        agentTags:
           type: array
-          description: Members.
+          description: Agent Tags.
           items:
-            description: Snapshot Entry.
-        name:
+            type: string
+        captureTime:
           type: string
-          description: Name.
-        status:
-          $ref: '#/components/schemas/SnapshotBreakpointStatusPublicDTO'
-          description: Status.
-        type:
+          format: date-time
+          description: Capture Time.
+        id:
           type: string
-          description: Type.
-        value:
-          type: string
-          description: Value.
-        varTableIndex:
-          type: integer
-          format: int32
-          description: Variable Table Index.
+          description: Snapshot Hit ID.
     SnapshotHitDataPublicDTO:
       type: object
       description: Snapshot Hit Data.
@@ -1218,65 +1277,6 @@ components:
                 type: integer
                 format: int32
                 description: Variable Table Index.
-    SnapshotHitPublicDTO:
-      type: object
-      description: Snapshot Hit.
-      properties:
-        actionId:
-          type: string
-          description: Action ID.
-        agentDisplayName:
-          type: string
-          description: Agent Display Name.
-        agentId:
-          type: string
-          description: Agent ID.
-        agentTags:
-          type: array
-          description: Agent Tags.
-          items:
-            type: string
-        captureTime:
-          type: string
-          format: date-time
-          description: Capture Time.
-        id:
-          type: string
-          description: Snapshot Hit ID.
-    PublicApiPageLogDataPublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LogDataPublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-    SnapshotBreakpointStatusPublicDTO:
-      type: object
-      description: Snapshot breakpoint status.
-      properties:
-        description:
-          $ref: '#/components/schemas/SnapshotBreakpointStatusDescriptionPublicDTO'
-          description: Description.
-        isAccepted:
-          type: boolean
-          description: Whether this is accepted.
-        isError:
-          type: boolean
-          description: Whether this is an error.
-        refersTo:
-          type: string
-          description: Refers to.
   securitySchemes:
     API_Token:
       scheme: bearer

@@ -65,6 +65,19 @@ paths:
       - Debug Runbooks Configuration
 components:
   schemas:
+    RunbookArgumentConfigPublicDTO:
+      type: object
+      description: Runbook Argument Config.
+      properties:
+        description:
+          type: string
+          description: Description.
+        label:
+          type: string
+          description: Label.
+        variableName:
+          type: string
+          description: Variable name.
     RunbookMethodConfigPublicDTO:
       type: object
       description: Runbook Method Configuration.
@@ -122,19 +135,6 @@ components:
           type: string
           format: date-time
           description: Updated time.
-    RunbookArgumentConfigPublicDTO:
-      type: object
-      description: Runbook Argument Config.
-      properties:
-        description:
-          type: string
-          description: Description.
-        label:
-          type: string
-          description: Label.
-        variableName:
-          type: string
-          description: Variable name.
   securitySchemes:
     API_Token:
       scheme: bearer

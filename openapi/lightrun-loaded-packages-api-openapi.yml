@@ -125,6 +125,24 @@ components:
           enum:
           - NOT_LOADED
           - LOADED
+    PublicApiPageLoadedPackagePublicApiDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoadedPackagePublicApiDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
     LoadedPackagePublicApiDTO:
       type: object
       properties:
@@ -147,24 +165,6 @@ components:
           - JAVA
         version:
           type: string
-    PublicApiPageLoadedPackagePublicApiDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LoadedPackagePublicApiDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
   securitySchemes:
     API_Token:
       scheme: bearer

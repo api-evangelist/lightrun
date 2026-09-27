@@ -138,42 +138,6 @@ paths:
       - Debug Cases
 components:
   schemas:
-    PublicApiPageDebugCasePublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DebugCasePublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-    DebugCaseCreatePublicDTO:
-      type: object
-      description: Create runbook case.
-      properties:
-        description:
-          type: string
-          description: Case description.
-        name:
-          type: string
-          description: Case name.
-          maxLength: 50
-          minLength: 3
-        source:
-          $ref: '#/components/schemas/SourceSummaryPublicDTO'
-          description: Source.
-      required:
-      - name
-      - source
     SourceSummaryPublicDTO:
       type: object
       description: Source.
@@ -192,6 +156,24 @@ components:
       required:
       - id
       - type
+    DebugCaseCreatePublicDTO:
+      type: object
+      description: Create runbook case.
+      properties:
+        description:
+          type: string
+          description: Case description.
+        name:
+          type: string
+          description: Case name.
+          maxLength: 50
+          minLength: 3
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+      required:
+      - name
+      - source
     DebugCasePublicDTO:
       type: object
       description: Debug Runbook Case.
@@ -236,6 +218,24 @@ components:
         webPortalPageLink:
           type: string
           description: Link to case details in the Lightrun Management Portal.
+    PublicApiPageDebugCasePublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DebugCasePublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
   securitySchemes:
     API_Token:
       scheme: bearer

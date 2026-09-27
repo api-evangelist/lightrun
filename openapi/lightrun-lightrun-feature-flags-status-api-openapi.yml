@@ -65,6 +65,24 @@ paths:
       - Lightrun feature flags status
 components:
   schemas:
+    FeatureToggleDescriptorDTO:
+      type: object
+      additionalProperties:
+        type: string
+        description: Feature toggle state enumeration
+        enum:
+        - DISABLED
+        - ENABLED
+        example:
+          FEATURE_1: ENABLED
+          FEATURE_2: DISABLED
+      description: Feature state read-only view
+      example:
+        FEATURE_1: ENABLED
+        FEATURE_2: DISABLED
+      properties:
+        empty:
+          type: boolean
     FeatureConfigurationWriteDTO:
       type: object
       description: Feature configuration update DTO
@@ -122,24 +140,6 @@ components:
       - expirationDays
       - features
       - organizationId
-    FeatureToggleDescriptorDTO:
-      type: object
-      additionalProperties:
-        type: string
-        description: Feature toggle state enumeration
-        enum:
-        - DISABLED
-        - ENABLED
-        example:
-          FEATURE_1: ENABLED
-          FEATURE_2: DISABLED
-      description: Feature state read-only view
-      example:
-        FEATURE_1: ENABLED
-        FEATURE_2: DISABLED
-      properties:
-        empty:
-          type: boolean
   securitySchemes:
     API_Token:
       scheme: bearer

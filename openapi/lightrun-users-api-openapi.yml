@@ -324,6 +324,49 @@ paths:
       - Users
 components:
   schemas:
+    UpdateUserPublicDTO:
+      type: object
+      description: User details
+      properties:
+        firstName:
+          type: string
+          description: First name.
+        lastName:
+          type: string
+          description: Last name.
+        roles:
+          type: array
+          description: 'Roles.
+
+            Note: When RBAC is off, only `DEVELOPER` and `SYSTEM_ADMIN` are allowed.'
+          items:
+            type: string
+            enum:
+            - SYSTEM_ADMIN
+            - COMPANY_VIEWER
+            - GROUP_ADMIN
+            - SECURITY
+            - APP_SEC
+            - INCIDENT_RESPONDER
+            - DEVELOPER
+      required:
+      - firstName
+      - lastName
+      - roles
+    UserGroupMembershipPublicDTO:
+      type: object
+      description: User group membership data
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email of the user.
+        groupAdmin:
+          type: boolean
+        groupId:
+          type: string
+          format: uuid
+          description: Group ID.
     PermissionsOnAgentPoolPublicDTO:
       type: object
       description: User permissions on agent pool
@@ -439,6 +482,24 @@ components:
       - email
       - firstName
       - lastName
+    PublicApiPageUserPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
     CreateUserPublicDTO:
       type: object
       description: User details
@@ -474,67 +535,6 @@ components:
       - email
       - firstName
       - lastName
-    UserGroupMembershipPublicDTO:
-      type: object
-      description: User group membership data
-      properties:
-        email:
-          type: string
-          format: email
-          description: Email of the user.
-        groupAdmin:
-          type: boolean
-        groupId:
-          type: string
-          format: uuid
-          description: Group ID.
-    PublicApiPageUserPublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserPublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-    UpdateUserPublicDTO:
-      type: object
-      description: User details
-      properties:
-        firstName:
-          type: string
-          description: First name.
-        lastName:
-          type: string
-          description: Last name.
-        roles:
-          type: array
-          description: 'Roles.
-
-            Note: When RBAC is off, only `DEVELOPER` and `SYSTEM_ADMIN` are allowed.'
-          items:
-            type: string
-            enum:
-            - SYSTEM_ADMIN
-            - COMPANY_VIEWER
-            - GROUP_ADMIN
-            - SECURITY
-            - APP_SEC
-            - INCIDENT_RESPONDER
-            - DEVELOPER
-      required:
-      - firstName
-      - lastName
-      - roles
   securitySchemes:
     API_Token:
       scheme: bearer

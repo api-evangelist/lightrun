@@ -55,37 +55,6 @@ paths:
       - Debug Runbook methods
 components:
   schemas:
-    RunbookMethodPublicDTO:
-      type: object
-      description: Debug Runbook Method.
-      properties:
-        condition:
-          type: string
-          description: Condition on method.
-        errorsInfoList:
-          type: array
-          description: Method errors.
-          items:
-            $ref: '#/components/schemas/ErrorInfoPublicDTO'
-        filename:
-          type: string
-          description: File full path of the method.
-        hits:
-          type: array
-          description: Method hit results.
-          items:
-            $ref: '#/components/schemas/RunbookMethodHitPublicDTO'
-        maxResults:
-          type: integer
-          format: int32
-          description: Max results.
-        methodName:
-          type: string
-          description: Method name.
-        methodTimeoutSeconds:
-          type: integer
-          format: int64
-          description: Method timeout in seconds.
     ErrorInfoPublicDTO:
       type: object
       properties:
@@ -120,6 +89,37 @@ components:
           type: string
           format: date-time
           description: Method entry hit time.
+    RunbookMethodPublicDTO:
+      type: object
+      description: Debug Runbook Method.
+      properties:
+        condition:
+          type: string
+          description: Condition on method.
+        errorsInfoList:
+          type: array
+          description: Method errors.
+          items:
+            $ref: '#/components/schemas/ErrorInfoPublicDTO'
+        filename:
+          type: string
+          description: File full path of the method.
+        hits:
+          type: array
+          description: Method hit results.
+          items:
+            $ref: '#/components/schemas/RunbookMethodHitPublicDTO'
+        maxResults:
+          type: integer
+          format: int32
+          description: Max results.
+        methodName:
+          type: string
+          description: Method name.
+        methodTimeoutSeconds:
+          type: integer
+          format: int64
+          description: Method timeout in seconds.
   securitySchemes:
     API_Token:
       scheme: bearer
