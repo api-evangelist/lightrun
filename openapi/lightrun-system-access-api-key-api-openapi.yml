@@ -159,6 +159,41 @@ paths:
       - System access API key
 components:
   schemas:
+    SystemApiKeyValueDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        apiKey: 135119d4-8034-44c8-bd11-9b36d2d560eb
+      properties:
+        apiKey:
+          type: string
+          description: The actual key value (UUID) to use for authentication
+          example: 135119d4-8034-44c8-bd11-9b36d2d560eb
+    SystemApiKeyStatusDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        message: System api key successfully revoked
+      properties:
+        message:
+          type: string
+          description: Message indicating the result of the operation
+          example: System api key successfully revoked
+    SystemApiKeyUpdateDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        label: someLabel
+      properties:
+        label:
+          type: string
+          description: Custom label to identify the key
+          example: someLabel
+          maxLength: 50
+          minLength: 3
+          pattern: ^[A-Za-z\d][A-Za-z\d _-]*$
+      required:
+      - label
     SystemApiKeyListReadDTO:
       type: object
       description: System API Key list read-only view
@@ -176,31 +211,6 @@ components:
           description: List of system API keys
       required:
       - items
-    SystemApiKeyUpdateDTO:
-      type: object
-      description: System API Key list read-only view
-      example:
-        label: someLabel
-      properties:
-        label:
-          type: string
-          description: Custom label to identify the key
-          example: someLabel
-          maxLength: 50
-          minLength: 3
-          pattern: ^[A-Za-z\d][A-Za-z\d _-]*$
-      required:
-      - label
-    SystemApiKeyValueDTO:
-      type: object
-      description: System API Key list read-only view
-      example:
-        apiKey: 135119d4-8034-44c8-bd11-9b36d2d560eb
-      properties:
-        apiKey:
-          type: string
-          description: The actual key value (UUID) to use for authentication
-          example: 135119d4-8034-44c8-bd11-9b36d2d560eb
     SystemApiKeyReadDTO:
       type: object
       default: []
@@ -250,16 +260,6 @@ components:
             - COMPANY
             - DEV
           uniqueItems: true
-    SystemApiKeyStatusDTO:
-      type: object
-      description: System API Key list read-only view
-      example:
-        message: System api key successfully revoked
-      properties:
-        message:
-          type: string
-          description: Message indicating the result of the operation
-          example: System api key successfully revoked
   securitySchemes:
     API_Token:
       scheme: bearer

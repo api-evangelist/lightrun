@@ -152,6 +152,94 @@ paths:
       - Watched packages
 components:
   schemas:
+    PublicApiPageWatchedPackagePublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WatchedPackagePublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    PackageDTO:
+      type: object
+      properties:
+        classes:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        notificationWebhookId:
+          type: string
+        organizationId:
+          type: string
+        packageName:
+          type: string
+        version:
+          type: string
+      required:
+      - packageName
+    WatchedPackageDTO:
+      type: object
+      properties:
+        classes:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        id:
+          type: string
+        notificationWebhookId:
+          type: string
+        organizationId:
+          type: string
+        packageName:
+          type: string
+        updatedDate:
+          type: string
+          format: date-time
+        version:
+          type: string
+      required:
+      - packageName
+    UpdateWatchedPackagePublicDTO:
+      type: object
+      description: Watched package update details
+      properties:
+        classes:
+          type: array
+          description: List of classes to watch
+          example:
+          - org.slf4j.Logger
+          items:
+            type: string
+          uniqueItems: true
+        packageName:
+          type: string
+          description: Package name in the format 'groupId:artifactId'
+          example: org.slf4j:slf4j-api
+        version:
+          type: string
+          description: Package version
+          example: 1.5.4
+      required:
+      - classes
+      - packageName
+      - version
     WatchedPackagePublicDTO:
       type: object
       description: Watched package
@@ -183,94 +271,6 @@ components:
           type: string
           format: date-time
           description: Last update date of the watched package
-        version:
-          type: string
-          description: Package version
-          example: 1.5.4
-      required:
-      - classes
-      - packageName
-      - version
-    WatchedPackageDTO:
-      type: object
-      properties:
-        classes:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-        createdBy:
-          type: string
-        createdDate:
-          type: string
-          format: date-time
-        id:
-          type: string
-        notificationWebhookId:
-          type: string
-        organizationId:
-          type: string
-        packageName:
-          type: string
-        updatedDate:
-          type: string
-          format: date-time
-        version:
-          type: string
-      required:
-      - packageName
-    PackageDTO:
-      type: object
-      properties:
-        classes:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-        notificationWebhookId:
-          type: string
-        organizationId:
-          type: string
-        packageName:
-          type: string
-        version:
-          type: string
-      required:
-      - packageName
-    PublicApiPageWatchedPackagePublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WatchedPackagePublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-    UpdateWatchedPackagePublicDTO:
-      type: object
-      description: Watched package update details
-      properties:
-        classes:
-          type: array
-          description: List of classes to watch
-          example:
-          - org.slf4j.Logger
-          items:
-            type: string
-          uniqueItems: true
-        packageName:
-          type: string
-          description: Package name in the format 'groupId:artifactId'
-          example: org.slf4j:slf4j-api
         version:
           type: string
           description: Package version

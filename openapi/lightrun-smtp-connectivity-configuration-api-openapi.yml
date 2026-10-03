@@ -53,40 +53,13 @@ paths:
       - SMTP connectivity configuration
 components:
   schemas:
-    SmtpConnectivityConfigurationReadDTO:
+    SmtpConnectivityConfigurationWriteDTO:
       type: object
-      description: A read only view of the SMTP connectivity configuration
+      description: SMTP connectivity configuration mutation DTO
       properties:
-        authenticationId:
-          type: string
-          description: 'The SMTP server identifier for authentication: user name or API key name; for the custom SMTP server only'
-        authenticationSecret:
-          type: string
-          description: 'The SMTP server secret for authentication: password or API key value; for the custom SMTP server only'
-        authenticationType:
-          type: string
-          description: The SMTP connectivity authentication type for the custom SMTP server
-          enum:
-          - DISABLED
-          - PASSWORD
-          - APIKEY
-        enableSSL:
-          type: boolean
-          description: Whether secured HTTP is required; for the custom SMTP server only
-        enableStartTLS:
-          type: boolean
-          description: Whether StartTLS protocol is required; for the custom SMTP server only
-        fromEmailAddress:
-          type: string
-          description: The email address that will appear in the ‘from’ field of the system generated emails
-        serverHost:
-          type: string
-          description: Custom SMTP server host or IP address
-        serverPort:
-          type: integer
-          format: int32
-          default: 587
-          description: Custom SMTP server port
+        customSpec:
+          $ref: '#/components/schemas/SmtpCustomConnectivitySpecDTO'
+          description: The custom SMTP connectivity mandatory arguments specification
         type:
           type: string
           default: DEFAULT
@@ -96,6 +69,8 @@ components:
           - DEFAULT
           - CUSTOM
           example: DEFAULT
+      required:
+      - type
     SmtpCustomConnectivitySpecDTO:
       type: object
       description: Custom SMTP connectivity mandatory arguments specification
@@ -142,13 +117,40 @@ components:
       - fromEmailAddress
       - serverHost
       - serverPort
-    SmtpConnectivityConfigurationWriteDTO:
+    SmtpConnectivityConfigurationReadDTO:
       type: object
-      description: SMTP connectivity configuration mutation DTO
+      description: A read only view of the SMTP connectivity configuration
       properties:
-        customSpec:
-          $ref: '#/components/schemas/SmtpCustomConnectivitySpecDTO'
-          description: The custom SMTP connectivity mandatory arguments specification
+        authenticationId:
+          type: string
+          description: 'The SMTP server identifier for authentication: user name or API key name; for the custom SMTP server only'
+        authenticationSecret:
+          type: string
+          description: 'The SMTP server secret for authentication: password or API key value; for the custom SMTP server only'
+        authenticationType:
+          type: string
+          description: The SMTP connectivity authentication type for the custom SMTP server
+          enum:
+          - DISABLED
+          - PASSWORD
+          - APIKEY
+        enableSSL:
+          type: boolean
+          description: Whether secured HTTP is required; for the custom SMTP server only
+        enableStartTLS:
+          type: boolean
+          description: Whether StartTLS protocol is required; for the custom SMTP server only
+        fromEmailAddress:
+          type: string
+          description: The email address that will appear in the ‘from’ field of the system generated emails
+        serverHost:
+          type: string
+          description: Custom SMTP server host or IP address
+        serverPort:
+          type: integer
+          format: int32
+          default: 587
+          description: Custom SMTP server port
         type:
           type: string
           default: DEFAULT
@@ -158,8 +160,6 @@ components:
           - DEFAULT
           - CUSTOM
           example: DEFAULT
-      required:
-      - type
   securitySchemes:
     API_Token:
       scheme: bearer

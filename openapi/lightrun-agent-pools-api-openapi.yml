@@ -258,6 +258,38 @@ paths:
       - Agent Pools
 components:
   schemas:
+    CreateOrUpdateAgentPoolPublicDto:
+      type: object
+      description: Agent pool details
+      properties:
+        description:
+          type: string
+          description: Description of the agent pool.
+          maxLength: 255
+          minLength: 0
+        name:
+          type: string
+          description: Name of the agent pool.
+      required:
+      - name
+    PublicApiPageAgentPoolPublicApiDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentPoolPublicApiDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
     AgentPoolPublicApiDTO:
       type: object
       properties:
@@ -279,38 +311,6 @@ components:
           format: int64
         name:
           type: string
-    PublicApiPageAgentPoolPublicApiDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AgentPoolPublicApiDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-    CreateOrUpdateAgentPoolPublicDto:
-      type: object
-      description: Agent pool details
-      properties:
-        description:
-          type: string
-          description: Description of the agent pool.
-          maxLength: 255
-          minLength: 0
-        name:
-          type: string
-          description: Name of the agent pool.
-      required:
-      - name
   securitySchemes:
     API_Token:
       scheme: bearer

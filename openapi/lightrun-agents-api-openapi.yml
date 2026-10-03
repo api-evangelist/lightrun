@@ -80,6 +80,24 @@ paths:
       - Agents
 components:
   schemas:
+    PublicApiPageAgentPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
     AgentPublicDTO:
       type: object
       description: Agent
@@ -111,24 +129,6 @@ components:
           - Active
           - Expired
           - Expires soon
-    PublicApiPageAgentPublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AgentPublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
   securitySchemes:
     API_Token:
       scheme: bearer

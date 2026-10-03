@@ -65,40 +65,6 @@ paths:
       - Debug Runbooks Configuration
 components:
   schemas:
-    RunbookArgumentConfigPublicDTO:
-      type: object
-      description: Runbook Argument Config.
-      properties:
-        description:
-          type: string
-          description: Description.
-        label:
-          type: string
-          description: Label.
-        variableName:
-          type: string
-          description: Variable name.
-    RunbookMethodConfigPublicDTO:
-      type: object
-      description: Runbook Method Configuration.
-      properties:
-        condition:
-          type: string
-          description: Condition on method.
-        filename:
-          type: string
-          description: File full path of the method.
-        maxResults:
-          type: integer
-          format: int32
-          description: Max results.
-        methodName:
-          type: string
-          description: Method name.
-        methodTimeoutSeconds:
-          type: integer
-          format: int64
-          description: Method timeout in seconds.
     RunbookConfigPublicDTO:
       type: object
       description: Debug Runbook Config.
@@ -135,6 +101,40 @@ components:
           type: string
           format: date-time
           description: Updated time.
+    RunbookMethodConfigPublicDTO:
+      type: object
+      description: Runbook Method Configuration.
+      properties:
+        condition:
+          type: string
+          description: Condition on method.
+        filename:
+          type: string
+          description: File full path of the method.
+        maxResults:
+          type: integer
+          format: int32
+          description: Max results.
+        methodName:
+          type: string
+          description: Method name.
+        methodTimeoutSeconds:
+          type: integer
+          format: int64
+          description: Method timeout in seconds.
+    RunbookArgumentConfigPublicDTO:
+      type: object
+      description: Runbook Argument Config.
+      properties:
+        description:
+          type: string
+          description: Description.
+        label:
+          type: string
+          description: Label.
+        variableName:
+          type: string
+          description: Variable name.
   securitySchemes:
     API_Token:
       scheme: bearer
