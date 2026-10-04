@@ -44,6 +44,9 @@ x-backed-by:
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-09-16'
+x-docs-platform: mkdocs
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
 tags:
 - Company
 - Developer Tools
@@ -557,6 +560,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/lightrun-capability-edges.yml
+  name: Lightrun Business Capability Map
 - type: Website
   url: https://lightrun.com/
 - type: DeveloperPortal
