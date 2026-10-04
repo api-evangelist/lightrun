@@ -138,6 +138,42 @@ paths:
       - Debug Cases
 components:
   schemas:
+    SourceSummaryPublicDTO:
+      type: object
+      description: Source.
+      properties:
+        id:
+          type: string
+          description: Source ID.
+          minLength: 1
+        type:
+          type: string
+          description: Source type.
+          enum:
+          - CUSTOM_SOURCE
+          - AGENT
+          - TAG
+      required:
+      - id
+      - type
+    DebugCaseCreatePublicDTO:
+      type: object
+      description: Create runbook case.
+      properties:
+        description:
+          type: string
+          description: Case description.
+        name:
+          type: string
+          description: Case name.
+          maxLength: 50
+          minLength: 3
+        source:
+          $ref: '#/components/schemas/SourceSummaryPublicDTO'
+          description: Source.
+      required:
+      - name
+      - source
     DebugCasePublicDTO:
       type: object
       description: Debug Runbook Case.
@@ -182,42 +218,6 @@ components:
         webPortalPageLink:
           type: string
           description: Link to case details in the Lightrun Management Portal.
-    DebugCaseCreatePublicDTO:
-      type: object
-      description: Create runbook case.
-      properties:
-        description:
-          type: string
-          description: Case description.
-        name:
-          type: string
-          description: Case name.
-          maxLength: 50
-          minLength: 3
-        source:
-          $ref: '#/components/schemas/SourceSummaryPublicDTO'
-          description: Source.
-      required:
-      - name
-      - source
-    SourceSummaryPublicDTO:
-      type: object
-      description: Source.
-      properties:
-        id:
-          type: string
-          description: Source ID.
-          minLength: 1
-        type:
-          type: string
-          description: Source type.
-          enum:
-          - CUSTOM_SOURCE
-          - AGENT
-          - TAG
-      required:
-      - id
-      - type
     PublicApiPageDebugCasePublicDTO:
       type: object
       properties:

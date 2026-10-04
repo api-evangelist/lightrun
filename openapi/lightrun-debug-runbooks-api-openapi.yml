@@ -257,6 +257,40 @@ components:
         variableName:
           type: string
           description: Variable name.
+    ErrorInfoPublicDTO:
+      type: object
+      properties:
+        agentDisplayName:
+          type: string
+        agentId:
+          type: string
+        errorId:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+    RunbookMethodHitPublicDTO:
+      type: object
+      description: Runbook Method Hit Result.
+      properties:
+        agentDisplayName:
+          type: string
+          description: Agent display name of reported hit.
+        agentId:
+          type: string
+          description: Agent ID of reported hit.
+        endTime:
+          type: string
+          format: date-time
+          description: Method exit hit time.
+        hitCount:
+          type: integer
+          format: int32
+          description: Hit count.
+        startTime:
+          type: string
+          format: date-time
+          description: Method entry hit time.
     RunbookPublicDTO:
       type: object
       description: Runbook.
@@ -288,18 +322,6 @@ components:
           - NOT_STARTED
           - RUNNING
           - TERMINATED
-    ErrorInfoPublicDTO:
-      type: object
-      properties:
-        agentDisplayName:
-          type: string
-        agentId:
-          type: string
-        errorId:
-          type: integer
-          format: int32
-        errorMessage:
-          type: string
     RunbookMethodPublicDTO:
       type: object
       description: Debug Runbook Method.
@@ -331,28 +353,6 @@ components:
           type: integer
           format: int64
           description: Method timeout in seconds.
-    RunbookMethodHitPublicDTO:
-      type: object
-      description: Runbook Method Hit Result.
-      properties:
-        agentDisplayName:
-          type: string
-          description: Agent display name of reported hit.
-        agentId:
-          type: string
-          description: Agent ID of reported hit.
-        endTime:
-          type: string
-          format: date-time
-          description: Method exit hit time.
-        hitCount:
-          type: integer
-          format: int32
-          description: Hit count.
-        startTime:
-          type: string
-          format: date-time
-          description: Method entry hit time.
   securitySchemes:
     API_Token:
       scheme: bearer

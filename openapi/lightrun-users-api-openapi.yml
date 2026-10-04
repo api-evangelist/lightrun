@@ -324,24 +324,35 @@ paths:
       - Users
 components:
   schemas:
-    PublicApiPageUserPublicDTO:
+    UpdateUserPublicDTO:
       type: object
+      description: User details
       properties:
-        hasMore:
-          type: boolean
-        items:
+        firstName:
+          type: string
+          description: First name.
+        lastName:
+          type: string
+          description: Last name.
+        roles:
           type: array
+          description: 'Roles.
+
+            Note: When RBAC is off, only `DEVELOPER` and `SYSTEM_ADMIN` are allowed.'
           items:
-            $ref: '#/components/schemas/UserPublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
+            type: string
+            enum:
+            - SYSTEM_ADMIN
+            - COMPANY_VIEWER
+            - GROUP_ADMIN
+            - SECURITY
+            - APP_SEC
+            - INCIDENT_RESPONDER
+            - DEVELOPER
+      required:
+      - firstName
+      - lastName
+      - roles
     UserPublicDTO:
       type: object
       description: User
@@ -457,35 +468,6 @@ components:
             enum:
             - STANDARD
             - IGNORE_QUOTA
-    UpdateUserPublicDTO:
-      type: object
-      description: User details
-      properties:
-        firstName:
-          type: string
-          description: First name.
-        lastName:
-          type: string
-          description: Last name.
-        roles:
-          type: array
-          description: 'Roles.
-
-            Note: When RBAC is off, only `DEVELOPER` and `SYSTEM_ADMIN` are allowed.'
-          items:
-            type: string
-            enum:
-            - SYSTEM_ADMIN
-            - COMPANY_VIEWER
-            - GROUP_ADMIN
-            - SECURITY
-            - APP_SEC
-            - INCIDENT_RESPONDER
-            - DEVELOPER
-      required:
-      - firstName
-      - lastName
-      - roles
     CreateUserPublicDTO:
       type: object
       description: User details
@@ -535,6 +517,24 @@ components:
           type: string
           format: uuid
           description: Group ID.
+    PublicApiPageUserPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
   securitySchemes:
     API_Token:
       scheme: bearer

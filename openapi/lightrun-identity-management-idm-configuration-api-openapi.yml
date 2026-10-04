@@ -94,20 +94,23 @@ paths:
       - Identity Management (IdM) configuration
 components:
   schemas:
-    IdmSsoOidcReadDTO:
+    IdmSsoScimWriteDTO:
       type: object
-      description: SSO/OIDC protocol descriptor for the identity management (IdM) configuration
+      description: SCIM provisioning update descriptor for the identity management (IdM) configuration
       properties:
-        clientId:
-          type: string
-          description: The IdP Client ID for OIDC
-        discoveryUrl:
-          type: string
-          description: The IdP Discovery URL for OIDC
-        redirectUrl:
-          type: string
-          description: The SSO redirect URL to be used by the customer IdP
-          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
+        createExistingUsersEnabled:
+          type: boolean
+          default: true
+          description: Whether SCIM should re-provision users already existing in Lightrun at the time of enabling SCIM
+        enabled:
+          type: boolean
+          description: SCIM provisioning enablement status
+        syncGroupsEnabled:
+          type: boolean
+          description: Whether SCIM also manages the RBAC groups to which users are assigned
+        syncRolesEnabled:
+          type: boolean
+          description: Whether SCIM also manages the RBAC roles to which users are assigned
     IdmSsoProtocolOptionsWriteDTO:
       type: object
       description: Base class for SSO protocol descriptor for the identity management (IdM) configuration
@@ -121,54 +124,30 @@ components:
           example: OIDC
       required:
       - protocol
-    IdmSsoReadDTO:
+    IdmProvisioningConfigurationWriteDTO:
       type: object
-      description: Identity management (IdM) configuration SSO descriptor
+      description: Identity management provisioning configuration update descriptor
       properties:
-        oidc:
-          $ref: '#/components/schemas/IdmSsoOidcReadDTO'
-          description: SSO/OIDC protocol descriptor
-        protocol:
-          type: string
-          description: SSO protocol type
-          enum:
-          - SAML
-          - OIDC
-          example: OIDC
-        saml:
-          $ref: '#/components/schemas/IdmSsoSamlReadDTO'
-          description: SSO/SAML protocol descriptor
-    IdmAuthenticationConfigurationWriteDTO:
-      type: object
-      description: Identity management configuration update descriptor
-      properties:
-        loginMethod:
-          type: string
-          description: Current login method
-          enum:
-          - PASSWORD
-          - GOOGLE
-          - SSO
-          example: SSO
-        ssoProtocolOptions:
-          $ref: '#/components/schemas/IdmSsoProtocolOptionsWriteDTO'
-          description: SSO protocol options for either SAML or OIDC
-      required:
-      - loginMethod
-    IdmSsoSamlReadDTO:
-      type: object
-      description: SSO/SAML protocol descriptor for the identity management (IdM) configuration
-      properties:
-        entityId:
-          type: string
-          description: The SSO Entity ID (for SAML) to be used by the customer’s IdP
-        idpUrl:
-          type: string
-          description: The IdP SSO URL for SAML
-        redirectUrl:
-          type: string
-          description: The SSO redirect URL to be used by the customer IdP
-          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
+        jitProvisionEnabled:
+          type: boolean
+          default: false
+          description: JIT provisioning enablement status
+        scim:
+          $ref: '#/components/schemas/IdmSsoScimWriteDTO'
+          description: SCIM specific configuration
+        selfRegistrationAllowedDomains:
+          type: array
+          default: '[]'
+          description: A list of email domains allowed for self registration. Attempted logins with emails not from these domains will be denied
+          example:
+          - example.com
+          - example.org
+          items:
+            type: string
+        selfRegistrationEnabled:
+          type: boolean
+          default: false
+          description: Self-registration enablement status
     IdmAuthenticationConfigurationReadDTO:
       type: object
       description: Identity management configuration read descriptor
@@ -185,6 +164,20 @@ components:
         sso:
           $ref: '#/components/schemas/IdmSsoReadDTO'
           description: SSO specific configuration
+    IdmSsoOidcReadDTO:
+      type: object
+      description: SSO/OIDC protocol descriptor for the identity management (IdM) configuration
+      properties:
+        clientId:
+          type: string
+          description: The IdP Client ID for OIDC
+        discoveryUrl:
+          type: string
+          description: The IdP Discovery URL for OIDC
+        redirectUrl:
+          type: string
+          description: The SSO redirect URL to be used by the customer IdP
+          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
     IdmProvisioningConfigurationReadDTO:
       type: object
       description: Identity management provisioning configuration read-only view
@@ -233,47 +226,54 @@ components:
         syncRolesEnabled:
           type: boolean
           description: Whether SCIM also manages the RBAC roles to which users are assigned
-    IdmSsoScimWriteDTO:
+    IdmSsoReadDTO:
       type: object
-      description: SCIM provisioning update descriptor for the identity management (IdM) configuration
+      description: Identity management (IdM) configuration SSO descriptor
       properties:
-        createExistingUsersEnabled:
-          type: boolean
-          default: true
-          description: Whether SCIM should re-provision users already existing in Lightrun at the time of enabling SCIM
-        enabled:
-          type: boolean
-          description: SCIM provisioning enablement status
-        syncGroupsEnabled:
-          type: boolean
-          description: Whether SCIM also manages the RBAC groups to which users are assigned
-        syncRolesEnabled:
-          type: boolean
-          description: Whether SCIM also manages the RBAC roles to which users are assigned
-    IdmProvisioningConfigurationWriteDTO:
+        oidc:
+          $ref: '#/components/schemas/IdmSsoOidcReadDTO'
+          description: SSO/OIDC protocol descriptor
+        protocol:
+          type: string
+          description: SSO protocol type
+          enum:
+          - SAML
+          - OIDC
+          example: OIDC
+        saml:
+          $ref: '#/components/schemas/IdmSsoSamlReadDTO'
+          description: SSO/SAML protocol descriptor
+    IdmSsoSamlReadDTO:
       type: object
-      description: Identity management provisioning configuration update descriptor
+      description: SSO/SAML protocol descriptor for the identity management (IdM) configuration
       properties:
-        jitProvisionEnabled:
-          type: boolean
-          default: false
-          description: JIT provisioning enablement status
-        scim:
-          $ref: '#/components/schemas/IdmSsoScimWriteDTO'
-          description: SCIM specific configuration
-        selfRegistrationAllowedDomains:
-          type: array
-          default: '[]'
-          description: A list of email domains allowed for self registration. Attempted logins with emails not from these domains will be denied
-          example:
-          - example.com
-          - example.org
-          items:
-            type: string
-        selfRegistrationEnabled:
-          type: boolean
-          default: false
-          description: Self-registration enablement status
+        entityId:
+          type: string
+          description: The SSO Entity ID (for SAML) to be used by the customer’s IdP
+        idpUrl:
+          type: string
+          description: The IdP SSO URL for SAML
+        redirectUrl:
+          type: string
+          description: The SSO redirect URL to be used by the customer IdP
+          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
+    IdmAuthenticationConfigurationWriteDTO:
+      type: object
+      description: Identity management configuration update descriptor
+      properties:
+        loginMethod:
+          type: string
+          description: Current login method
+          enum:
+          - PASSWORD
+          - GOOGLE
+          - SSO
+          example: SSO
+        ssoProtocolOptions:
+          $ref: '#/components/schemas/IdmSsoProtocolOptionsWriteDTO'
+          description: SSO protocol options for either SAML or OIDC
+      required:
+      - loginMethod
   securitySchemes:
     API_Token:
       scheme: bearer

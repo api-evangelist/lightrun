@@ -159,16 +159,6 @@ paths:
       - System access API key
 components:
   schemas:
-    SystemApiKeyValueDTO:
-      type: object
-      description: System API Key list read-only view
-      example:
-        apiKey: 135119d4-8034-44c8-bd11-9b36d2d560eb
-      properties:
-        apiKey:
-          type: string
-          description: The actual key value (UUID) to use for authentication
-          example: 135119d4-8034-44c8-bd11-9b36d2d560eb
     SystemApiKeyStatusDTO:
       type: object
       description: System API Key list read-only view
@@ -194,23 +184,6 @@ components:
           pattern: ^[A-Za-z\d][A-Za-z\d _-]*$
       required:
       - label
-    SystemApiKeyListReadDTO:
-      type: object
-      description: System API Key list read-only view
-      example:
-        items:
-        - createdBy: creatorEmailOrName
-          createdDate: '2023-10-01T12:00:00Z'
-          expirationDate: '2023-10-01T12:01:00Z'
-          id: apiKeyId
-          label: apiKeyLabel
-      properties:
-        items:
-          $ref: '#/components/schemas/SystemApiKeyReadDTO'
-          default: '[]'
-          description: List of system API keys
-      required:
-      - items
     SystemApiKeyReadDTO:
       type: object
       default: []
@@ -260,6 +233,33 @@ components:
             - COMPANY
             - DEV
           uniqueItems: true
+    SystemApiKeyListReadDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        items:
+        - createdBy: creatorEmailOrName
+          createdDate: '2023-10-01T12:00:00Z'
+          expirationDate: '2023-10-01T12:01:00Z'
+          id: apiKeyId
+          label: apiKeyLabel
+      properties:
+        items:
+          $ref: '#/components/schemas/SystemApiKeyReadDTO'
+          default: '[]'
+          description: List of system API keys
+      required:
+      - items
+    SystemApiKeyValueDTO:
+      type: object
+      description: System API Key list read-only view
+      example:
+        apiKey: 135119d4-8034-44c8-bd11-9b36d2d560eb
+      properties:
+        apiKey:
+          type: string
+          description: The actual key value (UUID) to use for authentication
+          example: 135119d4-8034-44c8-bd11-9b36d2d560eb
   securitySchemes:
     API_Token:
       scheme: bearer

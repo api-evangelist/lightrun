@@ -68,6 +68,17 @@ paths:
       - Tags
 components:
   schemas:
+    AgentTagSummaryPublicDTO:
+      type: object
+      description: Agent tag.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Agent tag ID.
+        name:
+          type: string
+          description: Agent tag label.
     PublicApiPageAgentTagSummaryPublicDTO:
       type: object
       properties:
@@ -86,17 +97,6 @@ components:
         total:
           type: integer
           format: int64
-    AgentTagSummaryPublicDTO:
-      type: object
-      description: Agent tag.
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: Agent tag ID.
-        name:
-          type: string
-          description: Agent tag label.
   securitySchemes:
     API_Token:
       scheme: bearer

@@ -258,6 +258,27 @@ paths:
       - Agent Pools
 components:
   schemas:
+    AgentPoolPublicApiDTO:
+      type: object
+      properties:
+        agentsEnabled:
+          type: boolean
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+          maxLength: 255
+          minLength: 0
+        id:
+          type: string
+        liveAgentsCount:
+          type: integer
+          format: int64
+        name:
+          type: string
     CreateOrUpdateAgentPoolPublicDto:
       type: object
       description: Agent pool details
@@ -290,27 +311,6 @@ components:
         total:
           type: integer
           format: int64
-    AgentPoolPublicApiDTO:
-      type: object
-      properties:
-        agentsEnabled:
-          type: boolean
-        createdBy:
-          type: string
-        createdDate:
-          type: string
-          format: date-time
-        description:
-          type: string
-          maxLength: 255
-          minLength: 0
-        id:
-          type: string
-        liveAgentsCount:
-          type: integer
-          format: int64
-        name:
-          type: string
   securitySchemes:
     API_Token:
       scheme: bearer
