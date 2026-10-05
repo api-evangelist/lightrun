@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.lightrun.com/public-api/lightrun-api.json",
+ "requested_url": "https://docs.lightrun.com/public-api/lightrun-api.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 227082,
+ "sha256": "1f0851e773830e93f573223b50bcfa649250197a0cd9bfc4e482549dfb1586e7",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.985), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
