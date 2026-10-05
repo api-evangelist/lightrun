@@ -1,0 +1,65 @@
+slug: lightrun
+provider: Lightrun
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Actions
+  spec_file: lightrun-actions-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.75
+  evidence: POST /api/v1/actions/logs createLogAction 'Create a log action'; 'Get log messages'; 'Create
+    a snapshot action' — dynamic logs/snapshots captured from a running production process
+  reason: The operations place and read dynamic log and snapshot instrumentation in live running services,
+    which is production observability tooling (logs/metrics/traces making the running service understandable),
+    not business-domain functionality.
+- tag: Dynamic SBOM
+  spec_file: lightrun-dynamic-sbom-api-openapi.yml
+  capability_id: BC-4200.60
+  capability_id_l1: BC-4200
+  capability_name: Open Source Stewardship
+  confidence: 0.75
+  evidence: GET /api/v1/sbom getSBOM 'Get a software bill of materials (SBOM)'; CycloneDXSbomReportComponentDTO,
+    SPDXSbomReportPackageDTO
+  reason: Producing CycloneDX/SPDX SBOMs of components actually loaded by the application is a software
+    supply-chain artefact capability, matching Open Source Stewardship's inbound-use and supply-chain
+    artefact scope.
+- tag: User Groups
+  spec_file: lightrun-user-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: '''Create a group'', ''Add group members'', UserGroupMemberPublicDTO'
+  reason: Group and membership administration used to assign platform permissions is identity and access
+    management; some chance it is better seen as tenant user administration.
+- tag: Users
+  spec_file: lightrun-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: '''Create a user'', ''Disable a user'', PermissionsOnAgentPoolPublicDTO'
+  reason: User account lifecycle (create/update/disable/enable) with permissions on agent pools is classic
+    identity and access administration, not HR employee records.
+- tag: Just-In-Time Access
+  spec_file: lightrun-just-in-time-access-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /api/v1/temp-access 'Grant temporary access to a list of users across multiple agent
+    pools'; DELETE 'Revoke temporary access'
+  reason: Granting, listing and revoking time-bound user access is privileged/just-in-time access administration,
+    squarely Identity & Access Management rather than any product-domain capability.
