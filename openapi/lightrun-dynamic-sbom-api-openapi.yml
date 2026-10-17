@@ -105,97 +105,6 @@ paths:
       - Dynamic SBOM
 components:
   schemas:
-    CycloneDXSbomReportEvidenceDTO:
-      type: object
-      properties:
-        occurrences:
-          type: array
-          items:
-            $ref: '#/components/schemas/CycloneDXSbomReportOccurrenceDTO'
-    CycloneDXSbomReportDependecyDTO:
-      type: object
-      properties:
-        dependsOn:
-          type: array
-          items:
-            type: string
-        ref:
-          type: string
-    CycloneDXSbomReportServiceDTO:
-      type: object
-      properties:
-        name:
-          type: string
-        provider:
-          $ref: '#/components/schemas/CycloneDXSbomReportProviderDTO'
-        version:
-          type: string
-    CycloneDXSbomReportDTO:
-      type: object
-      properties:
-        bomFormat:
-          type: string
-        components:
-          type: array
-          items:
-            $ref: '#/components/schemas/CycloneDXSbomReportComponentDTO'
-        dependencies:
-          type: array
-          items:
-            $ref: '#/components/schemas/CycloneDXSbomReportDependecyDTO'
-        metadata:
-          $ref: '#/components/schemas/CycloneDXSbomReportMetadataDTO'
-        serialNumber:
-          type: string
-        specVersion:
-          type: string
-        version:
-          type: integer
-          format: int32
-    SPDXSbomReportDTO:
-      type: object
-      properties:
-        SPDXID:
-          type: string
-        creationInfo:
-          $ref: '#/components/schemas/SPDXSbomReportCreationInfoDTO'
-        dataLicense:
-          type: string
-        documentNamespace:
-          type: string
-        name:
-          type: string
-        packages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SPDXSbomReportPackageDTO'
-        relationships:
-          type: array
-          items:
-            $ref: '#/components/schemas/SPDXSbomReportRelationshipDTO'
-        spdxVersion:
-          type: string
-    CycloneDXSbomReportProviderDTO:
-      type: object
-      properties:
-        name:
-          type: string
-    CycloneDXSbomReportToolDTO:
-      type: object
-      properties:
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/CycloneDXSbomReportServiceDTO'
-    SPDXSbomReportCreationInfoDTO:
-      type: object
-      properties:
-        created:
-          type: string
-        creators:
-          type: array
-          items:
-            type: string
     CycloneDXSbomReportComponentDTO:
       type: object
       properties:
@@ -225,6 +134,93 @@ components:
           type: string
         version:
           type: string
+    CycloneDXSbomReportOccurrenceDTO:
+      type: object
+      properties:
+        location:
+          type: string
+    CycloneDXSbomReportToolDTO:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportServiceDTO'
+    CycloneDXSbomReportDTO:
+      type: object
+      properties:
+        bomFormat:
+          type: string
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportComponentDTO'
+        dependencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportDependecyDTO'
+        metadata:
+          $ref: '#/components/schemas/CycloneDXSbomReportMetadataDTO'
+        serialNumber:
+          type: string
+        specVersion:
+          type: string
+        version:
+          type: integer
+          format: int32
+    SPDXSbomReportCreationInfoDTO:
+      type: object
+      properties:
+        created:
+          type: string
+        creators:
+          type: array
+          items:
+            type: string
+    CycloneDXSbomReportHashDTO:
+      type: object
+      properties:
+        alg:
+          type: string
+        content:
+          type: string
+    CycloneDXSbomReportServiceDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        provider:
+          $ref: '#/components/schemas/CycloneDXSbomReportProviderDTO'
+        version:
+          type: string
+    CycloneDXSbomReportProviderDTO:
+      type: object
+      properties:
+        name:
+          type: string
+    SPDXSbomReportRelationshipDTO:
+      type: object
+      properties:
+        comment:
+          type: string
+        relatedSpdxElement:
+          type: string
+        relationshipType:
+          type: string
+          enum:
+          - DESCRIBES
+          - RUNTIME_DEPENDENCY_OF
+        spdxElementId:
+          type: string
+    SPDXSbomReportExternalRefDTO:
+      type: object
+      properties:
+        referenceCategory:
+          type: string
+        referenceLocator:
+          type: string
+        referenceType:
+          type: string
     SPDXSbomReportPackageDTO:
       type: object
       properties:
@@ -252,13 +248,45 @@ components:
           type: string
         versionInfo:
           type: string
-    CycloneDXSbomReportHashDTO:
+    CycloneDXSbomReportDependecyDTO:
       type: object
       properties:
-        alg:
+        dependsOn:
+          type: array
+          items:
+            type: string
+        ref:
           type: string
-        content:
+    SPDXSbomReportDTO:
+      type: object
+      properties:
+        SPDXID:
           type: string
+        creationInfo:
+          $ref: '#/components/schemas/SPDXSbomReportCreationInfoDTO'
+        dataLicense:
+          type: string
+        documentNamespace:
+          type: string
+        name:
+          type: string
+        packages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SPDXSbomReportPackageDTO'
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/SPDXSbomReportRelationshipDTO'
+        spdxVersion:
+          type: string
+    CycloneDXSbomReportEvidenceDTO:
+      type: object
+      properties:
+        occurrences:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycloneDXSbomReportOccurrenceDTO'
     CycloneDXSbomReportMetadataDTO:
       type: object
       properties:
@@ -268,34 +296,6 @@ components:
           type: string
         tools:
           $ref: '#/components/schemas/CycloneDXSbomReportToolDTO'
-    SPDXSbomReportRelationshipDTO:
-      type: object
-      properties:
-        comment:
-          type: string
-        relatedSpdxElement:
-          type: string
-        relationshipType:
-          type: string
-          enum:
-          - DESCRIBES
-          - RUNTIME_DEPENDENCY_OF
-        spdxElementId:
-          type: string
-    CycloneDXSbomReportOccurrenceDTO:
-      type: object
-      properties:
-        location:
-          type: string
-    SPDXSbomReportExternalRefDTO:
-      type: object
-      properties:
-        referenceCategory:
-          type: string
-        referenceLocator:
-          type: string
-        referenceType:
-          type: string
   securitySchemes:
     API_Token:
       scheme: bearer

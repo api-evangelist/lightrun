@@ -68,6 +68,17 @@ paths:
       - Custom Sources
 components:
   schemas:
+    CustomSourceSummaryPublicDTO:
+      type: object
+      description: Custom sources.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Custom source ID.
+        name:
+          type: string
+          description: Custom source name.
     PublicApiPageCustomSourceSummaryPublicDTO:
       type: object
       properties:
@@ -86,17 +97,6 @@ components:
         total:
           type: integer
           format: int64
-    CustomSourceSummaryPublicDTO:
-      type: object
-      description: Custom sources.
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Custom source ID.
-        name:
-          type: string
-          description: Custom source name.
   securitySchemes:
     API_Token:
       scheme: bearer

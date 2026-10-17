@@ -53,24 +53,6 @@ paths:
       - SMTP connectivity configuration
 components:
   schemas:
-    SmtpConnectivityConfigurationWriteDTO:
-      type: object
-      description: SMTP connectivity configuration mutation DTO
-      properties:
-        customSpec:
-          $ref: '#/components/schemas/SmtpCustomConnectivitySpecDTO'
-          description: The custom SMTP connectivity mandatory arguments specification
-        type:
-          type: string
-          default: DEFAULT
-          description: SMTP service configuration type
-          enum:
-          - DISABLED
-          - DEFAULT
-          - CUSTOM
-          example: DEFAULT
-      required:
-      - type
     SmtpConnectivityConfigurationReadDTO:
       type: object
       description: A read only view of the SMTP connectivity configuration
@@ -160,6 +142,24 @@ components:
       - fromEmailAddress
       - serverHost
       - serverPort
+    SmtpConnectivityConfigurationWriteDTO:
+      type: object
+      description: SMTP connectivity configuration mutation DTO
+      properties:
+        customSpec:
+          $ref: '#/components/schemas/SmtpCustomConnectivitySpecDTO'
+          description: The custom SMTP connectivity mandatory arguments specification
+        type:
+          type: string
+          default: DEFAULT
+          description: SMTP service configuration type
+          enum:
+          - DISABLED
+          - DEFAULT
+          - CUSTOM
+          example: DEFAULT
+      required:
+      - type
   securitySchemes:
     API_Token:
       scheme: bearer

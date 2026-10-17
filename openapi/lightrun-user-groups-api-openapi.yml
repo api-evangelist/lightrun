@@ -353,17 +353,40 @@ paths:
       - User Groups
 components:
   schemas:
-    BulkOperationResponsePublicDtoUserGroupMemberPublicDTO:
+    BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO:
       type: object
       properties:
-        failures:
+        message:
+          type: string
+        payload:
+          $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+        status:
+          type: integer
+          format: int32
+    CreateUserGroupPublicDTO:
+      type: object
+      description: User group details
+      properties:
+        agentPoolIds:
           type: array
+          description: Agent pool IDs.
           items:
-            $ref: '#/components/schemas/BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO'
-        successes:
+            type: string
+          uniqueItems: true
+        name:
+          type: string
+          description: Name of the user group.
+        roles:
           type: array
+          description: Roles.
           items:
-            $ref: '#/components/schemas/UserGroupMemberPublicDTO'
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+      required:
+      - name
     BulkOperationFailedItemPublicDtoString:
       type: object
       properties:
@@ -429,16 +452,39 @@ components:
           uniqueItems: true
       required:
       - name
-    BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO:
+    PublicApiPageUserGroupPublicDTO:
       type: object
       properties:
-        message:
-          type: string
-        payload:
-          $ref: '#/components/schemas/UserGroupMemberPublicDTO'
-        status:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupPublicDTO'
+        limit:
           type: integer
           format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+    UpdateUserGroupMemberPublicDTO:
+      type: object
+      description: Group membership details
+      properties:
+        elevatedRoles:
+          type: array
+          description: Elevated roles.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - PRIVILEGED
+          uniqueItems: true
+        groupAdmin:
+          type: boolean
     UserGroupMemberPublicDTO:
       type: object
       description: User group member
@@ -478,6 +524,17 @@ components:
           type: array
           items:
             type: string
+    BulkOperationResponsePublicDtoUserGroupMemberPublicDTO:
+      type: object
+      properties:
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkOperationFailedItemPublicDtoUserGroupMemberPublicDTO'
+        successes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupMemberPublicDTO'
     UpdateUserGroupPublicDTO:
       type: object
       description: User group details
@@ -502,63 +559,6 @@ components:
           uniqueItems: true
       required:
       - name
-    PublicApiPageUserGroupPublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGroupPublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-    CreateUserGroupPublicDTO:
-      type: object
-      description: User group details
-      properties:
-        agentPoolIds:
-          type: array
-          description: Agent pool IDs.
-          items:
-            type: string
-          uniqueItems: true
-        name:
-          type: string
-          description: Name of the user group.
-        roles:
-          type: array
-          description: Roles.
-          items:
-            type: string
-            enum:
-            - STANDARD
-            - PRIVILEGED
-          uniqueItems: true
-      required:
-      - name
-    UpdateUserGroupMemberPublicDTO:
-      type: object
-      description: Group membership details
-      properties:
-        elevatedRoles:
-          type: array
-          description: Elevated roles.
-          items:
-            type: string
-            enum:
-            - STANDARD
-            - PRIVILEGED
-          uniqueItems: true
-        groupAdmin:
-          type: boolean
   securitySchemes:
     API_Token:
       scheme: bearer

@@ -94,23 +94,6 @@ paths:
       - Identity Management (IdM) configuration
 components:
   schemas:
-    IdmSsoScimWriteDTO:
-      type: object
-      description: SCIM provisioning update descriptor for the identity management (IdM) configuration
-      properties:
-        createExistingUsersEnabled:
-          type: boolean
-          default: true
-          description: Whether SCIM should re-provision users already existing in Lightrun at the time of enabling SCIM
-        enabled:
-          type: boolean
-          description: SCIM provisioning enablement status
-        syncGroupsEnabled:
-          type: boolean
-          description: Whether SCIM also manages the RBAC groups to which users are assigned
-        syncRolesEnabled:
-          type: boolean
-          description: Whether SCIM also manages the RBAC roles to which users are assigned
     IdmSsoProtocolOptionsWriteDTO:
       type: object
       description: Base class for SSO protocol descriptor for the identity management (IdM) configuration
@@ -124,6 +107,64 @@ components:
           example: OIDC
       required:
       - protocol
+    IdmSsoOidcReadDTO:
+      type: object
+      description: SSO/OIDC protocol descriptor for the identity management (IdM) configuration
+      properties:
+        clientId:
+          type: string
+          description: The IdP Client ID for OIDC
+        discoveryUrl:
+          type: string
+          description: The IdP Discovery URL for OIDC
+        redirectUrl:
+          type: string
+          description: The SSO redirect URL to be used by the customer IdP
+          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
+    IdmSsoScimReadDTO:
+      type: object
+      description: SCIM provisioning read descriptor for the identity management (IdM) configuration
+      properties:
+        createExistingUsersEnabled:
+          type: boolean
+          description: Whether SCIM should re-provision users already existing in Lightrun at the time of enabling SCIM
+        enabled:
+          type: boolean
+          description: SCIM provisioning enablement status
+        endpointUrl:
+          type: string
+          description: The SCIM service endpoint URL to be used by the customer IdM
+          example: https://some.host:8443/api/company/e582658d-ddaa-4987-90b4-8ed1910365d4/scim/v2
+        oauthAccessTokenUrl:
+          type: string
+          format: url
+        oauthAuthorizationUrl:
+          type: string
+          format: url
+        oauthClientId:
+          type: string
+        oauthClientSecret:
+          type: string
+        syncGroupsEnabled:
+          type: boolean
+          description: Whether SCIM also manages the RBAC groups to which users are assigned
+        syncRolesEnabled:
+          type: boolean
+          description: Whether SCIM also manages the RBAC roles to which users are assigned
+    IdmSsoSamlReadDTO:
+      type: object
+      description: SSO/SAML protocol descriptor for the identity management (IdM) configuration
+      properties:
+        entityId:
+          type: string
+          description: The SSO Entity ID (for SAML) to be used by the customer’s IdP
+        idpUrl:
+          type: string
+          description: The IdP SSO URL for SAML
+        redirectUrl:
+          type: string
+          description: The SSO redirect URL to be used by the customer IdP
+          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
     IdmProvisioningConfigurationWriteDTO:
       type: object
       description: Identity management provisioning configuration update descriptor
@@ -164,20 +205,6 @@ components:
         sso:
           $ref: '#/components/schemas/IdmSsoReadDTO'
           description: SSO specific configuration
-    IdmSsoOidcReadDTO:
-      type: object
-      description: SSO/OIDC protocol descriptor for the identity management (IdM) configuration
-      properties:
-        clientId:
-          type: string
-          description: The IdP Client ID for OIDC
-        discoveryUrl:
-          type: string
-          description: The IdP Discovery URL for OIDC
-        redirectUrl:
-          type: string
-          description: The SSO redirect URL to be used by the customer IdP
-          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
     IdmProvisioningConfigurationReadDTO:
       type: object
       description: Identity management provisioning configuration read-only view
@@ -196,67 +223,6 @@ components:
         selfRegistrationEnabled:
           type: boolean
           description: Self-registration enablement status
-    IdmSsoScimReadDTO:
-      type: object
-      description: SCIM provisioning read descriptor for the identity management (IdM) configuration
-      properties:
-        createExistingUsersEnabled:
-          type: boolean
-          description: Whether SCIM should re-provision users already existing in Lightrun at the time of enabling SCIM
-        enabled:
-          type: boolean
-          description: SCIM provisioning enablement status
-        endpointUrl:
-          type: string
-          description: The SCIM service endpoint URL to be used by the customer IdM
-          example: https://some.host:8443/api/company/e582658d-ddaa-4987-90b4-8ed1910365d4/scim/v2
-        oauthAccessTokenUrl:
-          type: string
-          format: url
-        oauthAuthorizationUrl:
-          type: string
-          format: url
-        oauthClientId:
-          type: string
-        oauthClientSecret:
-          type: string
-        syncGroupsEnabled:
-          type: boolean
-          description: Whether SCIM also manages the RBAC groups to which users are assigned
-        syncRolesEnabled:
-          type: boolean
-          description: Whether SCIM also manages the RBAC roles to which users are assigned
-    IdmSsoReadDTO:
-      type: object
-      description: Identity management (IdM) configuration SSO descriptor
-      properties:
-        oidc:
-          $ref: '#/components/schemas/IdmSsoOidcReadDTO'
-          description: SSO/OIDC protocol descriptor
-        protocol:
-          type: string
-          description: SSO protocol type
-          enum:
-          - SAML
-          - OIDC
-          example: OIDC
-        saml:
-          $ref: '#/components/schemas/IdmSsoSamlReadDTO'
-          description: SSO/SAML protocol descriptor
-    IdmSsoSamlReadDTO:
-      type: object
-      description: SSO/SAML protocol descriptor for the identity management (IdM) configuration
-      properties:
-        entityId:
-          type: string
-          description: The SSO Entity ID (for SAML) to be used by the customer’s IdP
-        idpUrl:
-          type: string
-          description: The IdP SSO URL for SAML
-        redirectUrl:
-          type: string
-          description: The SSO redirect URL to be used by the customer IdP
-          example: https://some.host:8443/auth/realms/lightrun/broker/e582658d-ddaa-4987-90b4-8ed1910365d4/endpoint
     IdmAuthenticationConfigurationWriteDTO:
       type: object
       description: Identity management configuration update descriptor
@@ -274,6 +240,40 @@ components:
           description: SSO protocol options for either SAML or OIDC
       required:
       - loginMethod
+    IdmSsoReadDTO:
+      type: object
+      description: Identity management (IdM) configuration SSO descriptor
+      properties:
+        oidc:
+          $ref: '#/components/schemas/IdmSsoOidcReadDTO'
+          description: SSO/OIDC protocol descriptor
+        protocol:
+          type: string
+          description: SSO protocol type
+          enum:
+          - SAML
+          - OIDC
+          example: OIDC
+        saml:
+          $ref: '#/components/schemas/IdmSsoSamlReadDTO'
+          description: SSO/SAML protocol descriptor
+    IdmSsoScimWriteDTO:
+      type: object
+      description: SCIM provisioning update descriptor for the identity management (IdM) configuration
+      properties:
+        createExistingUsersEnabled:
+          type: boolean
+          default: true
+          description: Whether SCIM should re-provision users already existing in Lightrun at the time of enabling SCIM
+        enabled:
+          type: boolean
+          description: SCIM provisioning enablement status
+        syncGroupsEnabled:
+          type: boolean
+          description: Whether SCIM also manages the RBAC groups to which users are assigned
+        syncRolesEnabled:
+          type: boolean
+          description: Whether SCIM also manages the RBAC roles to which users are assigned
   securitySchemes:
     API_Token:
       scheme: bearer

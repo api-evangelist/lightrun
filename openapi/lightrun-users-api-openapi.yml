@@ -324,10 +324,16 @@ paths:
       - Users
 components:
   schemas:
-    UpdateUserPublicDTO:
+    CreateUserPublicDTO:
       type: object
       description: User details
       properties:
+        email:
+          type: string
+          format: email
+          description: Email.
+          maxLength: 254
+          minLength: 5
         firstName:
           type: string
           description: First name.
@@ -350,9 +356,27 @@ components:
             - INCIDENT_RESPONDER
             - DEVELOPER
       required:
+      - email
       - firstName
       - lastName
-      - roles
+    PublicApiPageUserPublicDTO:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserPublicDTO'
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
     UserPublicDTO:
       type: object
       description: User
@@ -452,32 +476,10 @@ components:
       - email
       - firstName
       - lastName
-    PermissionsOnAgentPoolPublicDTO:
-      type: object
-      description: User permissions on agent pool
-      properties:
-        agentPoolId:
-          type: string
-          format: uuid
-          description: Agent pool ID.
-        permissions:
-          type: array
-          description: Permissions on the agent pool.
-          items:
-            type: string
-            enum:
-            - STANDARD
-            - IGNORE_QUOTA
-    CreateUserPublicDTO:
+    UpdateUserPublicDTO:
       type: object
       description: User details
       properties:
-        email:
-          type: string
-          format: email
-          description: Email.
-          maxLength: 254
-          minLength: 5
         firstName:
           type: string
           description: First name.
@@ -500,9 +502,25 @@ components:
             - INCIDENT_RESPONDER
             - DEVELOPER
       required:
-      - email
       - firstName
       - lastName
+      - roles
+    PermissionsOnAgentPoolPublicDTO:
+      type: object
+      description: User permissions on agent pool
+      properties:
+        agentPoolId:
+          type: string
+          format: uuid
+          description: Agent pool ID.
+        permissions:
+          type: array
+          description: Permissions on the agent pool.
+          items:
+            type: string
+            enum:
+            - STANDARD
+            - IGNORE_QUOTA
     UserGroupMembershipPublicDTO:
       type: object
       description: User group membership data
@@ -517,24 +535,6 @@ components:
           type: string
           format: uuid
           description: Group ID.
-    PublicApiPageUserPublicDTO:
-      type: object
-      properties:
-        hasMore:
-          type: boolean
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserPublicDTO'
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
   securitySchemes:
     API_Token:
       scheme: bearer
