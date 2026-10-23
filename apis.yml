@@ -560,6 +560,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/lightrun/overview
 - url: https://lightrun.com/feed/
   type: BlogRSS
 - type: CapabilityMap
