@@ -101,3 +101,9 @@ components:
     API_Token:
       scheme: bearer
       type: http
+x-provenance:
+  method: harvested
+  publisher: Lightrun
+  source: https://docs.lightrun.com/public-api/lightrun-api.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
