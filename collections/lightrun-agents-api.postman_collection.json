@@ -1,324 +1,310 @@
 {
+  "info": {
+    "_postman_id": "4e0c6f0b-dd4b-4d2d-9dc4-bd637f0d1a96",
+    "name": "Lightrun Agents API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:27:09.000Z",
+    "updatedAt": "2026-10-22T01:27:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4e0c6f0b-dd4b-4d2d-9dc4-bd637f0d1a96"
+  },
   "item": [
     {
-      "id": "21b5b32c-b96a-4a58-8fed-c9cb43370105",
-      "name": "Agents",
-      "description": {
-        "content": "Agents API.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "e16b22e4-17fe-4dcd-8493-6ee71ce08e6f",
-          "name": "Get a list of agents",
-          "request": {
-            "name": "Get a list of agents",
-            "description": {
-              "content": "Get a list of agents.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agents"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "agentPoolId",
-                  "value": "<string>",
-                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "Filter agents by display name, host and process ID, or tag name. This filter supports the * wildcard to match multiple values with a common pattern."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
-                },
-                {
-                  "disabled": false,
-                  "key": "size",
-                  "value": "20",
-                  "description": "The number of items to include on each page of results. The default is 20."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "56b49591-b426-47d3-bf3e-960b01fc8306",
-              "name": "Agents retrieved.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "agents",
+              "item": [
+                {
+                  "name": "Get a list of agents",
+                  "id": "b760413d-b38c-4c08-80f9-cf9f3082db74",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/agents?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "agents"
+                      ],
+                      "query": [
+                        {
+                          "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                          "key": "agentPoolId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter agents by display name, host and process ID, or tag name. This filter supports the * wildcard to match multiple values with a common pattern.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "description": "The number of items to include on each page of results. The default is 20.",
+                          "key": "size",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria.",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Get a list of agents.\n\n**Required API permission level:** `DEV`"
+                  },
+                  "response": [
                     {
-                      "key": "agentPoolId",
-                      "value": "<string>"
+                      "id": "7692fdd9-4671-4638-b667-56adfa54335b",
+                      "name": "Agents retrieved.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agents?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agents"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter agents by display name, host and process ID, or tag name. This filter supports the * wildcard to match multiple values with a common pattern.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The number of items to include on each page of results. The default is 20.",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria.",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \".Net\",\n      \"version\": \"<string>\",\n      \"versionStatus\": \"Expired\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \"Kotlin\",\n      \"version\": \"<string>\",\n      \"versionStatus\": \"Active\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:27:10.000Z",
+                      "updatedAt": "2026-10-22T01:27:10.000Z",
+                      "uid": "35240-7692fdd9-4671-4638-b667-56adfa54335b"
                     },
                     {
-                      "key": "name",
-                      "value": "<string>"
+                      "id": "74c9bcb7-3ff9-485f-8713-18c89d28f6fa",
+                      "name": "Invalid input.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agents?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agents"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter agents by display name, host and process ID, or tag name. This filter supports the * wildcard to match multiple values with a common pattern.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The number of items to include on each page of results. The default is 20.",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria.",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \".Net\",\n      \"version\": \"<string>\",\n      \"versionStatus\": \"Expired\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \"Kotlin\",\n      \"version\": \"<string>\",\n      \"versionStatus\": \"Active\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:27:10.000Z",
+                      "updatedAt": "2026-10-22T01:27:10.000Z",
+                      "uid": "35240-74c9bcb7-3ff9-485f-8713-18c89d28f6fa"
                     },
                     {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
+                      "id": "7cd00dd0-0ccb-440d-a639-fee0abdf4c0b",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agents?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agents"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter agents by display name, host and process ID, or tag name. This filter supports the * wildcard to match multiple values with a common pattern.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The number of items to include on each page of results. The default is 20.",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Supports multiple criteria.",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \".Net\",\n      \"version\": \"<string>\",\n      \"versionStatus\": \"Expired\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \"Kotlin\",\n      \"version\": \"<string>\",\n      \"versionStatus\": \"Active\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:27:10.000Z",
+                      "updatedAt": "2026-10-22T01:27:10.000Z",
+                      "uid": "35240-7cd00dd0-0ccb-440d-a639-fee0abdf4c0b"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-22T01:27:10.000Z",
+                  "updatedAt": "2026-10-22T01:27:10.000Z",
+                  "uid": "35240-b760413d-b38c-4c08-80f9-cf9f3082db74"
                 }
               ],
-              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"id\": \"dea52cc4-17f6-156a-e818-8a51c6c198c0\",\n      \"name\": \"string\",\n      \"type\": \"Kotlin\",\n      \"version\": \"string\",\n      \"versionStatus\": \"Expires soon\"\n    },\n    {\n      \"id\": \"1546fd0d-7297-b56e-9023-131de8ff6da8\",\n      \"name\": \"string\",\n      \"type\": \"Scala\",\n      \"version\": \"string\",\n      \"versionStatus\": \"Expires soon\"\n    }\n  ],\n  \"limit\": 6916,\n  \"offset\": 2441,\n  \"total\": 378\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9b22f57f-9231-4685-b0b7-599766a37e67",
-              "name": "Invalid input.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"id\": \"dea52cc4-17f6-156a-e818-8a51c6c198c0\",\n      \"name\": \"string\",\n      \"type\": \"Kotlin\",\n      \"version\": \"string\",\n      \"versionStatus\": \"Expires soon\"\n    },\n    {\n      \"id\": \"1546fd0d-7297-b56e-9023-131de8ff6da8\",\n      \"name\": \"string\",\n      \"type\": \"Scala\",\n      \"version\": \"string\",\n      \"versionStatus\": \"Expires soon\"\n    }\n  ],\n  \"limit\": 6916,\n  \"offset\": 2441,\n  \"total\": 378\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f3959071-60f6-4b51-a9d8-e86c235d646f",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"id\": \"dea52cc4-17f6-156a-e818-8a51c6c198c0\",\n      \"name\": \"string\",\n      \"type\": \"Kotlin\",\n      \"version\": \"string\",\n      \"versionStatus\": \"Expires soon\"\n    },\n    {\n      \"id\": \"1546fd0d-7297-b56e-9023-131de8ff6da8\",\n      \"name\": \"string\",\n      \"type\": \"Scala\",\n      \"version\": \"string\",\n      \"versionStatus\": \"Expires soon\"\n    }\n  ],\n  \"limit\": 6916,\n  \"offset\": 2441,\n  \"total\": 378\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "27b9676f-bfb3-475e-b247-8fb01f3f6b9f",
+              "createdAt": "2026-10-22T01:27:10.000Z",
+              "updatedAt": "2026-10-22T01:27:10.000Z",
+              "uid": "35240-27b9676f-bfb3-475e-b247-8fb01f3f6b9f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0e73b7d7-b4f5-4574-99d3-990ed2a3ca5e",
+          "createdAt": "2026-10-22T01:27:10.000Z",
+          "updatedAt": "2026-10-22T01:27:10.000Z",
+          "uid": "35240-0e73b7d7-b4f5-4574-99d3-990ed2a3ca5e"
         }
       ],
-      "event": []
+      "id": "bd5e6533-8ab2-4c81-9594-1b6d698f526c",
+      "createdAt": "2026-10-22T01:27:10.000Z",
+      "updatedAt": "2026-10-22T01:27:10.000Z",
+      "uid": "35240-bd5e6533-8ab2-4c81-9594-1b6d698f526c"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "0540d36a-cd05-4288-8774-8681bf01efa9",
-    "name": "Lightrun Actions Agents API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

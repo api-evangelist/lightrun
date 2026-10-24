@@ -1,184 +1,178 @@
 {
+  "info": {
+    "_postman_id": "c60f6080-ab93-450a-99b8-9ac754c83d6d",
+    "name": "Lightrun Custom sources API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:27:14.000Z",
+    "updatedAt": "2026-10-22T01:27:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c60f6080-ab93-450a-99b8-9ac754c83d6d"
+  },
   "item": [
     {
-      "id": "ca3fe563-2044-4503-87da-5f2594f1144e",
-      "name": "Custom sources",
-      "description": {
-        "content": "Custom sources API.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "556d2f70-3e91-4a44-85c2-3eb2499d110d",
-          "name": "Get a list of custom sources",
-          "request": {
-            "name": "Get a list of custom sources",
-            "description": {
-              "content": "Get a list of custom sources.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "custom-sources"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "agentPoolId",
-                  "value": "<string>",
-                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "Filter custom sources by their names. This filter supports the * wildcard to match multiple values with a common pattern."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
-                },
-                {
-                  "disabled": false,
-                  "key": "size",
-                  "value": "20",
-                  "description": "The number of items to include on each page of results. The default is 20."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "24515768-23d9-4315-843e-b245873bbf36",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "custom-sources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
+              "name": "custom-sources",
+              "item": [
+                {
+                  "name": "Get a list of custom sources",
+                  "id": "6cdc6261-81fe-4701-8e8d-352d8182024a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/custom-sources?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "custom-sources"
+                      ],
+                      "query": [
+                        {
+                          "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                          "key": "agentPoolId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter custom sources by their names. This filter supports the * wildcard to match multiple values with a common pattern.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "description": "The number of items to include on each page of results. The default is 20.",
+                          "key": "size",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name.",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
                     },
+                    "description": "Get a list of custom sources.\n\n**Required API permission level:** `DEV`"
+                  },
+                  "response": [
                     {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
+                      "id": "a5e3759c-ea0a-4ea4-b1de-5fa489ef1af1",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/custom-sources?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "custom-sources"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter custom sources by their names. This filter supports the * wildcard to match multiple values with a common pattern.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The number of items to include on each page of results. The default is 20.",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name.",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:27:15.000Z",
+                      "updatedAt": "2026-10-22T01:27:15.000Z",
+                      "uid": "35240-a5e3759c-ea0a-4ea4-b1de-5fa489ef1af1"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-22T01:27:15.000Z",
+                  "updatedAt": "2026-10-22T01:27:15.000Z",
+                  "uid": "35240-6cdc6261-81fe-4701-8e8d-352d8182024a"
                 }
               ],
-              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"id\": \"c0c56a3e-9908-dd78-9d13-e2425dc34fe3\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"cadd9b04-8aa7-f63e-3ca0-13c139a300f9\",\n      \"name\": \"string\"\n    }\n  ],\n  \"limit\": 3087,\n  \"offset\": 7808,\n  \"total\": 7325\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "d0d5942b-7e9c-44ef-aebc-66736282dbae",
+              "createdAt": "2026-10-22T01:27:15.000Z",
+              "updatedAt": "2026-10-22T01:27:15.000Z",
+              "uid": "35240-d0d5942b-7e9c-44ef-aebc-66736282dbae"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "cfd07472-bc24-40f0-a92b-9d4c03ade509",
+          "createdAt": "2026-10-22T01:27:15.000Z",
+          "updatedAt": "2026-10-22T01:27:15.000Z",
+          "uid": "35240-cfd07472-bc24-40f0-a92b-9d4c03ade509"
         }
       ],
-      "event": []
+      "id": "9d9154ca-315c-4918-b469-5c65d70bc6a3",
+      "createdAt": "2026-10-22T01:27:15.000Z",
+      "updatedAt": "2026-10-22T01:27:15.000Z",
+      "uid": "35240-9d9154ca-315c-4918-b469-5c65d70bc6a3"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "bf9e04d2-2dfa-4270-a5f2-e148a11e4609",
-    "name": "Lightrun Actions Custom sources API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

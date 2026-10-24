@@ -1,446 +1,381 @@
 {
+  "info": {
+    "_postman_id": "6553bb8f-6f01-4732-b199-552e47f16f48",
+    "name": "Lightrun License API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:28:02.000Z",
+    "updatedAt": "2026-10-22T01:28:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6553bb8f-6f01-4732-b199-552e47f16f48"
+  },
   "item": [
     {
-      "id": "a22dda8d-4ef4-400e-ab08-8b62f0c180d6",
-      "name": "License",
-      "description": {
-        "content": "Company License API.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "cee6ff80-9948-4a2b-b908-c4a5ddf0840a",
-          "name": "Get the license for an organization",
-          "request": {
-            "name": "Get the license for an organization",
-            "description": {
-              "content": "Get the company license.\n\n**Required API permission level:** `COMPANY`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "license"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "3dd67498-2b2f-4514-8a43-16554daa5655",
-              "name": "Base64 encoded content of the license .",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "license",
+              "item": [
+                {
+                  "name": "Get the license for an organization",
+                  "id": "3798afc2-c56e-413f-9461-e0c3d728156d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "02f610d1-ed5e-4e67-b6a7-b0bcc2e71da8",
-              "name": "A required attribute of the API request is missing.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/license",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "license"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5b8542db-aeea-47ce-84f1-85051c6a7769",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                    "description": "Get the company license.\n\n**Required API permission level:** `COMPANY`"
+                  },
+                  "response": [
+                    {
+                      "id": "0656506a-71bf-4588-8425-6192c0d4bba9",
+                      "name": "Base64 encoded content of the license .",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:28:02.000Z",
+                      "updatedAt": "2026-10-22T01:28:02.000Z",
+                      "uid": "35240-0656506a-71bf-4588-8425-6192c0d4bba9"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2af3877d-231d-452c-a0c7-125a95a7e62f",
-              "name": "The license is not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                    {
+                      "id": "5d630862-a717-4105-8cc3-1c13bd368045",
+                      "name": "A required attribute of the API request is missing.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:02.000Z",
+                      "updatedAt": "2026-10-22T01:28:02.000Z",
+                      "uid": "35240-5d630862-a717-4105-8cc3-1c13bd368045"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+                    {
+                      "id": "ca2bf845-4d5b-4c8b-a744-63bfc84505c7",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:02.000Z",
+                      "updatedAt": "2026-10-22T01:28:02.000Z",
+                      "uid": "35240-ca2bf845-4d5b-4c8b-a744-63bfc84505c7"
+                    },
+                    {
+                      "id": "d7595561-d5b0-4327-b47f-0b4a7ae787a4",
+                      "name": "The license is not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:02.000Z",
+                      "updatedAt": "2026-10-22T01:28:02.000Z",
+                      "uid": "35240-d7595561-d5b0-4327-b47f-0b4a7ae787a4"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:28:02.000Z",
+                  "updatedAt": "2026-10-22T01:28:02.000Z",
+                  "uid": "35240-3798afc2-c56e-413f-9461-e0c3d728156d"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Update the company license",
+                  "id": "8127b1a7-d4f7-4c22-a281-44d719457119",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/license",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "license"
+                      ]
+                    },
+                    "description": "Update the company license.\n\n**Required API permission level:** `COMPANY`"
+                  },
+                  "response": [
+                    {
+                      "id": "0845586a-19c4-430f-af7c-e82bc9da10a4",
+                      "name": "The license is updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:02.000Z",
+                      "updatedAt": "2026-10-22T01:28:02.000Z",
+                      "uid": "35240-0845586a-19c4-430f-af7c-e82bc9da10a4"
+                    },
+                    {
+                      "id": "fda3b22a-ca56-4d87-b88c-5168ba98218e",
+                      "name": "Invalid license content or signature / Newer license exists / A required attribute of the API request is missing.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:02.000Z",
+                      "updatedAt": "2026-10-22T01:28:02.000Z",
+                      "uid": "35240-fda3b22a-ca56-4d87-b88c-5168ba98218e"
+                    },
+                    {
+                      "id": "332d2c9b-7e6b-4b88-b3e5-3dc71a21b443",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:02.000Z",
+                      "updatedAt": "2026-10-22T01:28:02.000Z",
+                      "uid": "35240-332d2c9b-7e6b-4b88-b3e5-3dc71a21b443"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:28:02.000Z",
+                  "updatedAt": "2026-10-22T01:28:02.000Z",
+                  "uid": "35240-8127b1a7-d4f7-4c22-a281-44d719457119"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "d2400c41-1086-4819-9252-dff60914ae52",
+              "createdAt": "2026-10-22T01:28:02.000Z",
+              "updatedAt": "2026-10-22T01:28:02.000Z",
+              "uid": "35240-d2400c41-1086-4819-9252-dff60914ae52"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7e25d3c6-ee01-4f22-980e-88031c287459",
-          "name": "Update the company license",
-          "request": {
-            "name": "Update the company license",
-            "description": {
-              "content": "Update the company license.\n\n**Required API permission level:** `COMPANY`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "license"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "a3ade10d-0f80-4859-998e-8cb1a3ad8803",
-              "name": "The license is updated successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8ad3a907-1f0c-4b7e-92a6-ed11943f0eaf",
-              "name": "Invalid license content or signature / Newer license exists / A required attribute of the API request is missing.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e5ce3500-c4c3-4d2e-9117-d3490337dba5",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"license\": \"<string>\",\n  \"licenseSignature\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "512f0f21-1dbf-4678-ae9e-3606669bda26",
+          "createdAt": "2026-10-22T01:28:02.000Z",
+          "updatedAt": "2026-10-22T01:28:02.000Z",
+          "uid": "35240-512f0f21-1dbf-4678-ae9e-3606669bda26"
         }
       ],
-      "event": []
+      "id": "7be78159-8f3e-4359-b954-1798e3eb6318",
+      "createdAt": "2026-10-22T01:28:02.000Z",
+      "updatedAt": "2026-10-22T01:28:02.000Z",
+      "uid": "35240-7be78159-8f3e-4359-b954-1798e3eb6318"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "f2bfc3af-e16a-45c7-afb1-4a71f57b9de9",
-    "name": "Lightrun Actions License API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

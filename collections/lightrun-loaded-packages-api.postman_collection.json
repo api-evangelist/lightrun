@@ -1,477 +1,406 @@
 {
+  "info": {
+    "_postman_id": "832e7de5-95aa-4c0a-9fca-4492313e0346",
+    "name": "Lightrun Loaded packages API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:28:20.000Z",
+    "updatedAt": "2026-10-22T01:28:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-832e7de5-95aa-4c0a-9fca-4492313e0346"
+  },
   "item": [
     {
-      "id": "7b5e991e-ac3b-4cbb-861a-7b810ed522c9",
-      "name": "Loaded packages",
-      "description": {
-        "content": "Loaded packages API.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "016837bd-d973-47ba-9f5e-76f08696ecaa",
-          "name": "Get an array of loaded packages",
-          "request": {
-            "name": "Get an array of loaded packages",
-            "description": {
-              "content": "Get an array of loaded packages.\n\n**Required API permission level:** `SECURITY`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "loaded-packages"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "agentPoolId",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "loadDateEnd",
-                  "value": "<date>",
-                  "description": "Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)"
-                },
-                {
-                  "disabled": false,
-                  "key": "loadDateStart",
-                  "value": "<date>",
-                  "description": "Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)"
-                },
-                {
-                  "disabled": false,
-                  "key": "packageNames",
-                  "value": "<string>",
-                  "description": "Filter packages by package names."
-                },
-                {
-                  "disabled": false,
-                  "key": "packageNames",
-                  "value": "<string>",
-                  "description": "Filter packages by package names."
-                },
-                {
-                  "disabled": false,
-                  "key": "packageVersions",
-                  "value": "<string>",
-                  "description": "Filter packages by package versions."
-                },
-                {
-                  "disabled": false,
-                  "key": "packageVersions",
-                  "value": "<string>",
-                  "description": "Filter packages by package versions."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "Zero-based page index (0..N)"
-                },
-                {
-                  "disabled": false,
-                  "key": "size",
-                  "value": "20",
-                  "description": "The size of the page to be returned"
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported."
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Specify the status of packages for filtering: active, inactive, pending."
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Specify the status of packages for filtering: active, inactive, pending."
-                },
-                {
-                  "disabled": false,
-                  "key": "tags",
-                  "value": "<string>",
-                  "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them."
-                },
-                {
-                  "disabled": false,
-                  "key": "tags",
-                  "value": "<string>",
-                  "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "2f1d06d4-6c4e-452d-bdd3-d7cb042cfd63",
-              "name": "Loaded packages retrieved.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "loaded-packages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "loadDateEnd",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "loadDateStart",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "packageNames",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageNames",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageVersions",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageVersions",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tags",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tags",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "loaded-packages",
+              "item": [
+                {
+                  "name": "Get an array of loaded packages",
+                  "id": "48156f66-8a44-4419-a91f-012be398894c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"classes\": [\n        {\n          \"name\": \"string\",\n          \"status\": \"LOADED\"\n        },\n        {\n          \"name\": \"string\",\n          \"status\": \"NOT_LOADED\"\n        }\n      ],\n      \"packageName\": \"string\",\n      \"status\": \"NOT_LOADED\",\n      \"type\": \"JAVA\",\n      \"version\": \"string\"\n    },\n    {\n      \"classes\": [\n        {\n          \"name\": \"string\",\n          \"status\": \"NOT_LOADED\"\n        },\n        {\n          \"name\": \"string\",\n          \"status\": \"LOADED\"\n        }\n      ],\n      \"packageName\": \"string\",\n      \"status\": \"LOADED_WITH_CLASSES\",\n      \"type\": \"JAVA\",\n      \"version\": \"string\"\n    }\n  ],\n  \"limit\": 847,\n  \"offset\": 4305,\n  \"total\": 7682\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2d368466-8d55-4592-b8f2-d72755f41d4e",
-              "name": "Invalid input or object.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "loaded-packages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/loaded-packages?agentPoolId=<string>&loadDateEnd=<date>&loadDateStart=<date>&packageNames=<string>&packageNames=<string>&packageVersions=<string>&packageVersions=<string>&page=0&size=20&sort=<string>&sort=<string>&status=LOADED&status=NOT_LOADED&tags=<string>&tags=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "loaded-packages"
+                      ],
+                      "query": [
+                        {
+                          "key": "agentPoolId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                          "key": "loadDateEnd",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                          "key": "loadDateStart",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Filter packages by package names.",
+                          "key": "packageNames",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter packages by package names.",
+                          "key": "packageNames",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter packages by package versions.",
+                          "key": "packageVersions",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter packages by package versions.",
+                          "key": "packageVersions",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Zero-based page index (0..N)",
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "description": "The size of the page to be returned",
+                          "key": "size",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specify the status of packages for filtering: active, inactive, pending.",
+                          "key": "status",
+                          "value": "LOADED"
+                        },
+                        {
+                          "description": "Specify the status of packages for filtering: active, inactive, pending.",
+                          "key": "status",
+                          "value": "NOT_LOADED"
+                        },
+                        {
+                          "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them.",
+                          "key": "tags",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them.",
+                          "key": "tags",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Get an array of loaded packages.\n\n**Required API permission level:** `SECURITY`"
+                  },
+                  "response": [
                     {
-                      "key": "agentPoolId",
-                      "value": "<string>"
+                      "id": "83edd312-bb64-416a-92ff-53c57fe58f09",
+                      "name": "Loaded packages retrieved.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/loaded-packages?agentPoolId=<string>&loadDateEnd=<date>&loadDateStart=<date>&packageNames=<string>&packageVersions=<string>&page=0&size=20&sort=<string>&status=NOT_LOADED&tags=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "loaded-packages"
+                          ],
+                          "query": [
+                            {
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                              "key": "loadDateEnd",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                              "key": "loadDateStart",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter packages by package names.",
+                              "key": "packageNames",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter packages by package versions.",
+                              "key": "packageVersions",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Zero-based page index (0..N)",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The size of the page to be returned",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                              "key": "sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify the status of packages for filtering: active, inactive, pending.",
+                              "key": "status",
+                              "value": "NOT_LOADED"
+                            },
+                            {
+                              "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them.",
+                              "key": "tags",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"classes\": [\n        {\n          \"name\": \"<string>\",\n          \"status\": \"NOT_LOADED\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"status\": \"LOADED\"\n        }\n      ],\n      \"packageName\": \"<string>\",\n      \"status\": \"LOADED\",\n      \"type\": \"JAVA\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"classes\": [\n        {\n          \"name\": \"<string>\",\n          \"status\": \"NOT_LOADED\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"status\": \"LOADED\"\n        }\n      ],\n      \"packageName\": \"<string>\",\n      \"status\": \"LOADED\",\n      \"type\": \"JAVA\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:28:21.000Z",
+                      "updatedAt": "2026-10-22T01:28:21.000Z",
+                      "uid": "35240-83edd312-bb64-416a-92ff-53c57fe58f09"
                     },
                     {
-                      "key": "loadDateEnd",
-                      "value": "<date>"
+                      "id": "32fa5fd4-1c1e-46ed-bbf1-86350129d78d",
+                      "name": "Invalid input or object.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/loaded-packages?agentPoolId=<string>&loadDateEnd=<date>&loadDateStart=<date>&packageNames=<string>&packageVersions=<string>&page=0&size=20&sort=<string>&status=NOT_LOADED&tags=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "loaded-packages"
+                          ],
+                          "query": [
+                            {
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                              "key": "loadDateEnd",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                              "key": "loadDateStart",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter packages by package names.",
+                              "key": "packageNames",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter packages by package versions.",
+                              "key": "packageVersions",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Zero-based page index (0..N)",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The size of the page to be returned",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                              "key": "sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify the status of packages for filtering: active, inactive, pending.",
+                              "key": "status",
+                              "value": "NOT_LOADED"
+                            },
+                            {
+                              "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them.",
+                              "key": "tags",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:21.000Z",
+                      "updatedAt": "2026-10-22T01:28:21.000Z",
+                      "uid": "35240-32fa5fd4-1c1e-46ed-bbf1-86350129d78d"
                     },
                     {
-                      "key": "loadDateStart",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "packageNames",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageNames",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageVersions",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageVersions",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tags",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tags",
-                      "value": "<string>"
+                      "id": "f9ee560d-d5b2-4fdc-9914-15c740de7afd",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/loaded-packages?agentPoolId=<string>&loadDateEnd=<date>&loadDateStart=<date>&packageNames=<string>&packageVersions=<string>&page=0&size=20&sort=<string>&status=NOT_LOADED&tags=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "loaded-packages"
+                          ],
+                          "query": [
+                            {
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies the end date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                              "key": "loadDateEnd",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Specifies the start date of the range for filtering loaded packages. Date format is <YYYY-MM-DD>. (UTC)",
+                              "key": "loadDateStart",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter packages by package names.",
+                              "key": "packageNames",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter packages by package versions.",
+                              "key": "packageVersions",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Zero-based page index (0..N)",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The size of the page to be returned",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                              "key": "sort",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify the status of packages for filtering: active, inactive, pending.",
+                              "key": "status",
+                              "value": "NOT_LOADED"
+                            },
+                            {
+                              "description": "Filter packages based on the distinct combination of tags assigned to the hosts that loaded them.",
+                              "key": "tags",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:28:21.000Z",
+                      "updatedAt": "2026-10-22T01:28:21.000Z",
+                      "uid": "35240-f9ee560d-d5b2-4fdc-9914-15c740de7afd"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "createdAt": "2026-10-22T01:28:21.000Z",
+                  "updatedAt": "2026-10-22T01:28:21.000Z",
+                  "uid": "35240-48156f66-8a44-4419-a91f-012be398894c"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ae74a54e-8095-486e-84d5-32fe77efa845",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "loaded-packages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "loadDateEnd",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "loadDateStart",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "packageNames",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageNames",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageVersions",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "packageVersions",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tags",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "tags",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "1816a4ad-6b86-4551-bdeb-3474ba827aca",
+              "createdAt": "2026-10-22T01:28:21.000Z",
+              "updatedAt": "2026-10-22T01:28:21.000Z",
+              "uid": "35240-1816a4ad-6b86-4551-bdeb-3474ba827aca"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b0cc17f8-13a8-4731-9c1e-123b0de4a177",
+          "createdAt": "2026-10-22T01:28:21.000Z",
+          "updatedAt": "2026-10-22T01:28:21.000Z",
+          "uid": "35240-b0cc17f8-13a8-4731-9c1e-123b0de4a177"
         }
       ],
-      "event": []
+      "id": "09750188-984b-4a9b-ba33-1cfcb005618c",
+      "createdAt": "2026-10-22T01:28:21.000Z",
+      "updatedAt": "2026-10-22T01:28:21.000Z",
+      "uid": "35240-09750188-984b-4a9b-ba33-1cfcb005618c"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "2f352d62-9443-4202-a589-e0164ea36d5a",
-    "name": "Lightrun Actions Loaded packages API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

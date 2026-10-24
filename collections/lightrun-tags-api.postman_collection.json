@@ -1,184 +1,178 @@
 {
+  "info": {
+    "_postman_id": "bec3fef7-8d5d-4815-97ca-3eb20c211450",
+    "name": "Lightrun Tags API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:28:44.000Z",
+    "updatedAt": "2026-10-22T01:28:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bec3fef7-8d5d-4815-97ca-3eb20c211450"
+  },
   "item": [
     {
-      "id": "109922dc-cc28-4d5b-b7dd-bd208f3e509b",
-      "name": "Tags",
-      "description": {
-        "content": "Tags API.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "c7d53162-c877-494c-b7ba-d6f71a93ef88",
-          "name": "Get a list of tags",
-          "request": {
-            "name": "Get a list of tags",
-            "description": {
-              "content": "Get a list of tags.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "tags"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "agentPoolId",
-                  "value": "<string>",
-                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "Filter tags by their names. This filter supports the * wildcard to match multiple values with a common pattern."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
-                },
-                {
-                  "disabled": false,
-                  "key": "size",
-                  "value": "20",
-                  "description": "The number of items to include on each page of results. The default is 20."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "86240779-d9d6-4e2b-bd15-1545653acdc7",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "tags"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
+              "name": "tags",
+              "item": [
+                {
+                  "name": "Get a list of tags",
+                  "id": "0e618326-a8dc-42f8-a2df-3e6ad128f821",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/tags?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "tags"
+                      ],
+                      "query": [
+                        {
+                          "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                          "key": "agentPoolId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter tags by their names. This filter supports the * wildcard to match multiple values with a common pattern.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "description": "The number of items to include on each page of results. The default is 20.",
+                          "key": "size",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name.",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
                     },
+                    "description": "Get a list of tags.\n\n**Required API permission level:** `DEV`"
+                  },
+                  "response": [
                     {
-                      "key": "name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
+                      "id": "09c1e54b-e3e1-419d-aa31-622ba73ed539",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tags?agentPoolId=<string>&name=<string>&page=0&size=20&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tags"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter tags by their names. This filter supports the * wildcard to match multiple values with a common pattern.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The number of items to include on each page of results. The default is 20.",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name.",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:28:44.000Z",
+                      "updatedAt": "2026-10-22T01:28:44.000Z",
+                      "uid": "35240-09c1e54b-e3e1-419d-aa31-622ba73ed539"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-22T01:28:44.000Z",
+                  "updatedAt": "2026-10-22T01:28:44.000Z",
+                  "uid": "35240-0e618326-a8dc-42f8-a2df-3e6ad128f821"
                 }
               ],
-              "body": "{\n  \"hasMore\": false,\n  \"items\": [\n    {\n      \"id\": 8172,\n      \"name\": \"string\"\n    },\n    {\n      \"id\": 2683,\n      \"name\": \"string\"\n    }\n  ],\n  \"limit\": 9566,\n  \"offset\": 8482,\n  \"total\": 4934\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "ccf9b068-28b9-483a-ac8e-b3bc87cd40d3",
+              "createdAt": "2026-10-22T01:28:44.000Z",
+              "updatedAt": "2026-10-22T01:28:44.000Z",
+              "uid": "35240-ccf9b068-28b9-483a-ac8e-b3bc87cd40d3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c9c1c870-0bd0-493a-9969-aa31206d6f8a",
+          "createdAt": "2026-10-22T01:28:44.000Z",
+          "updatedAt": "2026-10-22T01:28:44.000Z",
+          "uid": "35240-c9c1c870-0bd0-493a-9969-aa31206d6f8a"
         }
       ],
-      "event": []
+      "id": "e56c2575-be35-4b43-b67c-c477fe7e663b",
+      "createdAt": "2026-10-22T01:28:44.000Z",
+      "updatedAt": "2026-10-22T01:28:44.000Z",
+      "uid": "35240-e56c2575-be35-4b43-b67c-c477fe7e663b"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "98916bf2-0c9f-4cda-a2a6-484e91cbe607",
-    "name": "Lightrun Actions Tags API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

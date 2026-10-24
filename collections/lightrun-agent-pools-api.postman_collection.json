@@ -1,1427 +1,1220 @@
 {
+  "info": {
+    "_postman_id": "03e5558c-d70c-42a5-a939-b8b8302782c4",
+    "name": "Lightrun Agent Pools API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:27:03.000Z",
+    "updatedAt": "2026-10-22T01:27:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-03e5558c-d70c-42a5-a939-b8b8302782c4"
+  },
   "item": [
     {
-      "id": "d5a435cc-601a-4038-a859-ff56a37cc18b",
-      "name": "Agent Pools",
-      "description": {
-        "content": "Agent Pools API.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "9896fb73-b8d5-4dd9-b15e-e4a6c002aa7b",
-          "name": "Get a list of agent pools",
-          "request": {
-            "name": "Get a list of agent pools",
-            "description": {
-              "content": "Get a list of all agent pools.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agent-pools"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "Filter agent pools by their name."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
-                },
-                {
-                  "disabled": false,
-                  "key": "size",
-                  "value": "20",
-                  "description": "The number of items to include on each page of results. The default is 20."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdDate, agentsEnabled."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdDate, agentsEnabled."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "a79dd200-f7d0-4a5c-8887-dc9e7e0cb249",
-              "name": "Retrieved all agent pools.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "agent-pools",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
                     {
-                      "key": "name",
-                      "value": "<string>"
+                      "name": "detach-agents",
+                      "item": [
+                        {
+                          "name": "Detach (disable) agents in an agent pool by ID",
+                          "id": "59cc472c-3495-4876-9dc8-5ff8839c27e0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id/detach-agents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id",
+                                "detach-agents"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "dc9df70d-6d1f-4094-b4db-a7d1757d2a97",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) Agent pool ID."
+                                }
+                              ]
+                            },
+                            "description": "Disables the agent pool by ID, disconnecting active agents and preventing new agents from joining.\n\n**Required API permission level:** `DEV`"
+                          },
+                          "response": [
+                            {
+                              "id": "aab4e3ba-3bc7-4b5b-a94f-0352c9685bc5",
+                              "name": "Agents detached.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/agent-pools/:id/detach-agents",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "agent-pools",
+                                    ":id",
+                                    "detach-agents"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:27:03.000Z",
+                              "updatedAt": "2026-10-22T01:27:03.000Z",
+                              "uid": "35240-aab4e3ba-3bc7-4b5b-a94f-0352c9685bc5"
+                            },
+                            {
+                              "id": "afc8e99e-a75c-4e2a-950d-c5455b6bb7c8",
+                              "name": "Agent pool not found.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/agent-pools/:id/detach-agents",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "agent-pools",
+                                    ":id",
+                                    "detach-agents"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:27:03.000Z",
+                              "updatedAt": "2026-10-22T01:27:03.000Z",
+                              "uid": "35240-afc8e99e-a75c-4e2a-950d-c5455b6bb7c8"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-59cc472c-3495-4876-9dc8-5ff8839c27e0"
+                        }
+                      ],
+                      "id": "2d7c45cb-ac22-472e-8ff2-1146af8c33c8",
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-2d7c45cb-ac22-472e-8ff2-1146af8c33c8"
                     },
                     {
-                      "key": "page",
-                      "value": "0"
+                      "name": "enable-agents",
+                      "item": [
+                        {
+                          "name": "Enable agents in an agent pool by ID",
+                          "id": "96674550-cabf-45bb-baab-6234b0a511ca",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id/enable-agents",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id",
+                                "enable-agents"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "af0fe787-cbb0-443d-8a19-3cfe0d8e6e83",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) Agent pool ID."
+                                }
+                              ]
+                            },
+                            "description": "Enable agents in an agent pool by ID.\n\n**Required API permission level:** `DEV`"
+                          },
+                          "response": [
+                            {
+                              "id": "1963cf1f-90a7-43d1-aa0c-8b5081162b66",
+                              "name": "Agents enabled.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/agent-pools/:id/enable-agents",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "agent-pools",
+                                    ":id",
+                                    "enable-agents"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:27:03.000Z",
+                              "updatedAt": "2026-10-22T01:27:03.000Z",
+                              "uid": "35240-1963cf1f-90a7-43d1-aa0c-8b5081162b66"
+                            },
+                            {
+                              "id": "6dca5a87-818c-48b6-8bee-f5fadf69a1f9",
+                              "name": "Agent pool not found.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/agent-pools/:id/enable-agents",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "agent-pools",
+                                    ":id",
+                                    "enable-agents"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:27:03.000Z",
+                              "updatedAt": "2026-10-22T01:27:03.000Z",
+                              "uid": "35240-6dca5a87-818c-48b6-8bee-f5fadf69a1f9"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-96674550-cabf-45bb-baab-6234b0a511ca"
+                        }
+                      ],
+                      "id": "f9dccb07-1f5c-49f5-9303-44a25a2eeee5",
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-f9dccb07-1f5c-49f5-9303-44a25a2eeee5"
                     },
                     {
-                      "key": "size",
-                      "value": "20"
+                      "name": "Get an agent pool by ID",
+                      "id": "9d8581e7-7896-44b1-ae24-e140e1103874",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agent-pools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "68d4ee2c-20bc-4be5-a6ab-712937f7e4ab",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Agent pool ID"
+                            }
+                          ]
+                        },
+                        "description": "Get an agent pool by ID.\n\n**Required API permission level:** `DEV`"
+                      },
+                      "response": [
+                        {
+                          "id": "71d95ac0-f401-4aec-b7b1-33e1a2e98ee4",
+                          "name": "Retrieved the agent pool.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-71d95ac0-f401-4aec-b7b1-33e1a2e98ee4"
+                        },
+                        {
+                          "id": "4050f9c6-8353-4018-9e3d-c703fdbeee78",
+                          "name": "Agent pool not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-4050f9c6-8353-4018-9e3d-c703fdbeee78"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-9d8581e7-7896-44b1-ae24-e140e1103874"
                     },
                     {
-                      "key": "sort",
-                      "value": "<string>"
+                      "name": "Update an agent pool by ID",
+                      "id": "1896d6ca-e792-4de0-9021-399259876aaf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agent-pools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "95592b01-ebbe-4c2e-9929-631cc92c0e86",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Agent pool ID."
+                            }
+                          ]
+                        },
+                        "description": "Update an agent pool by ID.\n\n**Required API permission level:** `DEV`"
+                      },
+                      "response": [
+                        {
+                          "id": "6b7d5199-9c44-4177-9d11-8ff264f11edf",
+                          "name": "Agent pool updated.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-6b7d5199-9c44-4177-9d11-8ff264f11edf"
+                        },
+                        {
+                          "id": "02ebcb68-ced8-4bf8-a5e0-c91bcbfac57c",
+                          "name": "Invalid input.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-02ebcb68-ced8-4bf8-a5e0-c91bcbfac57c"
+                        },
+                        {
+                          "id": "7759ac8b-7adb-4f23-b450-0240f885dc1d",
+                          "name": "Agent pool not found.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-7759ac8b-7adb-4f23-b450-0240f885dc1d"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-1896d6ca-e792-4de0-9021-399259876aaf"
                     },
                     {
-                      "key": "sort",
-                      "value": "<string>"
+                      "name": "Delete an agent pool by ID",
+                      "id": "9038d190-dd33-47c8-8c03-c18af0d75ac4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agent-pools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "486ed498-5437-4cd3-994c-dda47c816029",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Agent pool ID."
+                            }
+                          ]
+                        },
+                        "description": "Delete an agent pool by ID. Will fail if there are live agents in the pool.\n\n**Required API permission level:** `DEV`"
+                      },
+                      "response": [
+                        {
+                          "id": "6e871f89-8b77-4933-b2a2-81ad64071b21",
+                          "name": "Agent pool deleted.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-6e871f89-8b77-4933-b2a2-81ad64071b21"
+                        },
+                        {
+                          "id": "d0f6e626-4235-4de9-9c4d-30d3447dcf91",
+                          "name": "Invalid input.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-d0f6e626-4235-4de9-9c4d-30d3447dcf91"
+                        },
+                        {
+                          "id": "46e5e5ba-bbfc-4b64-a8bc-bc3a2e448210",
+                          "name": "Unauthorized.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-46e5e5ba-bbfc-4b64-a8bc-bc3a2e448210"
+                        },
+                        {
+                          "id": "6c6be3ea-f896-4d4c-9d9b-ecb53917a4a9",
+                          "name": "Default agent pool can not be deleted.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-6c6be3ea-f896-4d4c-9d9b-ecb53917a4a9"
+                        },
+                        {
+                          "id": "4e2b2520-e566-4b0a-bce3-a16f64c7d215",
+                          "name": "Agent pool not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-4e2b2520-e566-4b0a-bce3-a16f64c7d215"
+                        },
+                        {
+                          "id": "2ed830f8-bac2-4a3d-9010-48243c5f395d",
+                          "name": "There are live agents in the pool.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/agent-pools/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "agent-pools",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:27:03.000Z",
+                          "updatedAt": "2026-10-22T01:27:03.000Z",
+                          "uid": "35240-2ed830f8-bac2-4a3d-9010-48243c5f395d"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-9038d190-dd33-47c8-8c03-c18af0d75ac4"
                     }
                   ],
-                  "variable": []
+                  "id": "cf7004c7-fdb2-42aa-8f70-86406cc33a72",
+                  "createdAt": "2026-10-22T01:27:03.000Z",
+                  "updatedAt": "2026-10-22T01:27:03.000Z",
+                  "uid": "35240-cf7004c7-fdb2-42aa-8f70-86406cc33a72"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get a list of agent pools",
+                  "id": "dba1041a-4f47-435f-be1d-ec85bb09924c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/agent-pools?name=<string>&page=0&size=20&sort=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "agent-pools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter agent pools by their name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "description": "The number of items to include on each page of results. The default is 20.",
+                          "key": "size",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdDate, agentsEnabled.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdDate, agentsEnabled.",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Get a list of all agent pools.\n\n**Required API permission level:** `DEV`"
+                  },
+                  "response": [
+                    {
+                      "id": "1e3f0bbc-da59-4b3a-badb-09f093871c56",
+                      "name": "Retrieved all agent pools.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agent-pools?name=<string>&page=0&size=20&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agent-pools"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter agent pools by their name.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The number of items to include on each page of results. The default is 20.",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdDate, agentsEnabled.",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"agentsEnabled\": \"<boolean>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"liveAgentsCount\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"agentsEnabled\": \"<boolean>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"liveAgentsCount\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-1e3f0bbc-da59-4b3a-badb-09f093871c56"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:27:03.000Z",
+                  "updatedAt": "2026-10-22T01:27:03.000Z",
+                  "uid": "35240-dba1041a-4f47-435f-be1d-ec85bb09924c"
+                },
+                {
+                  "name": "Create an agent pool",
+                  "id": "9c9f23f8-539b-49d5-8ab8-cfb9ae3c7087",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/agent-pools",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "agent-pools"
+                      ]
+                    },
+                    "description": "Create an agent pool.\n\n**Required API permission level:** `DEV`"
+                  },
+                  "response": [
+                    {
+                      "id": "860a15a0-6690-4ff0-9866-31c21e19e3a4",
+                      "name": "Created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agent-pools",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agent-pools"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-860a15a0-6690-4ff0-9866-31c21e19e3a4"
+                    },
+                    {
+                      "id": "231ca5b0-2acf-4b3d-85a5-35cee88ef9f3",
+                      "name": "Invalid input.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/agent-pools",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "agent-pools"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"agentsEnabled\": \"<boolean>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"liveAgentsCount\": \"<long>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:27:03.000Z",
+                      "updatedAt": "2026-10-22T01:27:03.000Z",
+                      "uid": "35240-231ca5b0-2acf-4b3d-85a5-35cee88ef9f3"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:27:03.000Z",
+                  "updatedAt": "2026-10-22T01:27:03.000Z",
+                  "uid": "35240-9c9f23f8-539b-49d5-8ab8-cfb9ae3c7087"
                 }
               ],
-              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"agentsEnabled\": false,\n      \"createdBy\": \"string\",\n      \"createdDate\": \"1981-03-12T08:04:17.166Z\",\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"liveAgentsCount\": 2453,\n      \"name\": \"string\"\n    },\n    {\n      \"agentsEnabled\": true,\n      \"createdBy\": \"string\",\n      \"createdDate\": \"2010-12-29T03:51:04.796Z\",\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"liveAgentsCount\": 8476,\n      \"name\": \"string\"\n    }\n  ],\n  \"limit\": 7728,\n  \"offset\": 5894,\n  \"total\": 891\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "26347558-a811-45a4-b96b-137c8d21225e",
+              "createdAt": "2026-10-22T01:27:03.000Z",
+              "updatedAt": "2026-10-22T01:27:03.000Z",
+              "uid": "35240-26347558-a811-45a4-b96b-137c8d21225e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "841cd9fb-86d3-4d57-9b41-8679707c8f22",
-          "name": "Create an agent pool",
-          "request": {
-            "name": "Create an agent pool",
-            "description": {
-              "content": "Create an agent pool.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agent-pools"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "fccb0152-3a25-4637-a60c-b071a65b5404",
-              "name": "Created.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "63cd7c03-b8a3-44bb-88f0-2f9d7216de05",
-              "name": "Invalid input.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "056f1644-a2ed-46f2-8521-1faebb619875",
-          "name": "Get an agent pool by ID",
-          "request": {
-            "name": "Get an agent pool by ID",
-            "description": {
-              "content": "Get an agent pool by ID.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agent-pools",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Agent pool ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "783a98ff-36d9-4636-8265-eb4756ad330e",
-              "name": "Retrieved the agent pool.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "52124f73-da12-4267-812d-88b321a46906",
-              "name": "Agent pool not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "141a8143-6cb1-4c27-b1fe-4e9f762f9d16",
-          "name": "Update an agent pool by ID",
-          "request": {
-            "name": "Update an agent pool by ID",
-            "description": {
-              "content": "Update an agent pool by ID.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agent-pools",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Agent pool ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "36fff4cd-a821-4897-9699-d73f9d7fbb14",
-              "name": "Agent pool updated.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0bb3ebc1-c0ff-4e26-b604-4341c5f17a82",
-              "name": "Invalid input.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3a297faf-a68d-43f2-a037-6c9bae442a23",
-              "name": "Agent pool not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3e25e4fb-e382-4415-85cc-b80d61bff405",
-          "name": "Delete an agent pool by ID",
-          "request": {
-            "name": "Delete an agent pool by ID",
-            "description": {
-              "content": "Delete an agent pool by ID. Will fail if there are live agents in the pool.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agent-pools",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Agent pool ID."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "00875f93-ee7c-483e-8563-0a166e513ccf",
-              "name": "Agent pool deleted.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "268613ac-7e42-41ef-bcea-18955bd743a6",
-              "name": "Invalid input.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ae533319-9545-4131-a897-46548020a13e",
-              "name": "Unauthorized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "74627cdf-2739-4229-baac-fce611384280",
-              "name": "Default agent pool can not be deleted.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5efc0e26-6642-431e-b13e-e557e211f778",
-              "name": "Agent pool not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3187fe2d-fbcf-405d-9bfe-db7601770f75",
-              "name": "There are live agents in the pool.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "11e12a61-cf5c-4a5f-b1b2-6831fe236b81",
-          "name": "Detach (disable) agents in an agent pool by ID",
-          "request": {
-            "name": "Detach (disable) agents in an agent pool by ID",
-            "description": {
-              "content": "Disables the agent pool by ID, disconnecting active agents and preventing new agents from joining.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agent-pools",
-                ":id",
-                "detach-agents"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Agent pool ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "8ca11fad-0e46-432f-872d-edb2203bd8cb",
-              "name": "Agents detached.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id",
-                    "detach-agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ed681617-2f67-401e-b438-121027a9b179",
-              "name": "Agent pool not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id",
-                    "detach-agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8c9317d2-3d61-498e-9f40-6f0e1bd23990",
-          "name": "Enable agents in an agent pool by ID",
-          "request": {
-            "name": "Enable agents in an agent pool by ID",
-            "description": {
-              "content": "Enable agents in an agent pool by ID.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "agent-pools",
-                ":id",
-                "enable-agents"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Agent pool ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "7037a062-7646-48e6-b344-1a10e0f4cd46",
-              "name": "Agents enabled.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id",
-                    "enable-agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1ba71892-d1ca-480d-91f7-b942beb1503b",
-              "name": "Agent pool not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "agent-pools",
-                    ":id",
-                    "enable-agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Agent pool ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"agentsEnabled\": true,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1974-02-07T07:32:09.900Z\",\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"liveAgentsCount\": 6246,\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "dc4f5d92-f8f8-4a34-9022-6fbab343a913",
+          "createdAt": "2026-10-22T01:27:03.000Z",
+          "updatedAt": "2026-10-22T01:27:03.000Z",
+          "uid": "35240-dc4f5d92-f8f8-4a34-9022-6fbab343a913"
         }
       ],
-      "event": []
+      "id": "711222c3-bf84-4b00-a59c-b27e76a40b3f",
+      "createdAt": "2026-10-22T01:27:03.000Z",
+      "updatedAt": "2026-10-22T01:27:03.000Z",
+      "uid": "35240-711222c3-bf84-4b00-a59c-b27e76a40b3f"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "2bc8a4d0-f6ea-4c5f-ae12-25577719a6e2",
-    "name": "Lightrun Actions Agent Pools API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

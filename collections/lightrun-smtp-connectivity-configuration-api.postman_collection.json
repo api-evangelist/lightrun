@@ -1,284 +1,278 @@
 {
+  "info": {
+    "_postman_id": "bdb60069-20ca-4d30-8f10-4d49bfa23ae1",
+    "name": "Lightrun SMTP connectivity configuration API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:28:27.000Z",
+    "updatedAt": "2026-10-22T01:28:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bdb60069-20ca-4d30-8f10-4d49bfa23ae1"
+  },
   "item": [
     {
-      "id": "859fc31e-8980-4228-bf1e-8a571a918d36",
-      "name": "SMTP connectivity configuration",
-      "description": {
-        "content": "SMTP connectivity configuration API",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "53724abf-dfbf-47b1-8fef-1cac6594f1d0",
-          "name": "Get SMTP connectivity configuration",
-          "request": {
-            "name": "Get SMTP connectivity configuration",
-            "description": {
-              "content": "Get a JSON file with the current Lightrun SMTP connectivity configuration settings.\n\n**Required API permission level:** `COMPANY`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "configuration",
-                "connectivity",
-                "smtp"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "c10cfdb6-b63e-4149-b15e-c0596ebc10f4",
-              "name": "Returns the complete SMTP connectivity configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "configuration",
-                    "connectivity",
-                    "smtp"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "configuration",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "connectivity",
+                  "item": [
+                    {
+                      "name": "smtp",
+                      "item": [
+                        {
+                          "name": "Get SMTP connectivity configuration",
+                          "id": "ea90f375-cefa-46d2-83ca-956124208e9d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/configuration/connectivity/smtp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "configuration",
+                                "connectivity",
+                                "smtp"
+                              ]
+                            },
+                            "description": "Get a JSON file with the current Lightrun SMTP connectivity configuration settings.\n\n**Required API permission level:** `COMPANY`"
+                          },
+                          "response": [
+                            {
+                              "id": "7b74c662-3d3f-4614-995f-a14088d41d29",
+                              "name": "Returns the complete SMTP connectivity configuration",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/configuration/connectivity/smtp",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "configuration",
+                                    "connectivity",
+                                    "smtp"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"authenticationId\": \"<string>\",\n  \"authenticationSecret\": \"<string>\",\n  \"authenticationType\": \"PASSWORD\",\n  \"enableSSL\": \"<boolean>\",\n  \"enableStartTLS\": \"<boolean>\",\n  \"fromEmailAddress\": \"<string>\",\n  \"serverHost\": \"<string>\",\n  \"serverPort\": 587,\n  \"type\": \"DEFAULT\"\n}",
+                              "createdAt": "2026-10-22T01:28:28.000Z",
+                              "updatedAt": "2026-10-22T01:28:28.000Z",
+                              "uid": "35240-7b74c662-3d3f-4614-995f-a14088d41d29"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:28:28.000Z",
+                          "updatedAt": "2026-10-22T01:28:28.000Z",
+                          "uid": "35240-ea90f375-cefa-46d2-83ca-956124208e9d"
+                        },
+                        {
+                          "name": "Set SMTP connectivity configuration",
+                          "id": "035b6e23-2567-489b-848a-72562c142a4e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"DEFAULT\",\n  \"customSpec\": {\n    \"authenticationType\": \"DISABLED\",\n    \"enableSSL\": true,\n    \"enableStartTLS\": true,\n    \"fromEmailAddress\": \"<email>\",\n    \"serverHost\": \"<string>\",\n    \"serverPort\": 587,\n    \"authenticationId\": \"<string>\",\n    \"authenticationSecret\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/configuration/connectivity/smtp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "configuration",
+                                "connectivity",
+                                "smtp"
+                              ]
+                            },
+                            "description": "Set the Lightrun SMTP connectivity configuration settings.\n\n**Required API permission level:** `COMPANY`"
+                          },
+                          "response": [
+                            {
+                              "id": "9d99affa-0f6e-4c70-bd58-f598fbc4016b",
+                              "name": "Write complete SMTP connectivity configuration",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"DEFAULT\",\n  \"customSpec\": {\n    \"authenticationType\": \"DISABLED\",\n    \"enableSSL\": true,\n    \"enableStartTLS\": true,\n    \"fromEmailAddress\": \"<email>\",\n    \"serverHost\": \"<string>\",\n    \"serverPort\": 587,\n    \"authenticationId\": \"<string>\",\n    \"authenticationSecret\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/configuration/connectivity/smtp",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "configuration",
+                                    "connectivity",
+                                    "smtp"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:28:28.000Z",
+                              "updatedAt": "2026-10-22T01:28:28.000Z",
+                              "uid": "35240-9d99affa-0f6e-4c70-bd58-f598fbc4016b"
+                            },
+                            {
+                              "id": "b838e881-ea61-4647-a2ce-c41cb7399eab",
+                              "name": "Bad request, Usually due to invalid input.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"type\": \"DEFAULT\",\n  \"customSpec\": {\n    \"authenticationType\": \"DISABLED\",\n    \"enableSSL\": true,\n    \"enableStartTLS\": true,\n    \"fromEmailAddress\": \"<email>\",\n    \"serverHost\": \"<string>\",\n    \"serverPort\": 587,\n    \"authenticationId\": \"<string>\",\n    \"authenticationSecret\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/configuration/connectivity/smtp",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "configuration",
+                                    "connectivity",
+                                    "smtp"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:28:28.000Z",
+                              "updatedAt": "2026-10-22T01:28:28.000Z",
+                              "uid": "35240-b838e881-ea61-4647-a2ce-c41cb7399eab"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:28:28.000Z",
+                          "updatedAt": "2026-10-22T01:28:28.000Z",
+                          "uid": "35240-035b6e23-2567-489b-848a-72562c142a4e"
+                        }
+                      ],
+                      "id": "6374920d-641d-40ba-aae3-12964db846fe",
+                      "createdAt": "2026-10-22T01:28:28.000Z",
+                      "updatedAt": "2026-10-22T01:28:28.000Z",
+                      "uid": "35240-6374920d-641d-40ba-aae3-12964db846fe"
+                    }
+                  ],
+                  "id": "bdcbb035-cb45-4d9c-bda3-bfe7b7428be9",
+                  "createdAt": "2026-10-22T01:28:28.000Z",
+                  "updatedAt": "2026-10-22T01:28:28.000Z",
+                  "uid": "35240-bdcbb035-cb45-4d9c-bda3-bfe7b7428be9"
                 }
               ],
-              "body": "{\n  \"authenticationId\": \"string\",\n  \"authenticationSecret\": \"string\",\n  \"authenticationType\": \"APIKEY\",\n  \"enableSSL\": false,\n  \"enableStartTLS\": true,\n  \"fromEmailAddress\": \"string\",\n  \"serverHost\": \"string\",\n  \"serverPort\": 587,\n  \"type\": \"DEFAULT\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "d5ad2937-2f2c-4df8-94c2-f74161ed8116",
+              "createdAt": "2026-10-22T01:28:28.000Z",
+              "updatedAt": "2026-10-22T01:28:28.000Z",
+              "uid": "35240-d5ad2937-2f2c-4df8-94c2-f74161ed8116"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4f002d00-7c79-4f16-9826-abf339e9f7df",
-          "name": "Set SMTP connectivity configuration",
-          "request": {
-            "name": "Set SMTP connectivity configuration",
-            "description": {
-              "content": "Set the Lightrun SMTP connectivity configuration settings.\n\n**Required API permission level:** `COMPANY`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "configuration",
-                "connectivity",
-                "smtp"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"type\": \"DEFAULT\",\n  \"customSpec\": {\n    \"authenticationType\": \"DISABLED\",\n    \"enableSSL\": true,\n    \"enableStartTLS\": true,\n    \"fromEmailAddress\": \"<email>\",\n    \"serverHost\": \"<string>\",\n    \"serverPort\": 587,\n    \"authenticationId\": \"<string>\",\n    \"authenticationSecret\": \"<string>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "2175f966-36b6-40bc-b1a1-e4b5ca7f334e",
-              "name": "Write complete SMTP connectivity configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "configuration",
-                    "connectivity",
-                    "smtp"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"type\": \"DEFAULT\",\n  \"customSpec\": {\n    \"authenticationType\": \"DISABLED\",\n    \"enableSSL\": true,\n    \"enableStartTLS\": true,\n    \"fromEmailAddress\": \"RT2HK6JmhnmKMy@np.uo\",\n    \"serverHost\": \"string\",\n    \"serverPort\": 587,\n    \"authenticationId\": \"string\",\n    \"authenticationSecret\": \"string\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "dfff2a4b-ca46-43bd-a2a4-07a5bd8be6aa",
-              "name": "Bad request, Usually due to invalid input.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "configuration",
-                    "connectivity",
-                    "smtp"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"type\": \"DEFAULT\",\n  \"customSpec\": {\n    \"authenticationType\": \"DISABLED\",\n    \"enableSSL\": true,\n    \"enableStartTLS\": true,\n    \"fromEmailAddress\": \"RT2HK6JmhnmKMy@np.uo\",\n    \"serverHost\": \"string\",\n    \"serverPort\": 587,\n    \"authenticationId\": \"string\",\n    \"authenticationSecret\": \"string\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d31daceb-5d83-4f4a-87ea-9ce4be58a93e",
+          "createdAt": "2026-10-22T01:28:28.000Z",
+          "updatedAt": "2026-10-22T01:28:28.000Z",
+          "uid": "35240-d31daceb-5d83-4f4a-87ea-9ce4be58a93e"
         }
       ],
-      "event": []
+      "id": "5d15ef2f-fbfb-485e-aa75-a3fc99f02392",
+      "createdAt": "2026-10-22T01:28:28.000Z",
+      "updatedAt": "2026-10-22T01:28:28.000Z",
+      "uid": "35240-5d15ef2f-fbfb-485e-aa75-a3fc99f02392"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "fbb65160-44c3-4935-b75b-f284777c68c8",
-    "name": "Lightrun Actions SMTP connectivity configuration API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

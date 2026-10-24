@@ -1,437 +1,412 @@
 {
+  "info": {
+    "_postman_id": "f09b3206-f147-4a1a-8834-00d4b175aacf",
+    "name": "Lightrun Debug Cases API",
+    "description": "Lightrun API documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:27:20.000Z",
+    "updatedAt": "2026-10-22T01:27:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f09b3206-f147-4a1a-8834-00d4b175aacf"
+  },
   "item": [
     {
-      "id": "9cff964d-d562-4251-b46a-6f3e762329a5",
-      "name": "Debug Cases",
-      "description": {
-        "content": "Debug Cases API.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "1d64da91-9d06-4732-8bd1-a10d884c88f3",
-          "name": "Get a list of cases",
-          "request": {
-            "name": "Get a list of cases",
-            "description": {
-              "content": "Get a list of all debug cases.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "debug-cases"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "agentPoolId",
-                  "value": "<string>",
-                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
-                },
-                {
-                  "disabled": false,
-                  "key": "createdAt",
-                  "value": "<date>",
-                  "description": "Filter cases by the creation date. Date format is <YYYY-MM-DD>. (UTC)"
-                },
-                {
-                  "disabled": false,
-                  "key": "createdBy",
-                  "value": "<string>",
-                  "description": "Filter cases by the user created."
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0",
-                  "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page)."
-                },
-                {
-                  "disabled": false,
-                  "key": "size",
-                  "value": "20",
-                  "description": "The number of items to include on each page of results. The default is 20."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdAt."
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdAt."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "238b47ef-77fb-416b-bbe9-8d946392ff03",
-              "name": "Retrieved all matching cases.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "debug-cases"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "debug-cases",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
                     {
-                      "key": "agentPoolId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "createdAt",
-                      "value": "<date>"
-                    },
-                    {
-                      "key": "createdBy",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "size",
-                      "value": "20"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
+                      "name": "Get a case by ID",
+                      "id": "76efa772-05f6-4752-b079-2082d24b14d7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/debug-cases/:id?agentPoolId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "debug-cases",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "81a46d6b-523a-4212-b6e1-8383e745e03a",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Case ID."
+                            }
+                          ]
+                        },
+                        "description": "Get a case by ID.\n\n**Required API permission level:** `DEV`"
+                      },
+                      "response": [
+                        {
+                          "id": "477fdaeb-f3da-47af-9c57-5a18a7031daa",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/debug-cases/:id?agentPoolId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "debug-cases",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                                  "key": "agentPoolId",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"createdBy\": \"<email>\",\n  \"description\": \"<string>\",\n  \"hitCount\": \"<integer>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"runbooksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"updatedAt\": \"<dateTime>\",\n  \"updatedBy\": \"<email>\",\n  \"webPortalPageLink\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:27:20.000Z",
+                          "updatedAt": "2026-10-22T01:27:20.000Z",
+                          "uid": "35240-477fdaeb-f3da-47af-9c57-5a18a7031daa"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:27:20.000Z",
+                      "updatedAt": "2026-10-22T01:27:20.000Z",
+                      "uid": "35240-76efa772-05f6-4752-b079-2082d24b14d7"
                     }
                   ],
-                  "variable": []
+                  "id": "81e549fe-65db-45cf-9a7f-81f3e270284f",
+                  "createdAt": "2026-10-22T01:27:20.000Z",
+                  "updatedAt": "2026-10-22T01:27:20.000Z",
+                  "uid": "35240-81e549fe-65db-45cf-9a7f-81f3e270284f"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get a list of cases",
+                  "id": "b7c8ceb0-6da0-4542-9ec7-93d9d4139ea7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/debug-cases?agentPoolId=<string>&createdAt=<date>&createdBy=<string>&page=0&size=20&sort=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "debug-cases"
+                      ],
+                      "query": [
+                        {
+                          "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                          "key": "agentPoolId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter cases by the creation date. Date format is <YYYY-MM-DD>. (UTC)",
+                          "key": "createdAt",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Filter cases by the user created.",
+                          "key": "createdBy",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "description": "The number of items to include on each page of results. The default is 20.",
+                          "key": "size",
+                          "value": "20"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdAt.",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdAt.",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Get a list of all debug cases.\n\n**Required API permission level:** `DEV`"
+                  },
+                  "response": [
+                    {
+                      "id": "56a71a78-1021-4c12-a1dc-92fe449382e0",
+                      "name": "Retrieved all matching cases.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/debug-cases?agentPoolId=<string>&createdAt=<date>&createdBy=<string>&page=0&size=20&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "debug-cases"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter cases by the creation date. Date format is <YYYY-MM-DD>. (UTC)",
+                              "key": "createdAt",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter cases by the user created.",
+                              "key": "createdBy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies a zero-based index of the results page to retrieve. The default is 0 (the first page).",
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The number of items to include on each page of results. The default is 20.",
+                              "key": "size",
+                              "value": "20"
+                            },
+                            {
+                              "description": "The sorting criteria in the format property (asc|desc), with ascending as the default. Multiple sort parameters can be chained to define primary, secondary, and further sorting levels (e.g., sort=field1,asc&sort=field2,desc). Sortable fields: name, description, createdBy, createdAt.",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hasMore\": \"<boolean>\",\n  \"items\": [\n    {\n      \"createdAt\": \"<dateTime>\",\n      \"createdBy\": \"<email>\",\n      \"description\": \"<string>\",\n      \"hitCount\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"runbooksIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"AGENT\"\n      },\n      \"updatedAt\": \"<dateTime>\",\n      \"updatedBy\": \"<email>\",\n      \"webPortalPageLink\": \"<string>\"\n    },\n    {\n      \"createdAt\": \"<dateTime>\",\n      \"createdBy\": \"<email>\",\n      \"description\": \"<string>\",\n      \"hitCount\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"runbooksIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"AGENT\"\n      },\n      \"updatedAt\": \"<dateTime>\",\n      \"updatedBy\": \"<email>\",\n      \"webPortalPageLink\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<long>\",\n  \"total\": \"<long>\"\n}",
+                      "createdAt": "2026-10-22T01:27:20.000Z",
+                      "updatedAt": "2026-10-22T01:27:20.000Z",
+                      "uid": "35240-56a71a78-1021-4c12-a1dc-92fe449382e0"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:27:20.000Z",
+                  "updatedAt": "2026-10-22T01:27:20.000Z",
+                  "uid": "35240-b7c8ceb0-6da0-4542-9ec7-93d9d4139ea7"
+                },
+                {
+                  "name": "Create a case",
+                  "id": "6774e9f7-0fdb-4bca-9fd2-686ec627ca21",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/debug-cases?agentPoolId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "debug-cases"
+                      ],
+                      "query": [
+                        {
+                          "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                          "key": "agentPoolId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Create a case.\n\n**Required API permission level:** `DEV`"
+                  },
+                  "response": [
+                    {
+                      "id": "8c5b769d-44fa-4cec-ac03-c30d4ad48bfa",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/debug-cases?agentPoolId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "debug-cases"
+                          ],
+                          "query": [
+                            {
+                              "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled.",
+                              "key": "agentPoolId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"createdBy\": \"<email>\",\n  \"description\": \"<string>\",\n  \"hitCount\": \"<integer>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"runbooksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"CUSTOM_SOURCE\"\n  },\n  \"updatedAt\": \"<dateTime>\",\n  \"updatedBy\": \"<email>\",\n  \"webPortalPageLink\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:27:20.000Z",
+                      "updatedAt": "2026-10-22T01:27:20.000Z",
+                      "uid": "35240-8c5b769d-44fa-4cec-ac03-c30d4ad48bfa"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:27:20.000Z",
+                  "updatedAt": "2026-10-22T01:27:20.000Z",
+                  "uid": "35240-6774e9f7-0fdb-4bca-9fd2-686ec627ca21"
                 }
               ],
-              "body": "{\n  \"hasMore\": true,\n  \"items\": [\n    {\n      \"createdAt\": \"2022-08-11T19:52:56.545Z\",\n      \"createdBy\": \"NTxe-oQhQ4EreR@RuSWqSTC.piml\",\n      \"description\": \"string\",\n      \"hitCount\": 5882,\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"runbooksIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": {\n        \"id\": \"string\",\n        \"type\": \"AGENT\"\n      },\n      \"updatedAt\": \"1989-04-15T00:23:51.625Z\",\n      \"updatedBy\": \"irN-yjUr@Icrvtdo.yqgx\",\n      \"webPortalPageLink\": \"string\"\n    },\n    {\n      \"createdAt\": \"1982-11-17T13:21:35.669Z\",\n      \"createdBy\": \"cEfwNzfIE@AdPqqElesaMF.ilca\",\n      \"description\": \"string\",\n      \"hitCount\": 2642,\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"runbooksIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"source\": {\n        \"id\": \"string\",\n        \"type\": \"TAG\"\n      },\n      \"updatedAt\": \"1960-08-13T04:19:07.651Z\",\n      \"updatedBy\": \"EEqxONnXYC045g3@DEfxykGEgSiFoDDiZLazR.uv\",\n      \"webPortalPageLink\": \"string\"\n    }\n  ],\n  \"limit\": 4189,\n  \"offset\": 7793,\n  \"total\": 2855\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "83ba4688-ab41-4d46-a288-92be9273c7dc",
+              "createdAt": "2026-10-22T01:27:20.000Z",
+              "updatedAt": "2026-10-22T01:27:20.000Z",
+              "uid": "35240-83ba4688-ab41-4d46-a288-92be9273c7dc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f18e13bd-cd66-4b5c-bca5-11de3074b3c6",
-          "name": "Create a case",
-          "request": {
-            "name": "Create a case",
-            "description": {
-              "content": "Create a case.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "debug-cases"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "agentPoolId",
-                  "value": "<string>",
-                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"source\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "06049372-8006-4b4e-8f73-03d5d4c302fc",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "debug-cases"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"AGENT\"\n  },\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"createdAt\": \"2006-11-01T07:58:33.960Z\",\n  \"createdBy\": \"zxYG0G@PpgJwSIXCKsiMzsuDyoMAcRzQuxDJcHKI.mgo\",\n  \"description\": \"string\",\n  \"hitCount\": 4860,\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"runbooksIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"TAG\"\n  },\n  \"updatedAt\": \"1970-01-10T23:09:23.405Z\",\n  \"updatedBy\": \"WPR46t@vgQVSDdAAaOlWEOtrkhxN.kuzd\",\n  \"webPortalPageLink\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "333d16be-bd8c-4f47-8394-1860a1814c34",
-          "name": "Get a case by ID",
-          "request": {
-            "name": "Get a case by ID",
-            "description": {
-              "content": "Get a case by ID.\n\n**Required API permission level:** `DEV`",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "debug-cases",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "agentPoolId",
-                  "value": "<string>",
-                  "description": "Agent pool ID. Mandatory when RBAC is enabled. Ignored when RBAC is disabled."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Case ID."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "982c5769-d62f-457e-b362-6d468bd277f2",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "debug-cases",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "agentPoolId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Case ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"createdAt\": \"2006-11-01T07:58:33.960Z\",\n  \"createdBy\": \"zxYG0G@PpgJwSIXCKsiMzsuDyoMAcRzQuxDJcHKI.mgo\",\n  \"description\": \"string\",\n  \"hitCount\": 4860,\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"runbooksIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"source\": {\n    \"id\": \"string\",\n    \"type\": \"TAG\"\n  },\n  \"updatedAt\": \"1970-01-10T23:09:23.405Z\",\n  \"updatedBy\": \"WPR46t@vgQVSDdAAaOlWEOtrkhxN.kuzd\",\n  \"webPortalPageLink\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "fbf14aea-0314-446b-8341-180eb8d37d62",
+          "createdAt": "2026-10-22T01:27:20.000Z",
+          "updatedAt": "2026-10-22T01:27:20.000Z",
+          "uid": "35240-fbf14aea-0314-446b-8341-180eb8d37d62"
         }
       ],
-      "event": []
+      "id": "a12646ae-552f-46b8-afbe-3d5e2270596a",
+      "createdAt": "2026-10-22T01:27:20.000Z",
+      "updatedAt": "2026-10-22T01:27:20.000Z",
+      "uid": "35240-a12646ae-552f-46b8-afbe-3d5e2270596a"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "http://localhost:8090",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
     }
-  ],
-  "info": {
-    "_postman_id": "04b8c0a1-48ad-4d9c-a051-b2d4b67c1414",
-    "name": "Lightrun Actions Debug Cases API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Lightrun API documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
