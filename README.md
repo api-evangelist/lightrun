@@ -64,6 +64,171 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Lightrun is a company surfaced as a portfolio company of accel, insight-partners and added to the API Evangelist network as a stub for enrichment. Sector: developer-tools. This profile is a lead awaiting the enrichment pipeline.
+Lightrun is a developer-native observability and live-debugging platform. Language agents embedded in a running JVM, Python, Node.js or .NET process accept dynamic actions — logs, snapshots, counters, tic-toc timings and custom metrics — placed on a file and line while the application keeps serving traffic, so engineers can inspect production behavior without redeploying, restarting or attaching a traditional debugger. The platform is driven from JetBrains, VS Code and Visual Studio plugins, a Java CLI, a bearer-authenticated Public REST API, and a published MCP server that gives AI coding assistants live runtime context. Around that core it adds agent-pool RBAC, PII redaction, SSO and SCIM provisioning, and a Dynamic SBOM surface that reports which third-party packages are actually reachable at runtime.
 
-Backed by: accel, insight-partners — https://lightrun.com/
+**Areas:** Company · Developer Tools · Observability · Debugging · Monitoring · Logging · Application Performance · Agent Skills · MCP · DevOps
+
+## Lightrun on APIs.io
+
+Everything profiled for Lightrun is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lightrun/](https://apis.io/providers/lightrun/)** — or go straight to one of the APIs or properties below.
+
+### APIs (20)
+
+- [Lightrun Actions API](https://apis.io/apis/lightrun/lightrun-actions-api/) — Actions API.
+- [Lightrun Agent Pools API](https://apis.io/apis/lightrun/lightrun-agent-pools-api/) — Agent Pools API.
+- [Lightrun Agents API](https://apis.io/apis/lightrun/lightrun-agents-api/) — Agents API.
+- [Lightrun Custom sources API](https://apis.io/apis/lightrun/lightrun-custom-sources-api/) — Custom sources API.
+- [Lightrun Debug Cases API](https://apis.io/apis/lightrun/lightrun-debug-cases-api/) — Debug Cases API.
+- [Lightrun Debug Runbook methods API](https://apis.io/apis/lightrun/lightrun-debug-runbook-methods-api/) — The Debug Runbook methods API from Lightrun — 1 operation(s) for debug runbook methods.
+- [Lightrun Debug Runbooks API](https://apis.io/apis/lightrun/lightrun-debug-runbooks-api/) — Debug Runbooks API.
+- [Lightrun Debug Runbooks Configuration API](https://apis.io/apis/lightrun/lightrun-debug-runbooks-configuration-api/) — Debug Runbooks Configuration API.
+- [Lightrun Dynamic SBOM API](https://apis.io/apis/lightrun/lightrun-dynamic-sbom-api/) — Dynamic SBOM API.
+- [Lightrun Identity Management (IdM) configuration API](https://apis.io/apis/lightrun/lightrun-identity-management-idm-configuration-api/) — Identity Management (IdM) configuration API
+- [Lightrun Just-In-Time Access API](https://apis.io/apis/lightrun/lightrun-just-in-time-access-api/) — Just-In-Time Access API.
+- [Lightrun License API](https://apis.io/apis/lightrun/lightrun-license-api/) — Company License API.
+- [Lightrun feature flags status API](https://apis.io/apis/lightrun/lightrun-lightrun-feature-flags-status-api/) — Lightrun feature flags status API.
+- [Lightrun Loaded packages API](https://apis.io/apis/lightrun/lightrun-loaded-packages-api/) — Loaded packages API.
+- [Lightrun SMTP connectivity configuration API](https://apis.io/apis/lightrun/lightrun-smtp-connectivity-configuration-api/) — SMTP connectivity configuration API
+- [Lightrun System access API key API](https://apis.io/apis/lightrun/lightrun-system-access-api-key-api/) — System access API key management API.
+- [Lightrun Tags API](https://apis.io/apis/lightrun/lightrun-tags-api/) — Tags API.
+- [Lightrun User Groups API](https://apis.io/apis/lightrun/lightrun-user-groups-api/) — User Groups API.
+- [Lightrun Users API](https://apis.io/apis/lightrun/lightrun-users-api/) — Users API.
+- [Lightrun Watched packages API](https://apis.io/apis/lightrun/lightrun-watched-packages-api/) — Watched packages API.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Lightrun Webhooks](https://apis.io/asyncapis/lightrun/lightrun-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Lightrun MCP Server](https://apis.io/servers/lightrun/com-lightrun-mcp-server/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Lightrun Agentic Access](https://apis.io/agentic-access/lightrun/lightrun-agentic-access/)
+
+#### Collections (20)
+
+Postman and Open Collection request collections.
+
+- [Lightrun Actions API](https://apis.io/collections/lightrun/open-lightrun-actions-api/)
+- [Lightrun Actions Agent Pools API](https://apis.io/collections/lightrun/open-lightrun-agent-pools-api/)
+- [Lightrun Actions Agents API](https://apis.io/collections/lightrun/open-lightrun-agents-api/)
+- [Lightrun Actions Custom sources API](https://apis.io/collections/lightrun/open-lightrun-custom-sources-api/)
+- [Lightrun Actions Debug Cases API](https://apis.io/collections/lightrun/open-lightrun-debug-cases-api/)
+- [Lightrun Actions Debug Runbook methods API](https://apis.io/collections/lightrun/open-lightrun-debug-runbook-methods-api/)
+- [Lightrun Actions Debug Runbooks API](https://apis.io/collections/lightrun/open-lightrun-debug-runbooks-api/)
+- [Lightrun Actions Debug Runbooks Configuration API](https://apis.io/collections/lightrun/open-lightrun-debug-runbooks-configuration-api/)
+- [Lightrun Actions Dynamic SBOM API](https://apis.io/collections/lightrun/open-lightrun-dynamic-sbom-api/)
+- [Lightrun Actions Identity Management (IdM) configuration API](https://apis.io/collections/lightrun/open-lightrun-identity-management-idm-configuration-api/)
+- [Lightrun Actions Just-In-Time Access API](https://apis.io/collections/lightrun/open-lightrun-just-in-time-access-api/)
+- [Lightrun Actions License API](https://apis.io/collections/lightrun/open-lightrun-license-api/)
+- [Lightrun Actions Lightrun feature flags status API](https://apis.io/collections/lightrun/open-lightrun-lightrun-feature-flags-status-api/)
+- [Lightrun Actions Loaded packages API](https://apis.io/collections/lightrun/open-lightrun-loaded-packages-api/)
+- [Lightrun Actions SMTP connectivity configuration API](https://apis.io/collections/lightrun/open-lightrun-smtp-connectivity-configuration-api/)
+- [Lightrun Actions System access API key API](https://apis.io/collections/lightrun/open-lightrun-system-access-api-key-api/)
+- [Lightrun Actions Tags API](https://apis.io/collections/lightrun/open-lightrun-tags-api/)
+- [Lightrun Actions User Groups API](https://apis.io/collections/lightrun/open-lightrun-user-groups-api/)
+- [Lightrun Actions Users API](https://apis.io/collections/lightrun/open-lightrun-users-api/)
+- [Lightrun Actions Watched packages API](https://apis.io/collections/lightrun/open-lightrun-watched-packages-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Lightrun Public Api Overlay](https://apis.io/overlays/lightrun/lightrun-public-api-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Lightrun Authentication](https://apis.io/security/lightrun/lightrun-authentication/)
+- [Lightrun Domain Security](https://apis.io/security/lightrun/lightrun-domain-security/)
+- [Lightrun Trust Center](https://apis.io/security/lightrun/lightrun-trust-center/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Lightrun Scopes](https://apis.io/scopes/lightrun/lightrun-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://lightrun.com/)
+- [Documentation](https://docs.lightrun.com/)
+- [Getting started](https://docs.lightrun.com/get-started/)
+- [API reference](https://docs.lightrun.com/public-api/api-reference/)
+- [Pricing](https://lightrun.com/pricing/)
+- [Sign up](https://app.lightrun.com/)
+- [Blog](https://lightrun.com/blog/)
+- [Compliance](https://trust.lightrun.com/)
+- [Privacy policy](https://lightrun.com/privacy-policy/)
+- [GitHub](https://github.com/lightrun-platform)
+- [Status](https://status.lightrun.com/)
+
+## API Evangelist rating
+
+**Kin Score 56.2** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 54.7 |
+| Contract governance | 18.2 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 75.0 |
+| Access clarity | 50.0 |
+
+**Agent readiness 56.5** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lightrun/](https://apis.io/providers/lightrun/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Lightrun: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lightrun/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
